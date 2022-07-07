@@ -1,0 +1,86 @@
+﻿
+@{
+    ViewBag.Title = "Registro de cuenta";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Registrarse</title>
+
+        <link rel="stylesheet" href="~/Content/EstiloRegistro.css" type="text/css" media=screen />
+        <style type="text/css" media="screen">
+            A:link {
+                color: black;
+                font-size: medium;
+                font-family: arial;
+                text-decoration: none
+            }
+
+            A:hover {
+                color: black;
+                font-size: medium;
+                font-family: arial;
+                text-decoration: none
+            }
+
+            A:visited {
+                color: black;
+                font-size: medium;
+                font-family: arial;
+                text-decoration: none
+            }
+        </style>
+    </head>
+    <body>
+        @using BuyOnline.Models
+        @using (Html.BeginForm("RegistroNuevo", "Home", FormMethod.Post, new { id = "validarregistro" }))
+        {
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 text-center"><h1>Registro de cuenta.</h1></div>
+                </div>
+                <div class="form-group centro-medio">
+                    <div class="row">
+                        <div class="mx-auto">
+                            <input type="text" id="nombre" name="nombre" placeholder="Nombre" class="form-control input-lg my-3 txt" />
+                            <input type="text" id="apellido" name="apellido" placeholder="Apellido" class="form-control input-lg my-3 txt" />
+                            <input type="number" id="edad" name="edad" placeholder="Edad" class="form-control my-3 txt" />
+                            <input type="text" id="numero" name="numero" placeholder="Número Telefónico" class="form-control input-lg my-3 txt" />
+                            <select name="pais" class="form-control input-lg my-3 txt">
+                                @{
+                                    List<Pais> ListarPaises = (List<Pais>)ViewBag.ListarPaises;
+                                    <option selected>Pais</option>
+                                    foreach (var item in ListarPaises)
+                                    {
+                                        <option value="@item.IdPais">@item.Nombre</option>
+                                    }
+                                }
+                            </select>
+                            <input type="text" id="usuario" name="usuario" placeholder="Usuario" class="form-control input-lg my-3 txt" />
+                            <input type="email" id="correo" name="correo" placeholder="Correo" class="form-control input-lg my-3 txt" />
+                            <input type="password" id="contraseña" name="contraseña" placeholder="Contraseña" class="form-control input-lg my-3 txt" />
+                            <input type="password" id="contraseña2" name="contraseña2" placeholder="Confirmar Contraseña" class="form-control input-lg my-3 txt" />
+                            <label class="form-control" id="mensaje">Las contraseñas si coinciden.</label>
+                        </div>
+                    </div>
+                    <div class="row button">
+                        <button class="btn btn-success btn-registrar" id="registrarse">Registrarse</button>
+                    </div>
+                </div>
+                <div class="row ">
+                    <p>
+                        ¿Ya tienes una cuenta? @Html.ActionLink("Inicia Sesión", "Login", "Home")
+                    </p>
+                </div>
+            </div>
+        }
+    </body>
+</html>
+
+@section scripts{
+    <script src="~/Content/js/validarregistro.js"></script>
+}

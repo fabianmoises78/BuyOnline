@@ -1,0 +1,34 @@
+﻿@using BuyOnline.Models
+@{
+    ViewBag.Title = "VistaProducto";
+}
+@{
+    List<ShowProductsbyID_Result> result = (List<ShowProductsbyID_Result>)ViewBag.Verproducto;
+    <div class="row">
+        <div class="col-lg-6 text-center">
+            <img src="@result[0].Imagen" class="img-fluid" height="882" width="250" alt="Responsive image">
+        </div>
+        <div class="col-lg-6 my-5">
+            <h2>@result[0].Nombre</h2>
+            <p>@result[0].Descripcion</p>
+        </div>
+    </div>
+    
+    <div>
+        <div class="mx-auto"><h2></h2></div>
+        <p class="mx-auto"></p>
+        <p class="mx-auto">@result[0].Detalles<br /></p>
+        <p class="mx-auto">Precio: $@result[0].precio</p>
+        <p class="mx-auto">Categoria: @result[0].Cat</p>
+        <p class="mx-auto">Valoración: @result[0].Valoracion❤</p>
+    </div>
+    <div>
+        <button class="btn btn-success">Comprar</button>
+        <button class="btn btn-success">Agregar Carrito</button>
+    </div>
+    <p class="card-text">Identificador: @result[0].IdProducto.ToString()</p>
+}
+
+
+
+

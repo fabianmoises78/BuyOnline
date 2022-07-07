@@ -1,0 +1,113 @@
+﻿<!DOCTYPE html>
+<html>
+ <head>
+     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+     <meta charset="utf-8" />
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>@ViewBag.Title - Buy Online</title>
+     <style type="text/css" media="screen">
+         A:link {
+             color: black;
+             font-size: medium;
+             font-family: arial;
+             text-decoration: none
+         }
+
+         A:hover {
+             color: black;
+             font-size: medium;
+             font-family: arial;
+             text-decoration: none
+         }
+
+         A:visited {
+             color: black;
+             font-size: medium;
+             font-family: arial;
+             text-decoration: none
+         }
+     </style>
+
+     @Styles.Render("~/Content/css")
+     @Scripts.Render("~/bundles/modernizr")
+ </head>
+ <body>
+     <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light navbar-fixed-top">
+         <a class="navbar-brand" href="#">@Html.ActionLink("Buy Online", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })</a>
+         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+             <span class="navbar-toggler-icon"></span>
+         </button>
+
+         <div class="collapse navbar-collapse" id="navbarSupportedContent">
+             <ul class="navbar-nav mr-auto">
+                 <li class="nav-item active">
+                     <a class="nav-link" href="~/Home/Index">Tienda<span class="sr-only">(current)</span></a>
+                 </li>
+                 <li class="nav-item">
+                     <a class="nav-link" href="~/Home/Carrito">Carrito</a>
+                 </li>
+                 <li class="nav-item">
+                     <a class="nav-link disabled" href="~/Home/Nosotros">Nosotros</a>
+                 </li>
+                 @{
+
+                     if (Session["Status"] != null)
+                     {
+                         if (Session["Status"].ToString() == "false")
+                         {
+                             <li class="nav-item"><a class="nav-link disabled" href="~/Home/Login">Iniciar Sesion</a></li>
+                         }
+                         else if (Session["Status"].ToString() == "true")
+                         {
+                             if (Session["Usuario"] != null)
+                             {
+                                 string user = Session["Usuario"].ToString();
+                                 <li class="nav-item dropdown">
+                                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                         @user
+                                     </a>
+                                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                         <a class="dropdown-item" href="~/Home/Perfil">Cuenta</a>
+                                         <a class="dropdown-item" href="~/Home/Tarjeta">Tarjeta</a>
+                                         <a class="dropdown-item" href="~/Home/WishList">Lista de deseos</a>
+                                         <a class="dropdown-item" href="~/home/favorite">Favoritos</a>
+                                         <div class="dropdown-divider"></div>
+                                         <a class="dropdown-item" href="~/Home/Logout">Cerrar Sesion</a>
+                                     </div>
+                                 </li>
+                             }
+                         }
+                         else
+                         {
+
+                         }
+                     }
+                     else
+                     {
+                         <li class="nav-item"><a class="nav-link" href="~/Home/Login">Iniciar Sesión</a></li>
+                     }
+                 }
+             </ul>
+             <form class="form-inline my-2 my-lg-0">
+                 <input class="form-control mr-sm-2" type="search" placeholder="Buscar" aria-label="Search">
+                 <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+             </form>
+         </div>
+     </nav>
+
+     <div class="container body-content">
+         @RenderBody()
+         <hr />
+         <footer>
+             <p>&copy; @DateTime.Now.Year - Una tienda que lo tiene todo.</p>
+         </footer>
+     </div>
+
+     @Scripts.Render("https://code.jquery.com/jquery-3.6.0.min.js")
+
+     @Scripts.Render("https://ajax.aspnetcdn.com/ajax/jquery.validate/1.19.0/jquery.validate.min.js")
+
+     @Scripts.Render("~/bundles/bootstrap")
+     @RenderSection("scripts", required: false)
+ </body>
+</html>

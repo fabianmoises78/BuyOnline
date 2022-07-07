@@ -1,0 +1,32 @@
+﻿body {
+}
+
+.linea{
+    display: inline;
+    list-style: none;
+    padding: 0;
+}
+
+.centro-medio{
+    margin-top: 2%;
+}
+
+.medio{
+    padding-top: 5%;
+    
+}
+
+.txt {
+    margin-top: 3%;
+}
+
+.button{
+    display: flex;
+    align-items: center;
+    justify-content:center;
+    margin-top: 4%;
+}
+
+.btn-registrar{
+    width: 25%;
+}
