@@ -102,44 +102,61 @@ namespace BuyOnline.Controllers
             return View();
         }
         //public Management LoginIniciar(Cliente cliente)
-        public ActionResult LoginIniciar(Cliente cliente)
+        public JsonResult LoginIniciar(Cliente cliente)
         {
             Datos dtl = new Datos();
             Management mg = new Management();
+            GenericDTO dto = new GenericDTO();
+
             if (Session["Message"] != null)
             {
                 Session["Message"] = null;
             }
-            List<LoginU_Result> result = dtl.LoginU(cliente.Usuario, cliente.Contraseña).ToList();
-            if (result.Count > 0)
+            try
             {
-
-                if (result[0].IdEstado == 1)
+                List<LoginU_Result> result = dtl.LoginU(cliente.Usuario, cliente.Contraseña).ToList();
+                if (result.Count > 0)
                 {
-                    Session["Status"] = "true";
-                    Session["IdCliente"] = result[0].IdCliente;
-                    Session["Usuario"] = result[0].Usuario;
-                    mg.status = "true";
-                    //return mg;
-                    return RedirectToAction("Index");
+                    if (result[0].IdEstado == 1)
+                    {
+                        dto.Status = 1;
+                        dto.Message = "Success";
+
+                        Session["Status"] = "true";
+                        Session["IdCliente"] = result[0].IdCliente;
+                        Session["Usuario"] = result[0].Usuario;
+                        mg.status = "true";
+                        //return mg;
+                        return Json(dto);
+                    }
+                    else
+                    {
+                        dto.Status = 0;
+                        dto.Message = "El usuario que intenta ingresar está desactivado.";
+
+                        Session["Status"] = "false";
+                        Session["IdCliente"] = "";
+                        Session["Usuario"] = "";
+                        mg.mensaje = "El usuario que intenta ingresar está desactivado.";
+                        //return mg;
+                        return Json(dto);
+                    }
                 }
                 else
                 {
-                    Session["Status"] = "false";
-                    Session["IdCliente"] = "";
-                    Session["Usuario"] = "";
-                    mg.mensaje = "El usuario que intenta ingresar está desactivado.";
-                    mg.status = "false";
+                    dto.Status = 0;
+                    dto.Message = "Error usuario o contraseña no validos.";
+
+                    Session["Message"] = "Ërror usuario o contraseña no validos.";
                     //return mg;
-                    return RedirectToAction("Login");
+                    return Json(dto);
                 }
             }
-            else
+            catch(Exception ex)
             {
-                Session["Message"] = "Ërror usuario o contraseña no validos.";
-                mg.status = "true";
-                //return mg;
-                return RedirectToAction("Login");
+                dto.Status = 0;
+                dto.Message = ex.Message;
+                return Json(dto);
             }
         }
 
