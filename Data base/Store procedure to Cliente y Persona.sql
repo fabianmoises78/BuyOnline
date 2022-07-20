@@ -86,7 +86,6 @@ BEGIN
     SET NOCOUNT ON;
     DECLARE @idfolkU VARCHAR, @msg VARCHAR(50)
     SET @idfolkU = (SELECT IdPersona from Cliente WHERE IdPersona = @idfolk)
-    DECLARE @target VARCHAR(50)
     BEGIN TRAN persona_customer
     BEGIN TRY
         UPDATE dbo.Persona SET
@@ -107,11 +106,9 @@ BEGIN
         WHERE IdPersona = @idfolkU
 
         COMMIT TRAN persona_customer
-        SET @target = 1
         SET @msg = 'successful update user.'
     END TRY
     BEGIN CATCH
-        SET @target = 0
         SET @msg = 'A problem has occurred ' + ERROR_MESSAGE() 
         ROLLBACK TRAN persona_customer
     END CATCH
@@ -143,7 +140,7 @@ CREATE OR ALTER PROCEDURE DisablePersonaXCustumer
 AS 
 BEGIN
     SET NOCOUNT ON;
-    DECLARE @target VARCHAR(100), @custum INT, @msg VARCHAR(100)
+    DECLARE @msg VARCHAR(100)
     BEGIN TRAN Disable_folk_custumer
     BEGIN TRY
         IF(@idestado = 2)
@@ -166,11 +163,9 @@ BEGIN
         END
         COMMIT TRAN Disable_folk_custumer
         SET @msg = 'Custumers has been disable.'
-        SET @target = 1
     END TRY
     BEGIN CATCH
         SET @msg = 'A problem has occurred ' + ERROR_MESSAGE()
-        SET @target = 2
         ROLLBACK TRAN Disable_folk_custumer
     END CATCH
     SELECT @msg
@@ -195,22 +190,8 @@ GO
 CREATE PROCEDURE ShowCostumerXPersona
 AS
 BEGIN
-    SET NOCOUNT ON;
-    DECLARE @target VARCHAR(100), @msg VARCHAR(100)
-    BEGIN TRAN show_custum_person
-    BEGIN TRY
-        SELECT * FROM dbo.Persona p 
-        INNER JOIN dbo.Cliente c ON c.IdPersona = p.IdPersona
-
-        COMMIT TRAN show_custum_person
-        SET @target = 1
-    END TRY
-    BEGIN CATCH
-        SET @target = 2
-        SET @msg = 'A problem has occurred ' + ERROR_MESSAGE()
-        ROLLBACK TRAN show_custum_person
-    END CATCH
-    SELECT @msg
+    SELECT p.IdPersona, p.Nombre, p.Apellido, p.Edad, p.Telefono, a.Nombre, e.Estado, c.IdCliente, c.Usuario, c.Correo, c.Contraseña FROM dbo.Persona p 
+    INNER JOIN dbo.Cliente c ON c.IdPersona = p.IdPersona INNER JOIN Pais AS a ON p.IdPais = a.IdPais INNER JOIN Estado as e ON p.IdEstado = e.IdEstado
 END
 GO
 
@@ -235,23 +216,8 @@ CREATE PROCEDURE SearchCustumer
 )
 AS
 BEGIN
-    SET NOCOUNT ON;
-    DECLARE @target VARCHAR(50),
-    @msg VARCHAR(50)
-    BEGIN TRAN search_custumer
-    BEGIN TRY
-        SELECT * 
-        FROM dbo.Persona p INNER JOIN dbo.Cliente c 
-        ON p.IdPersona = c.IdPersona
-        WHERE p.Nombre LIKE '%'+@dat+'%' OR p.Apellido LIKE '%'+@dat+'%' OR c.Usuario LIKE '%'+@dat+'%' OR c.Correo LIKE '%'+@dat+'%'
-        COMMIT TRAN search_custumer
-        SET @target = 1
-    END TRY
-    BEGIN CATCH
-        SET @target = 2
-        SET @msg = 'A problem has occurred ' + ERROR_MESSAGE()
-        ROLLBACK TRAN search_custumer
-    END CATCH
-    SELECT @msg
+    SELECT p.IdPersona, p.Nombre, p.Apellido, p.Edad, p.Telefono, a.Nombre, e.Estado, c.IdCliente, c.Usuario, c.Correo, c.Contraseña FROM dbo.Persona p INNER JOIN dbo.Cliente c 
+    ON p.IdPersona = c.IdPersona INNER JOIN Pais AS a ON p.IdPais = a.IdPais INNER JOIN Estado as e ON p.IdEstado = e.IdEstado
+    WHERE p.Nombre LIKE '%'+@dat+'%' OR p.Apellido LIKE '%'+@dat+'%' OR c.Usuario LIKE '%'+@dat+'%' OR c.Correo LIKE '%'+@dat+'%'
 END
 GO
