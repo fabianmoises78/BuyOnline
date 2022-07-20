@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="e22e3a9bfc944b3a8556e1b1441a1fa1" Name="Diagram1">
+      <Diagram DiagramId="09da4cc96d4344a99e97f2f0cca85397" Name="Diagram1">
         <EntityTypeShape EntityType="BuyOnlineModel.Administrador" Width="1.5" PointX="3" PointY="11.125" IsExpanded="true" />
         <EntityTypeShape EntityType="BuyOnlineModel.Categoria" Width="1.5" PointX="0.75" PointY="15.5" IsExpanded="true" />
         <EntityTypeShape EntityType="BuyOnlineModel.Cliente" Width="1.5" PointX="6" PointY="10.75" IsExpanded="true" />
@@ -15,6 +15,7 @@
         <EntityTypeShape EntityType="BuyOnlineModel.Pais" Width="1.5" PointX="0.75" PointY="7.5" IsExpanded="true" />
         <EntityTypeShape EntityType="BuyOnlineModel.Persona" Width="1.5" PointX="3" PointY="6.75" IsExpanded="true" />
         <EntityTypeShape EntityType="BuyOnlineModel.Producto" Width="1.5" PointX="3" PointY="14.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="BuyOnlineModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="BuyOnlineModel.Tarjeta" Width="1.5" PointX="11.25" PointY="10.875" IsExpanded="true" />
         <EntityTypeShape EntityType="BuyOnlineModel.TipoPago" Width="1.5" PointX="6" PointY="7.5" IsExpanded="true" />
         <AssociationConnector Association="BuyOnlineModel.fk_admin_est" ManuallyRouted="false" />

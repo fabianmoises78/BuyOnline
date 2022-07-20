@@ -1,0 +1,72 @@
+﻿
+@{
+    ViewBag.Title = "LoginAdmin";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Iniciar Sesión</title>
+    <link REL=StyleSheet HREF="~/Content/estilologin.css" TYPE="text/css" MEDIA=screen />
+
+    <style type="text/css" media="screen">
+        A:link {
+            color: black;
+            font-size: medium;
+            font-family: arial;
+            text-decoration: none
+        }
+
+        A:hover {
+            color: black;
+            font-size: medium;
+            font-family: arial;
+            text-decoration: none
+        }
+
+        A:visited {
+            color: black;
+            font-size: medium;
+            font-family: arial;
+            text-decoration: none
+        }
+    </style>
+</head>
+
+<body class="text-center">
+
+    @using (Html.BeginForm("LoginIniciar", "Home", FormMethod.Post, new { id = "validarlogin" }))
+    {
+
+        if (ViewBag.Message != null)
+        {
+            <p class="alert alert-warning">@ViewBag.Message.ToString()</p>
+        }
+
+        <div class="row my-4">
+            <div class="col-lg-12 text-center">
+                <h1>Iniciar Sesión de Mantenimiento</h1>
+            </div>
+            <div class="mx-auto pt-4">
+                <input type="text" name="usuario" placeholder="Usuario" class="form-control my-2" id="usuario" />
+                <input type="password" name="contraseña" placeholder="Contraseña" class="form-control my-4 pr-4" id="contraseña" />
+            </div>
+            <div class="w-100 text-center btt">
+                <button class="btn btn-success" id="" type="submit">
+                    Iniciar Sesion
+                </button>
+            </div>
+        </div>
+    }
+</body>
+</html>
+
+@section scripts{
+    <script type="text/javascript" src="~/Content/js/validadlogin.js"></script>
+    <script src="~/Content/js/loginingresos.js"></script>
+    <script src="~/Content/js/Login.js"></script>
+}
+
