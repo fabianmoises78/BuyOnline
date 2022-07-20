@@ -32,6 +32,8 @@ namespace BuyOnline.Controllers
             return View();
         }
 
+        public JsonResult
+
         public ActionResult CRUDadmin()
         {
             return View();
