@@ -32,7 +32,9 @@ namespace BuyOnline.Controllers
             return View();
         }
 
-        public List<ShowCostumerXPersona_Result> ListarClientes()
+        [HttpGet]
+        [Route("ListarClientes")]
+        public JsonResult ListarClientes()
         {
             List<ShowCostumerXPersona_Result> clientes = new List<ShowCostumerXPersona_Result>();
 
@@ -59,7 +61,7 @@ namespace BuyOnline.Controllers
                     clientes.Add(asignar);
                 }
             }
-            return clientes;
+            return Json(clientes);
         }
 
         public ActionResult CRUDadmin()

@@ -11,7 +11,9 @@
     <button class="btn btn-success">Agregar nuevo usuario</button>
 </div>
 
+<script>VerClientes();</script>
 <div class="my-4" id="listarclientes">
+    
     <table class="table">
         <thead>
             <tr>
@@ -29,21 +31,7 @@
                 <th scope="col"></th>
             </tr>
         </thead>
-        <tbody>
-            <tr>
-                <th scope="row"></th>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td><button class="btn btn-success" onclick="">Editar</button></td>
-            </tr>
+        <tbody id="ListaClientes" onload="VerClientes()">
         </tbody>
     </table>
 </div>
