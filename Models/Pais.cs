@@ -21,7 +21,7 @@ namespace BuyOnline.Models
         }
     
         public int IdPais { get; set; }
-        public string Nombre { get; set; }
+        public string NombrePais { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Persona> Persona { get; set; }

@@ -140,122 +140,116 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Administrador.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>BuyOnline.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\BuscarCat_Result.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>BuyOnline.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\BuscarEstado_Result.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\BuscarPais_Result.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>BuyOnline.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\BuscarTPago_Result.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>BuyOnline.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\BuyOnline.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BuyOnline.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\BuyOnline.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BuyOnline.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\BuyOnline.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BuyOnline.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\Categoria.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>BuyOnline.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Cliente.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>BuyOnline.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Compra.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>BuyOnline.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\DetalleCompra.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>BuyOnline.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Estado.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>BuyOnline.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\LeerCat_Result.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>BuyOnline.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ListaDeseos.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\ListarPais_Result.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>BuyOnline.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ListarTPago_Result.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>BuyOnline.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\LoginU_Result.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>BuyOnline.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Management.cs" />
-    <Compile Include="Models\Model1.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Model1.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Model1.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Model1.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Model1.edmx</DependentUpon>
-    </Compile>
     <Compile Include="Models\Pais.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>BuyOnline.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Persona.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>BuyOnline.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Producto.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>BuyOnline.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\SearchAdmin_Result.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>BuyOnline.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\SearchCard_Result.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>BuyOnline.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\SearchCompras_Result.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>BuyOnline.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\SearchCustumer_Result.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>BuyOnline.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\SearchDetalleCompra_Result.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>BuyOnline.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\SearchProducts_Result.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>BuyOnline.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ShowadminXfolk_Result.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>BuyOnline.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ShowCard_Result.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>BuyOnline.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ShowCompras_Result.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>BuyOnline.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ShowCostumerXPersona_Result.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>BuyOnline.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ShowProductsbyID_Result.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>BuyOnline.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ShowProducts_Result.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>BuyOnline.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\sysdiagrams.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>BuyOnline.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Tarjeta.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>BuyOnline.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\TipoPago.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>BuyOnline.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\VeerEstados_Result.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>BuyOnline.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -286,15 +280,15 @@
     <Content Include="images\FPFW_xLWQAE3wlF.png" />
     <Content Include="images\prueba.png" />
     <Content Include="images\prueba2.jpg" />
-    <Content Include="Models\Model1.Context.tt">
+    <Content Include="Models\BuyOnline.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Model1.edmx</DependentUpon>
-      <LastGenOutput>Model1.Context.cs</LastGenOutput>
+      <DependentUpon>BuyOnline.edmx</DependentUpon>
+      <LastGenOutput>BuyOnline.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\Model1.tt">
+    <Content Include="Models\BuyOnline.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Model1.edmx</DependentUpon>
-      <LastGenOutput>Model1.cs</LastGenOutput>
+      <DependentUpon>BuyOnline.edmx</DependentUpon>
+      <LastGenOutput>BuyOnline.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
@@ -318,12 +312,12 @@
     <Content Include="Content\bootstrap-reboot.css.map" />
     <Content Include="Content\bootstrap-grid.min.css.map" />
     <Content Include="Content\bootstrap-grid.css.map" />
-    <EntityDeploy Include="Models\Model1.edmx">
+    <EntityDeploy Include="Models\BuyOnline.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Model1.Designer.cs</LastGenOutput>
+      <LastGenOutput>BuyOnline.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Models\Model1.edmx.diagram">
-      <DependentUpon>Model1.edmx</DependentUpon>
+    <Content Include="Models\BuyOnline.edmx.diagram">
+      <DependentUpon>BuyOnline.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />

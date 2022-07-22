@@ -6,8 +6,8 @@ function VerClientes() {
     $.ajax({
         url: "https://localhost:44372/admin/ListarClientes",
         contentType: "Application/json",
-        method: "GET",
-        dataType: "jason",
+        method: "POST",
+        dataType: "json",
         success: function (clientes) {
             debugger;
             var html = "";
@@ -20,7 +20,7 @@ function VerClientes() {
                 html += '<td>' + clientes.Edad + '</td>';
                 html += '<td>' + clientes.Telefono + '</td>';
                 html += '<td>' + clientes.Estado + '</td>';
-                html += '<td>' + clientes.Nombre1 + '</td>';
+                html += '<td>' + clientes.NombrePais + '</td>';
                 html += '<td>' + clientes.IDCliente + '</td>';
                 html += '<td>' + clientes.Usuario + '</td>';
                 html += '<td>' + clientes.Correo + '</td>';

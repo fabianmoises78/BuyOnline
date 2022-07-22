@@ -1,0 +1,2006 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="BuyOnlineModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Administrador">
+          <Key>
+            <PropertyRef Name="IdAdmin" />
+          </Key>
+          <Property Name="IdAdmin" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Usuario" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Contraseña" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="IdPersona" Type="int" Nullable="false" />
+          <Property Name="IdEstado" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Categoria">
+          <Key>
+            <PropertyRef Name="IdCat" />
+          </Key>
+          <Property Name="IdCat" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Cat" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Cliente">
+          <Key>
+            <PropertyRef Name="IdCliente" />
+          </Key>
+          <Property Name="IdCliente" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Usuario" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Correo" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Contraseña" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="IdPersona" Type="int" Nullable="false" />
+          <Property Name="IdEstado" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Compra">
+          <Key>
+            <PropertyRef Name="IdCompra" />
+          </Key>
+          <Property Name="IdCompra" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FechaCompra" Type="date" Nullable="false" />
+          <Property Name="IdTipoP" Type="int" Nullable="false" />
+          <Property Name="IVA" Type="float" Nullable="false" />
+          <Property Name="Total" Type="float" Nullable="false" />
+          <Property Name="IdCliente" Type="int" Nullable="false" />
+          <Property Name="IdEstado" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DetalleCompra">
+          <Key>
+            <PropertyRef Name="IdDetC" />
+          </Key>
+          <Property Name="IdDetC" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdCompra" Type="int" Nullable="false" />
+          <Property Name="IdProducto" Type="int" Nullable="false" />
+          <Property Name="Precio" Type="float" Nullable="false" />
+          <Property Name="Descuento" Type="float" Nullable="false" />
+          <Property Name="Subtotal" Type="float" Nullable="false" />
+          <Property Name="Cantidad" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Estado">
+          <Key>
+            <PropertyRef Name="IdEstado" />
+          </Key>
+          <Property Name="IdEstado" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Estado" Type="varchar" MaxLength="25" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ListaDeseos">
+          <Key>
+            <PropertyRef Name="IDDESEOS" />
+          </Key>
+          <Property Name="IDDESEOS" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IDPRODUCTO" Type="int" Nullable="false" />
+          <Property Name="IDCLIENTE" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Pais">
+          <Key>
+            <PropertyRef Name="IdPais" />
+          </Key>
+          <Property Name="IdPais" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NombrePais" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Persona">
+          <Key>
+            <PropertyRef Name="IdPersona" />
+          </Key>
+          <Property Name="IdPersona" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="75" Nullable="false" />
+          <Property Name="Apellido" Type="varchar" MaxLength="75" Nullable="false" />
+          <Property Name="Edad" Type="int" Nullable="false" />
+          <Property Name="Telefono" Type="varchar" MaxLength="12" Nullable="false" />
+          <Property Name="IdPais" Type="int" Nullable="false" />
+          <Property Name="IdEstado" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Producto">
+          <Key>
+            <PropertyRef Name="IdProducto" />
+          </Key>
+          <Property Name="IdProducto" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="Imagen" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="precio" Type="float" Nullable="false" />
+          <Property Name="Exis" Type="int" Nullable="false" />
+          <Property Name="Valoracion" Type="int" Nullable="false" />
+          <Property Name="IdEstado" Type="int" Nullable="false" />
+          <Property Name="IdCat" Type="int" Nullable="false" />
+          <Property Name="Detalles" Type="varchar" MaxLength="150" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Tarjeta">
+          <Key>
+            <PropertyRef Name="IdTar" />
+          </Key>
+          <Property Name="IdTar" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Titular" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Numero" Type="varchar" MaxLength="16" Nullable="false" />
+          <Property Name="Ex" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="PinS" Type="int" Nullable="false" />
+          <Property Name="IdEstado" Type="int" Nullable="false" />
+          <Property Name="IdCliente" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TipoPago">
+          <Key>
+            <PropertyRef Name="IdTipoP" />
+          </Key>
+          <Property Name="IdTipoP" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TipoPago" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <Association Name="fk_admin_est">
+          <End Role="Estado" Type="Self.Estado" Multiplicity="1" />
+          <End Role="Administrador" Type="Self.Administrador" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Estado">
+              <PropertyRef Name="IdEstado" />
+            </Principal>
+            <Dependent Role="Administrador">
+              <PropertyRef Name="IdEstado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_cat">
+          <End Role="Categoria" Type="Self.Categoria" Multiplicity="1" />
+          <End Role="Producto" Type="Self.Producto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categoria">
+              <PropertyRef Name="IdCat" />
+            </Principal>
+            <Dependent Role="Producto">
+              <PropertyRef Name="IdCat" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_cliente_compra">
+          <End Role="Cliente" Type="Self.Cliente" Multiplicity="1" />
+          <End Role="Compra" Type="Self.Compra" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cliente">
+              <PropertyRef Name="IdCliente" />
+            </Principal>
+            <Dependent Role="Compra">
+              <PropertyRef Name="IdCliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_cliente_est">
+          <End Role="Estado" Type="Self.Estado" Multiplicity="1" />
+          <End Role="Cliente" Type="Self.Cliente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Estado">
+              <PropertyRef Name="IdEstado" />
+            </Principal>
+            <Dependent Role="Cliente">
+              <PropertyRef Name="IdEstado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_compra">
+          <End Role="Compra" Type="Self.Compra" Multiplicity="1" />
+          <End Role="DetalleCompra" Type="Self.DetalleCompra" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Compra">
+              <PropertyRef Name="IdCompra" />
+            </Principal>
+            <Dependent Role="DetalleCompra">
+              <PropertyRef Name="IdCompra" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_estado">
+          <End Role="Estado" Type="Self.Estado" Multiplicity="1" />
+          <End Role="Persona" Type="Self.Persona" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Estado">
+              <PropertyRef Name="IdEstado" />
+            </Principal>
+            <Dependent Role="Persona">
+              <PropertyRef Name="IdEstado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_estadoc">
+          <End Role="Estado" Type="Self.Estado" Multiplicity="1" />
+          <End Role="Compra" Type="Self.Compra" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Estado">
+              <PropertyRef Name="IdEstado" />
+            </Principal>
+            <Dependent Role="Compra">
+              <PropertyRef Name="IdEstado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_estadop">
+          <End Role="Estado" Type="Self.Estado" Multiplicity="1" />
+          <End Role="Producto" Type="Self.Producto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Estado">
+              <PropertyRef Name="IdEstado" />
+            </Principal>
+            <Dependent Role="Producto">
+              <PropertyRef Name="IdEstado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_estadot">
+          <End Role="Estado" Type="Self.Estado" Multiplicity="1" />
+          <End Role="Tarjeta" Type="Self.Tarjeta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Estado">
+              <PropertyRef Name="IdEstado" />
+            </Principal>
+            <Dependent Role="Tarjeta">
+              <PropertyRef Name="IdEstado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IDCLIENTE_DESEOS">
+          <End Role="Cliente" Type="Self.Cliente" Multiplicity="1" />
+          <End Role="ListaDeseos" Type="Self.ListaDeseos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cliente">
+              <PropertyRef Name="IdCliente" />
+            </Principal>
+            <Dependent Role="ListaDeseos">
+              <PropertyRef Name="IDCLIENTE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IDPRODUCTO_DESEOS">
+          <End Role="Producto" Type="Self.Producto" Multiplicity="1" />
+          <End Role="ListaDeseos" Type="Self.ListaDeseos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Producto">
+              <PropertyRef Name="IdProducto" />
+            </Principal>
+            <Dependent Role="ListaDeseos">
+              <PropertyRef Name="IDPRODUCTO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_pais">
+          <End Role="Pais" Type="Self.Pais" Multiplicity="1" />
+          <End Role="Persona" Type="Self.Persona" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pais">
+              <PropertyRef Name="IdPais" />
+            </Principal>
+            <Dependent Role="Persona">
+              <PropertyRef Name="IdPais" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_personaA">
+          <End Role="Persona" Type="Self.Persona" Multiplicity="1" />
+          <End Role="Administrador" Type="Self.Administrador" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Persona">
+              <PropertyRef Name="IdPersona" />
+            </Principal>
+            <Dependent Role="Administrador">
+              <PropertyRef Name="IdPersona" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_personaC">
+          <End Role="Persona" Type="Self.Persona" Multiplicity="1" />
+          <End Role="Cliente" Type="Self.Cliente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Persona">
+              <PropertyRef Name="IdPersona" />
+            </Principal>
+            <Dependent Role="Cliente">
+              <PropertyRef Name="IdPersona" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_producto">
+          <End Role="Producto" Type="Self.Producto" Multiplicity="1" />
+          <End Role="DetalleCompra" Type="Self.DetalleCompra" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Producto">
+              <PropertyRef Name="IdProducto" />
+            </Principal>
+            <Dependent Role="DetalleCompra">
+              <PropertyRef Name="IdProducto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_tarjeta_idcliente">
+          <End Role="Cliente" Type="Self.Cliente" Multiplicity="1" />
+          <End Role="Tarjeta" Type="Self.Tarjeta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cliente">
+              <PropertyRef Name="IdCliente" />
+            </Principal>
+            <Dependent Role="Tarjeta">
+              <PropertyRef Name="IdCliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_TipoP">
+          <End Role="TipoPago" Type="Self.TipoPago" Multiplicity="1" />
+          <End Role="Compra" Type="Self.Compra" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoPago">
+              <PropertyRef Name="IdTipoP" />
+            </Principal>
+            <Dependent Role="Compra">
+              <PropertyRef Name="IdTipoP" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="ActualizarCat" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Cat" Type="varchar" Mode="In" />
+          <Parameter Name="Idc" Type="int" Mode="In" />
+        </Function>
+        <Function Name="ActualizarEstado" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="estado" Type="varchar" Mode="In" />
+          <Parameter Name="Id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="ActualizarPais" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="paisp" Type="varchar" Mode="In" />
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="ActualizarTPago" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IdT" Type="int" Mode="In" />
+          <Parameter Name="pago" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="AgregarCat" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Ncat" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="BuscarCat" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="cat" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="BuscarEstado" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="estadob" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="BuscarPais" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Nom" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="BuscarTPago" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="busque" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="ChanceStatusCompras" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idstatus" Type="int" Mode="In" />
+          <Parameter Name="idbuy" Type="int" Mode="In" />
+        </Function>
+        <Function Name="DeleteProducto" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IdP" Type="int" Mode="In" />
+        </Function>
+        <Function Name="DisableAdmin" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idadmin" Type="int" Mode="In" />
+          <Parameter Name="idesta" Type="int" Mode="In" />
+        </Function>
+        <Function Name="DisablePersonaXCustumer" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idcustume" Type="int" Mode="In" />
+          <Parameter Name="idestado" Type="int" Mode="In" />
+        </Function>
+        <Function Name="EliminarCat" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="catI" Type="int" Mode="In" />
+        </Function>
+        <Function Name="EliminarEstado" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="EstadoId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="EliminarPais" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IdP" Type="int" Mode="In" />
+        </Function>
+        <Function Name="EliminarTPago" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IdT" Type="int" Mode="In" />
+        </Function>
+        <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+        <Function Name="InsertarEstado" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="estado" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="InsertarPais" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="pais" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="InsertarTPago" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="tipo" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="LeerCat" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="ListarPais" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="ListarTPago" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="LoginU" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="User" Type="varchar" Mode="In" />
+          <Parameter Name="password" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="RecordAdminXFolk" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="name" Type="varchar" Mode="In" />
+          <Parameter Name="lastname" Type="varchar" Mode="In" />
+          <Parameter Name="old" Type="int" Mode="In" />
+          <Parameter Name="phone" Type="varchar" Mode="In" />
+          <Parameter Name="idcountry" Type="int" Mode="In" />
+          <Parameter Name="user" Type="varchar" Mode="In" />
+          <Parameter Name="password" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="RecordCard" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="PlaceHolder" Type="varchar" Mode="In" />
+          <Parameter Name="Number" Type="varchar" Mode="In" />
+          <Parameter Name="dateexpe" Type="date" Mode="In" />
+          <Parameter Name="SecPin" Type="int" Mode="In" />
+          <Parameter Name="idest" Type="int" Mode="In" />
+          <Parameter Name="idusuario" Type="int" Mode="In" />
+        </Function>
+        <Function Name="RecordCompra" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="datebuy" Type="date" Mode="In" />
+          <Parameter Name="idpaytype" Type="int" Mode="In" />
+          <Parameter Name="IVA" Type="float" Mode="In" />
+          <Parameter Name="total" Type="float" Mode="In" />
+          <Parameter Name="idcostume" Type="int" Mode="In" />
+        </Function>
+        <Function Name="RecordDetalleCompra" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idcompra" Type="int" Mode="In" />
+          <Parameter Name="idproduct" Type="int" Mode="In" />
+          <Parameter Name="precio" Type="float" Mode="In" />
+          <Parameter Name="discount" Type="float" Mode="In" />
+          <Parameter Name="cantidad" Type="int" Mode="In" />
+          <Parameter Name="msg" Type="varchar" Mode="InOut" />
+        </Function>
+        <Function Name="RecordPersonaXcostumer" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="name" Type="varchar" Mode="In" />
+          <Parameter Name="lastname" Type="varchar" Mode="In" />
+          <Parameter Name="old" Type="int" Mode="In" />
+          <Parameter Name="phone" Type="varchar" Mode="In" />
+          <Parameter Name="idcountry" Type="int" Mode="In" />
+          <Parameter Name="user" Type="varchar" Mode="In" />
+          <Parameter Name="addres" Type="varchar" Mode="In" />
+          <Parameter Name="password" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="RecordProductos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="name" Type="varchar" Mode="In" />
+          <Parameter Name="descript" Type="varchar" Mode="In" />
+          <Parameter Name="image" Type="varchar" Mode="In" />
+          <Parameter Name="price" Type="float" Mode="In" />
+          <Parameter Name="existence" Type="int" Mode="In" />
+          <Parameter Name="rate" Type="int" Mode="In" />
+          <Parameter Name="Idcat" Type="int" Mode="In" />
+          <Parameter Name="detalles" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="RecordWishList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idproducto" Type="int" Mode="In" />
+          <Parameter Name="idusuario" Type="int" Mode="In" />
+        </Function>
+        <Function Name="SearchAdmin" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="dat" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="SearchCard" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="dat" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="SearchCompras" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="data" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="SearchCustumer" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="dat" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="SearchDetalleCompra" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="data" Type="varchar" Mode="In" />
+          <Parameter Name="msg" Type="varchar" Mode="InOut" />
+        </Function>
+        <Function Name="SearchProducts" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="data" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="ShowadminXfolk" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="ShowCard" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="ShowCompras" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="ShowCostumerXPersona" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="ShowProducts" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="ShowProductsbyID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idproducto" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="UpdateCard" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idcard" Type="int" Mode="In" />
+          <Parameter Name="idest" Type="int" Mode="In" />
+        </Function>
+        <Function Name="UpdateCompras" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idbuy" Type="int" Mode="In" />
+          <Parameter Name="datebuy" Type="date" Mode="In" />
+          <Parameter Name="idpaytype" Type="int" Mode="In" />
+          <Parameter Name="total" Type="float" Mode="In" />
+          <Parameter Name="idcustumer" Type="int" Mode="In" />
+          <Parameter Name="idestado" Type="int" Mode="In" />
+        </Function>
+        <Function Name="UpdateDetalleCompra" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idcompra" Type="int" Mode="In" />
+          <Parameter Name="idproducto" Type="int" Mode="In" />
+          <Parameter Name="precio" Type="float" Mode="In" />
+          <Parameter Name="descuento" Type="float" Mode="In" />
+          <Parameter Name="cantidad" Type="int" Mode="In" />
+          <Parameter Name="msg" Type="varchar" Mode="InOut" />
+        </Function>
+        <Function Name="UpdatePersonaXAdmin" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idfolk" Type="int" Mode="In" />
+          <Parameter Name="name" Type="varchar" Mode="In" />
+          <Parameter Name="lastname" Type="varchar" Mode="In" />
+          <Parameter Name="old" Type="int" Mode="In" />
+          <Parameter Name="phone" Type="varchar" Mode="In" />
+          <Parameter Name="idpais" Type="int" Mode="In" />
+          <Parameter Name="idestadoP" Type="int" Mode="In" />
+          <Parameter Name="user" Type="varchar" Mode="In" />
+          <Parameter Name="password" Type="varchar" Mode="In" />
+          <Parameter Name="idestadoA" Type="int" Mode="In" />
+        </Function>
+        <Function Name="UpdatePersonaXCustumer" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idfolk" Type="int" Mode="In" />
+          <Parameter Name="name" Type="varchar" Mode="In" />
+          <Parameter Name="lastname" Type="varchar" Mode="In" />
+          <Parameter Name="old" Type="int" Mode="In" />
+          <Parameter Name="phone" Type="varchar" Mode="In" />
+          <Parameter Name="idpais" Type="int" Mode="In" />
+          <Parameter Name="idestadoP" Type="int" Mode="In" />
+          <Parameter Name="usuario" Type="varchar" Mode="In" />
+          <Parameter Name="address" Type="varchar" Mode="In" />
+          <Parameter Name="password" Type="varchar" Mode="In" />
+          <Parameter Name="idestadoC" Type="int" Mode="In" />
+        </Function>
+        <Function Name="UpdateProducto" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IdP" Type="int" Mode="In" />
+          <Parameter Name="name" Type="varchar" Mode="In" />
+          <Parameter Name="descript" Type="varchar" Mode="In" />
+          <Parameter Name="img" Type="varchar" Mode="In" />
+          <Parameter Name="price" Type="float" Mode="In" />
+          <Parameter Name="existence" Type="int" Mode="In" />
+          <Parameter Name="idest" Type="int" Mode="In" />
+          <Parameter Name="idcat" Type="int" Mode="In" />
+          <Parameter Name="detalles" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="VeerEstados" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <EntityContainer Name="BuyOnlineModelStoreContainer">
+          <EntitySet Name="Administrador" EntityType="Self.Administrador" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Categoria" EntityType="Self.Categoria" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Cliente" EntityType="Self.Cliente" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Compra" EntityType="Self.Compra" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DetalleCompra" EntityType="Self.DetalleCompra" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Estado" EntityType="Self.Estado" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ListaDeseos" EntityType="Self.ListaDeseos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Pais" EntityType="Self.Pais" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Persona" EntityType="Self.Persona" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Producto" EntityType="Self.Producto" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tarjeta" EntityType="Self.Tarjeta" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TipoPago" EntityType="Self.TipoPago" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="fk_admin_est" Association="Self.fk_admin_est">
+            <End Role="Estado" EntitySet="Estado" />
+            <End Role="Administrador" EntitySet="Administrador" />
+          </AssociationSet>
+          <AssociationSet Name="fk_cat" Association="Self.fk_cat">
+            <End Role="Categoria" EntitySet="Categoria" />
+            <End Role="Producto" EntitySet="Producto" />
+          </AssociationSet>
+          <AssociationSet Name="fk_cliente_compra" Association="Self.fk_cliente_compra">
+            <End Role="Cliente" EntitySet="Cliente" />
+            <End Role="Compra" EntitySet="Compra" />
+          </AssociationSet>
+          <AssociationSet Name="fk_cliente_est" Association="Self.fk_cliente_est">
+            <End Role="Estado" EntitySet="Estado" />
+            <End Role="Cliente" EntitySet="Cliente" />
+          </AssociationSet>
+          <AssociationSet Name="fk_compra" Association="Self.fk_compra">
+            <End Role="Compra" EntitySet="Compra" />
+            <End Role="DetalleCompra" EntitySet="DetalleCompra" />
+          </AssociationSet>
+          <AssociationSet Name="fk_estado" Association="Self.fk_estado">
+            <End Role="Estado" EntitySet="Estado" />
+            <End Role="Persona" EntitySet="Persona" />
+          </AssociationSet>
+          <AssociationSet Name="fk_estadoc" Association="Self.fk_estadoc">
+            <End Role="Estado" EntitySet="Estado" />
+            <End Role="Compra" EntitySet="Compra" />
+          </AssociationSet>
+          <AssociationSet Name="fk_estadop" Association="Self.fk_estadop">
+            <End Role="Estado" EntitySet="Estado" />
+            <End Role="Producto" EntitySet="Producto" />
+          </AssociationSet>
+          <AssociationSet Name="fk_estadot" Association="Self.fk_estadot">
+            <End Role="Estado" EntitySet="Estado" />
+            <End Role="Tarjeta" EntitySet="Tarjeta" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IDCLIENTE_DESEOS" Association="Self.FK_IDCLIENTE_DESEOS">
+            <End Role="Cliente" EntitySet="Cliente" />
+            <End Role="ListaDeseos" EntitySet="ListaDeseos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IDPRODUCTO_DESEOS" Association="Self.FK_IDPRODUCTO_DESEOS">
+            <End Role="Producto" EntitySet="Producto" />
+            <End Role="ListaDeseos" EntitySet="ListaDeseos" />
+          </AssociationSet>
+          <AssociationSet Name="fk_pais" Association="Self.fk_pais">
+            <End Role="Pais" EntitySet="Pais" />
+            <End Role="Persona" EntitySet="Persona" />
+          </AssociationSet>
+          <AssociationSet Name="fk_personaA" Association="Self.fk_personaA">
+            <End Role="Persona" EntitySet="Persona" />
+            <End Role="Administrador" EntitySet="Administrador" />
+          </AssociationSet>
+          <AssociationSet Name="fk_personaC" Association="Self.fk_personaC">
+            <End Role="Persona" EntitySet="Persona" />
+            <End Role="Cliente" EntitySet="Cliente" />
+          </AssociationSet>
+          <AssociationSet Name="fk_producto" Association="Self.fk_producto">
+            <End Role="Producto" EntitySet="Producto" />
+            <End Role="DetalleCompra" EntitySet="DetalleCompra" />
+          </AssociationSet>
+          <AssociationSet Name="fk_tarjeta_idcliente" Association="Self.fk_tarjeta_idcliente">
+            <End Role="Cliente" EntitySet="Cliente" />
+            <End Role="Tarjeta" EntitySet="Tarjeta" />
+          </AssociationSet>
+          <AssociationSet Name="fk_TipoP" Association="Self.fk_TipoP">
+            <End Role="TipoPago" EntitySet="TipoPago" />
+            <End Role="Compra" EntitySet="Compra" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="BuyOnlineModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Administrador">
+          <Key>
+            <PropertyRef Name="IdAdmin" />
+          </Key>
+          <Property Name="IdAdmin" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Usuario" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Contraseña" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IdPersona" Type="Int32" Nullable="false" />
+          <Property Name="IdEstado" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Estado" Relationship="Self.fk_admin_est" FromRole="Administrador" ToRole="Estado" />
+          <NavigationProperty Name="Persona" Relationship="Self.fk_personaA" FromRole="Administrador" ToRole="Persona" />
+        </EntityType>
+        <EntityType Name="Categoria">
+          <Key>
+            <PropertyRef Name="IdCat" />
+          </Key>
+          <Property Name="IdCat" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Cat" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Producto" Relationship="Self.fk_cat" FromRole="Categoria" ToRole="Producto" />
+        </EntityType>
+        <EntityType Name="Cliente">
+          <Key>
+            <PropertyRef Name="IdCliente" />
+          </Key>
+          <Property Name="IdCliente" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Usuario" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Correo" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Contraseña" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IdPersona" Type="Int32" Nullable="false" />
+          <Property Name="IdEstado" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Compra" Relationship="Self.fk_cliente_compra" FromRole="Cliente" ToRole="Compra" />
+          <NavigationProperty Name="Estado" Relationship="Self.fk_cliente_est" FromRole="Cliente" ToRole="Estado" />
+          <NavigationProperty Name="ListaDeseos" Relationship="Self.FK_IDCLIENTE_DESEOS" FromRole="Cliente" ToRole="ListaDeseos" />
+          <NavigationProperty Name="Persona" Relationship="Self.fk_personaC" FromRole="Cliente" ToRole="Persona" />
+          <NavigationProperty Name="Tarjeta" Relationship="Self.fk_tarjeta_idcliente" FromRole="Cliente" ToRole="Tarjeta" />
+        </EntityType>
+        <EntityType Name="Compra">
+          <Key>
+            <PropertyRef Name="IdCompra" />
+          </Key>
+          <Property Name="IdCompra" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FechaCompra" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="IdTipoP" Type="Int32" Nullable="false" />
+          <Property Name="IVA" Type="Double" Nullable="false" />
+          <Property Name="Total" Type="Double" Nullable="false" />
+          <Property Name="IdCliente" Type="Int32" Nullable="false" />
+          <Property Name="IdEstado" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Cliente" Relationship="Self.fk_cliente_compra" FromRole="Compra" ToRole="Cliente" />
+          <NavigationProperty Name="DetalleCompra" Relationship="Self.fk_compra" FromRole="Compra" ToRole="DetalleCompra" />
+          <NavigationProperty Name="Estado" Relationship="Self.fk_estadoc" FromRole="Compra" ToRole="Estado" />
+          <NavigationProperty Name="TipoPago" Relationship="Self.fk_TipoP" FromRole="Compra" ToRole="TipoPago" />
+        </EntityType>
+        <EntityType Name="DetalleCompra">
+          <Key>
+            <PropertyRef Name="IdDetC" />
+          </Key>
+          <Property Name="IdDetC" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdCompra" Type="Int32" Nullable="false" />
+          <Property Name="IdProducto" Type="Int32" Nullable="false" />
+          <Property Name="Precio" Type="Double" Nullable="false" />
+          <Property Name="Descuento" Type="Double" Nullable="false" />
+          <Property Name="Subtotal" Type="Double" Nullable="false" />
+          <Property Name="Cantidad" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Compra" Relationship="Self.fk_compra" FromRole="DetalleCompra" ToRole="Compra" />
+          <NavigationProperty Name="Producto" Relationship="Self.fk_producto" FromRole="DetalleCompra" ToRole="Producto" />
+        </EntityType>
+        <EntityType Name="Estado">
+          <Key>
+            <PropertyRef Name="IdEstado" />
+          </Key>
+          <Property Name="IdEstado" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Estado1" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Administrador" Relationship="Self.fk_admin_est" FromRole="Estado" ToRole="Administrador" />
+          <NavigationProperty Name="Cliente" Relationship="Self.fk_cliente_est" FromRole="Estado" ToRole="Cliente" />
+          <NavigationProperty Name="Compra" Relationship="Self.fk_estadoc" FromRole="Estado" ToRole="Compra" />
+          <NavigationProperty Name="Persona" Relationship="Self.fk_estado" FromRole="Estado" ToRole="Persona" />
+          <NavigationProperty Name="Producto" Relationship="Self.fk_estadop" FromRole="Estado" ToRole="Producto" />
+          <NavigationProperty Name="Tarjeta" Relationship="Self.fk_estadot" FromRole="Estado" ToRole="Tarjeta" />
+        </EntityType>
+        <EntityType Name="ListaDeseos">
+          <Key>
+            <PropertyRef Name="IDDESEOS" />
+          </Key>
+          <Property Name="IDDESEOS" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDPRODUCTO" Type="Int32" Nullable="false" />
+          <Property Name="IDCLIENTE" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Cliente" Relationship="Self.FK_IDCLIENTE_DESEOS" FromRole="ListaDeseos" ToRole="Cliente" />
+          <NavigationProperty Name="Producto" Relationship="Self.FK_IDPRODUCTO_DESEOS" FromRole="ListaDeseos" ToRole="Producto" />
+        </EntityType>
+        <EntityType Name="Pais">
+          <Key>
+            <PropertyRef Name="IdPais" />
+          </Key>
+          <Property Name="IdPais" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NombrePais" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Persona" Relationship="Self.fk_pais" FromRole="Pais" ToRole="Persona" />
+        </EntityType>
+        <EntityType Name="Persona">
+          <Key>
+            <PropertyRef Name="IdPersona" />
+          </Key>
+          <Property Name="IdPersona" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="75" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Apellido" Type="String" MaxLength="75" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Edad" Type="Int32" Nullable="false" />
+          <Property Name="Telefono" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IdPais" Type="Int32" Nullable="false" />
+          <Property Name="IdEstado" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Administrador" Relationship="Self.fk_personaA" FromRole="Persona" ToRole="Administrador" />
+          <NavigationProperty Name="Cliente" Relationship="Self.fk_personaC" FromRole="Persona" ToRole="Cliente" />
+          <NavigationProperty Name="Estado" Relationship="Self.fk_estado" FromRole="Persona" ToRole="Estado" />
+          <NavigationProperty Name="Pais" Relationship="Self.fk_pais" FromRole="Persona" ToRole="Pais" />
+        </EntityType>
+        <EntityType Name="Producto">
+          <Key>
+            <PropertyRef Name="IdProducto" />
+          </Key>
+          <Property Name="IdProducto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Descripcion" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Imagen" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="precio" Type="Double" Nullable="false" />
+          <Property Name="Exis" Type="Int32" Nullable="false" />
+          <Property Name="Valoracion" Type="Int32" Nullable="false" />
+          <Property Name="IdEstado" Type="Int32" Nullable="false" />
+          <Property Name="IdCat" Type="Int32" Nullable="false" />
+          <Property Name="Detalles" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Categoria" Relationship="Self.fk_cat" FromRole="Producto" ToRole="Categoria" />
+          <NavigationProperty Name="DetalleCompra" Relationship="Self.fk_producto" FromRole="Producto" ToRole="DetalleCompra" />
+          <NavigationProperty Name="Estado" Relationship="Self.fk_estadop" FromRole="Producto" ToRole="Estado" />
+          <NavigationProperty Name="ListaDeseos" Relationship="Self.FK_IDPRODUCTO_DESEOS" FromRole="Producto" ToRole="ListaDeseos" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Tarjeta">
+          <Key>
+            <PropertyRef Name="IdTar" />
+          </Key>
+          <Property Name="IdTar" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Titular" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Numero" Type="String" MaxLength="16" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Ex" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PinS" Type="Int32" Nullable="false" />
+          <Property Name="IdEstado" Type="Int32" Nullable="false" />
+          <Property Name="IdCliente" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Cliente" Relationship="Self.fk_tarjeta_idcliente" FromRole="Tarjeta" ToRole="Cliente" />
+          <NavigationProperty Name="Estado" Relationship="Self.fk_estadot" FromRole="Tarjeta" ToRole="Estado" />
+        </EntityType>
+        <EntityType Name="TipoPago">
+          <Key>
+            <PropertyRef Name="IdTipoP" />
+          </Key>
+          <Property Name="IdTipoP" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TipoPago1" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Compra" Relationship="Self.fk_TipoP" FromRole="TipoPago" ToRole="Compra" />
+        </EntityType>
+        <Association Name="fk_admin_est">
+          <End Role="Estado" Type="Self.Estado" Multiplicity="1" />
+          <End Role="Administrador" Type="Self.Administrador" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Estado">
+              <PropertyRef Name="IdEstado" />
+            </Principal>
+            <Dependent Role="Administrador">
+              <PropertyRef Name="IdEstado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_personaA">
+          <End Role="Persona" Type="Self.Persona" Multiplicity="1" />
+          <End Role="Administrador" Type="Self.Administrador" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Persona">
+              <PropertyRef Name="IdPersona" />
+            </Principal>
+            <Dependent Role="Administrador">
+              <PropertyRef Name="IdPersona" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_cat">
+          <End Role="Categoria" Type="Self.Categoria" Multiplicity="1" />
+          <End Role="Producto" Type="Self.Producto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categoria">
+              <PropertyRef Name="IdCat" />
+            </Principal>
+            <Dependent Role="Producto">
+              <PropertyRef Name="IdCat" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_cliente_compra">
+          <End Role="Cliente" Type="Self.Cliente" Multiplicity="1" />
+          <End Role="Compra" Type="Self.Compra" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cliente">
+              <PropertyRef Name="IdCliente" />
+            </Principal>
+            <Dependent Role="Compra">
+              <PropertyRef Name="IdCliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_cliente_est">
+          <End Role="Estado" Type="Self.Estado" Multiplicity="1" />
+          <End Role="Cliente" Type="Self.Cliente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Estado">
+              <PropertyRef Name="IdEstado" />
+            </Principal>
+            <Dependent Role="Cliente">
+              <PropertyRef Name="IdEstado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IDCLIENTE_DESEOS">
+          <End Role="Cliente" Type="Self.Cliente" Multiplicity="1" />
+          <End Role="ListaDeseos" Type="Self.ListaDeseos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cliente">
+              <PropertyRef Name="IdCliente" />
+            </Principal>
+            <Dependent Role="ListaDeseos">
+              <PropertyRef Name="IDCLIENTE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_personaC">
+          <End Role="Persona" Type="Self.Persona" Multiplicity="1" />
+          <End Role="Cliente" Type="Self.Cliente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Persona">
+              <PropertyRef Name="IdPersona" />
+            </Principal>
+            <Dependent Role="Cliente">
+              <PropertyRef Name="IdPersona" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_tarjeta_idcliente">
+          <End Role="Cliente" Type="Self.Cliente" Multiplicity="1" />
+          <End Role="Tarjeta" Type="Self.Tarjeta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cliente">
+              <PropertyRef Name="IdCliente" />
+            </Principal>
+            <Dependent Role="Tarjeta">
+              <PropertyRef Name="IdCliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_compra">
+          <End Role="Compra" Type="Self.Compra" Multiplicity="1" />
+          <End Role="DetalleCompra" Type="Self.DetalleCompra" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Compra">
+              <PropertyRef Name="IdCompra" />
+            </Principal>
+            <Dependent Role="DetalleCompra">
+              <PropertyRef Name="IdCompra" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_estadoc">
+          <End Role="Estado" Type="Self.Estado" Multiplicity="1" />
+          <End Role="Compra" Type="Self.Compra" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Estado">
+              <PropertyRef Name="IdEstado" />
+            </Principal>
+            <Dependent Role="Compra">
+              <PropertyRef Name="IdEstado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_TipoP">
+          <End Role="TipoPago" Type="Self.TipoPago" Multiplicity="1" />
+          <End Role="Compra" Type="Self.Compra" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoPago">
+              <PropertyRef Name="IdTipoP" />
+            </Principal>
+            <Dependent Role="Compra">
+              <PropertyRef Name="IdTipoP" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_producto">
+          <End Role="Producto" Type="Self.Producto" Multiplicity="1" />
+          <End Role="DetalleCompra" Type="Self.DetalleCompra" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Producto">
+              <PropertyRef Name="IdProducto" />
+            </Principal>
+            <Dependent Role="DetalleCompra">
+              <PropertyRef Name="IdProducto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_estado">
+          <End Role="Estado" Type="Self.Estado" Multiplicity="1" />
+          <End Role="Persona" Type="Self.Persona" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Estado">
+              <PropertyRef Name="IdEstado" />
+            </Principal>
+            <Dependent Role="Persona">
+              <PropertyRef Name="IdEstado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_estadop">
+          <End Role="Estado" Type="Self.Estado" Multiplicity="1" />
+          <End Role="Producto" Type="Self.Producto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Estado">
+              <PropertyRef Name="IdEstado" />
+            </Principal>
+            <Dependent Role="Producto">
+              <PropertyRef Name="IdEstado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_estadot">
+          <End Role="Estado" Type="Self.Estado" Multiplicity="1" />
+          <End Role="Tarjeta" Type="Self.Tarjeta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Estado">
+              <PropertyRef Name="IdEstado" />
+            </Principal>
+            <Dependent Role="Tarjeta">
+              <PropertyRef Name="IdEstado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IDPRODUCTO_DESEOS">
+          <End Role="Producto" Type="Self.Producto" Multiplicity="1" />
+          <End Role="ListaDeseos" Type="Self.ListaDeseos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Producto">
+              <PropertyRef Name="IdProducto" />
+            </Principal>
+            <Dependent Role="ListaDeseos">
+              <PropertyRef Name="IDPRODUCTO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_pais">
+          <End Role="Pais" Type="Self.Pais" Multiplicity="1" />
+          <End Role="Persona" Type="Self.Persona" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pais">
+              <PropertyRef Name="IdPais" />
+            </Principal>
+            <Dependent Role="Persona">
+              <PropertyRef Name="IdPais" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Datos" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Administrador" EntityType="Self.Administrador" />
+          <EntitySet Name="Categoria" EntityType="Self.Categoria" />
+          <EntitySet Name="Cliente" EntityType="Self.Cliente" />
+          <EntitySet Name="Compra" EntityType="Self.Compra" />
+          <EntitySet Name="DetalleCompra" EntityType="Self.DetalleCompra" />
+          <EntitySet Name="Estado" EntityType="Self.Estado" />
+          <EntitySet Name="ListaDeseos" EntityType="Self.ListaDeseos" />
+          <EntitySet Name="Pais" EntityType="Self.Pais" />
+          <EntitySet Name="Persona" EntityType="Self.Persona" />
+          <EntitySet Name="Producto" EntityType="Self.Producto" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="Tarjeta" EntityType="Self.Tarjeta" />
+          <EntitySet Name="TipoPago" EntityType="Self.TipoPago" />
+          <AssociationSet Name="fk_admin_est" Association="Self.fk_admin_est">
+            <End Role="Estado" EntitySet="Estado" />
+            <End Role="Administrador" EntitySet="Administrador" />
+          </AssociationSet>
+          <AssociationSet Name="fk_personaA" Association="Self.fk_personaA">
+            <End Role="Persona" EntitySet="Persona" />
+            <End Role="Administrador" EntitySet="Administrador" />
+          </AssociationSet>
+          <AssociationSet Name="fk_cat" Association="Self.fk_cat">
+            <End Role="Categoria" EntitySet="Categoria" />
+            <End Role="Producto" EntitySet="Producto" />
+          </AssociationSet>
+          <AssociationSet Name="fk_cliente_compra" Association="Self.fk_cliente_compra">
+            <End Role="Cliente" EntitySet="Cliente" />
+            <End Role="Compra" EntitySet="Compra" />
+          </AssociationSet>
+          <AssociationSet Name="fk_cliente_est" Association="Self.fk_cliente_est">
+            <End Role="Estado" EntitySet="Estado" />
+            <End Role="Cliente" EntitySet="Cliente" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IDCLIENTE_DESEOS" Association="Self.FK_IDCLIENTE_DESEOS">
+            <End Role="Cliente" EntitySet="Cliente" />
+            <End Role="ListaDeseos" EntitySet="ListaDeseos" />
+          </AssociationSet>
+          <AssociationSet Name="fk_personaC" Association="Self.fk_personaC">
+            <End Role="Persona" EntitySet="Persona" />
+            <End Role="Cliente" EntitySet="Cliente" />
+          </AssociationSet>
+          <AssociationSet Name="fk_tarjeta_idcliente" Association="Self.fk_tarjeta_idcliente">
+            <End Role="Cliente" EntitySet="Cliente" />
+            <End Role="Tarjeta" EntitySet="Tarjeta" />
+          </AssociationSet>
+          <AssociationSet Name="fk_compra" Association="Self.fk_compra">
+            <End Role="Compra" EntitySet="Compra" />
+            <End Role="DetalleCompra" EntitySet="DetalleCompra" />
+          </AssociationSet>
+          <AssociationSet Name="fk_estadoc" Association="Self.fk_estadoc">
+            <End Role="Estado" EntitySet="Estado" />
+            <End Role="Compra" EntitySet="Compra" />
+          </AssociationSet>
+          <AssociationSet Name="fk_TipoP" Association="Self.fk_TipoP">
+            <End Role="TipoPago" EntitySet="TipoPago" />
+            <End Role="Compra" EntitySet="Compra" />
+          </AssociationSet>
+          <AssociationSet Name="fk_producto" Association="Self.fk_producto">
+            <End Role="Producto" EntitySet="Producto" />
+            <End Role="DetalleCompra" EntitySet="DetalleCompra" />
+          </AssociationSet>
+          <AssociationSet Name="fk_estado" Association="Self.fk_estado">
+            <End Role="Estado" EntitySet="Estado" />
+            <End Role="Persona" EntitySet="Persona" />
+          </AssociationSet>
+          <AssociationSet Name="fk_estadop" Association="Self.fk_estadop">
+            <End Role="Estado" EntitySet="Estado" />
+            <End Role="Producto" EntitySet="Producto" />
+          </AssociationSet>
+          <AssociationSet Name="fk_estadot" Association="Self.fk_estadot">
+            <End Role="Estado" EntitySet="Estado" />
+            <End Role="Tarjeta" EntitySet="Tarjeta" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IDPRODUCTO_DESEOS" Association="Self.FK_IDPRODUCTO_DESEOS">
+            <End Role="Producto" EntitySet="Producto" />
+            <End Role="ListaDeseos" EntitySet="ListaDeseos" />
+          </AssociationSet>
+          <AssociationSet Name="fk_pais" Association="Self.fk_pais">
+            <End Role="Pais" EntitySet="Pais" />
+            <End Role="Persona" EntitySet="Persona" />
+          </AssociationSet>
+          <FunctionImport Name="ActualizarCat">
+            <Parameter Name="Cat" Mode="In" Type="String" />
+            <Parameter Name="Idc" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="ActualizarEstado">
+            <Parameter Name="estado" Mode="In" Type="String" />
+            <Parameter Name="Id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="ActualizarPais">
+            <Parameter Name="paisp" Mode="In" Type="String" />
+            <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="ActualizarTPago">
+            <Parameter Name="IdT" Mode="In" Type="Int32" />
+            <Parameter Name="pago" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="AgregarCat">
+            <Parameter Name="Ncat" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="BuscarCat" ReturnType="Collection(BuyOnlineModel.BuscarCat_Result)">
+            <Parameter Name="cat" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="BuscarEstado" ReturnType="Collection(BuyOnlineModel.BuscarEstado_Result)">
+            <Parameter Name="estadob" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="BuscarPais">
+            <Parameter Name="Nom" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="BuscarTPago" ReturnType="Collection(BuyOnlineModel.BuscarTPago_Result)">
+            <Parameter Name="busque" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="ChanceStatusCompras" ReturnType="Collection(String)">
+            <Parameter Name="idstatus" Mode="In" Type="Int32" />
+            <Parameter Name="idbuy" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="DeleteProducto" ReturnType="Collection(String)">
+            <Parameter Name="IdP" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="DisableAdmin" ReturnType="Collection(String)">
+            <Parameter Name="idadmin" Mode="In" Type="Int32" />
+            <Parameter Name="idesta" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="DisablePersonaXCustumer" ReturnType="Collection(String)">
+            <Parameter Name="idcustume" Mode="In" Type="Int32" />
+            <Parameter Name="idestado" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="EliminarCat">
+            <Parameter Name="catI" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="EliminarEstado">
+            <Parameter Name="EstadoId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="EliminarPais">
+            <Parameter Name="IdP" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="EliminarTPago">
+            <Parameter Name="IdT" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="InsertarEstado">
+            <Parameter Name="estado" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="InsertarPais">
+            <Parameter Name="pais" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="InsertarTPago">
+            <Parameter Name="tipo" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="LeerCat" ReturnType="Collection(BuyOnlineModel.LeerCat_Result)" />
+          <FunctionImport Name="ListarPais" />
+          <FunctionImport Name="ListarTPago" ReturnType="Collection(BuyOnlineModel.ListarTPago_Result)" />
+          <FunctionImport Name="LoginU" ReturnType="Collection(BuyOnlineModel.LoginU_Result)">
+            <Parameter Name="User" Mode="In" Type="String" />
+            <Parameter Name="password" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="RecordAdminXFolk" ReturnType="Collection(String)">
+            <Parameter Name="name" Mode="In" Type="String" />
+            <Parameter Name="lastname" Mode="In" Type="String" />
+            <Parameter Name="old" Mode="In" Type="Int32" />
+            <Parameter Name="phone" Mode="In" Type="String" />
+            <Parameter Name="idcountry" Mode="In" Type="Int32" />
+            <Parameter Name="user" Mode="In" Type="String" />
+            <Parameter Name="password" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="RecordCard" ReturnType="Collection(String)">
+            <Parameter Name="PlaceHolder" Mode="In" Type="String" />
+            <Parameter Name="Number" Mode="In" Type="String" />
+            <Parameter Name="dateexpe" Mode="In" Type="DateTime" />
+            <Parameter Name="SecPin" Mode="In" Type="Int32" />
+            <Parameter Name="idest" Mode="In" Type="Int32" />
+            <Parameter Name="idusuario" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="RecordCompra" ReturnType="Collection(String)">
+            <Parameter Name="datebuy" Mode="In" Type="DateTime" />
+            <Parameter Name="idpaytype" Mode="In" Type="Int32" />
+            <Parameter Name="IVA" Mode="In" Type="Double" />
+            <Parameter Name="total" Mode="In" Type="Double" />
+            <Parameter Name="idcostume" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="RecordDetalleCompra">
+            <Parameter Name="idcompra" Mode="In" Type="Int32" />
+            <Parameter Name="idproduct" Mode="In" Type="Int32" />
+            <Parameter Name="precio" Mode="In" Type="Double" />
+            <Parameter Name="discount" Mode="In" Type="Double" />
+            <Parameter Name="cantidad" Mode="In" Type="Int32" />
+            <Parameter Name="msg" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="RecordPersonaXcostumer" ReturnType="Collection(String)">
+            <Parameter Name="name" Mode="In" Type="String" />
+            <Parameter Name="lastname" Mode="In" Type="String" />
+            <Parameter Name="old" Mode="In" Type="Int32" />
+            <Parameter Name="phone" Mode="In" Type="String" />
+            <Parameter Name="idcountry" Mode="In" Type="Int32" />
+            <Parameter Name="user" Mode="In" Type="String" />
+            <Parameter Name="addres" Mode="In" Type="String" />
+            <Parameter Name="password" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="RecordProductos" ReturnType="Collection(String)">
+            <Parameter Name="name" Mode="In" Type="String" />
+            <Parameter Name="descript" Mode="In" Type="String" />
+            <Parameter Name="image" Mode="In" Type="String" />
+            <Parameter Name="price" Mode="In" Type="Double" />
+            <Parameter Name="existence" Mode="In" Type="Int32" />
+            <Parameter Name="rate" Mode="In" Type="Int32" />
+            <Parameter Name="Idcat" Mode="In" Type="Int32" />
+            <Parameter Name="detalles" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="RecordWishList" ReturnType="Collection(String)">
+            <Parameter Name="idproducto" Mode="In" Type="Int32" />
+            <Parameter Name="idusuario" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SearchAdmin" ReturnType="Collection(BuyOnlineModel.SearchAdmin_Result)">
+            <Parameter Name="dat" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SearchCard" ReturnType="Collection(BuyOnlineModel.SearchCard_Result)">
+            <Parameter Name="dat" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SearchCompras" ReturnType="Collection(BuyOnlineModel.SearchCompras_Result)">
+            <Parameter Name="data" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SearchCustumer" ReturnType="Collection(BuyOnlineModel.SearchCustumer_Result)">
+            <Parameter Name="dat" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SearchDetalleCompra" ReturnType="Collection(BuyOnlineModel.SearchDetalleCompra_Result)">
+            <Parameter Name="data" Mode="In" Type="String" />
+            <Parameter Name="msg" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SearchProducts" ReturnType="Collection(BuyOnlineModel.SearchProducts_Result)">
+            <Parameter Name="data" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="ShowadminXfolk" ReturnType="Collection(BuyOnlineModel.ShowadminXfolk_Result)" />
+          <FunctionImport Name="ShowCard" ReturnType="Collection(BuyOnlineModel.ShowCard_Result)" />
+          <FunctionImport Name="ShowCompras" ReturnType="Collection(BuyOnlineModel.ShowCompras_Result)" />
+          <FunctionImport Name="ShowCostumerXPersona" ReturnType="Collection(BuyOnlineModel.ShowCostumerXPersona_Result)" />
+          <FunctionImport Name="ShowProducts" ReturnType="Collection(BuyOnlineModel.ShowProducts_Result)" />
+          <FunctionImport Name="ShowProductsbyID" ReturnType="Collection(BuyOnlineModel.ShowProductsbyID_Result)">
+            <Parameter Name="idproducto" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_alterdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_creatediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_dropdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagramdefinition">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagrams">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_renamediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="new_diagramname" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_upgraddiagrams" />
+          <FunctionImport Name="UpdateCard" ReturnType="Collection(String)">
+            <Parameter Name="idcard" Mode="In" Type="Int32" />
+            <Parameter Name="idest" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="UpdateCompras" ReturnType="Collection(String)">
+            <Parameter Name="idbuy" Mode="In" Type="Int32" />
+            <Parameter Name="datebuy" Mode="In" Type="DateTime" />
+            <Parameter Name="idpaytype" Mode="In" Type="Int32" />
+            <Parameter Name="total" Mode="In" Type="Double" />
+            <Parameter Name="idcustumer" Mode="In" Type="Int32" />
+            <Parameter Name="idestado" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="UpdateDetalleCompra">
+            <Parameter Name="idcompra" Mode="In" Type="Int32" />
+            <Parameter Name="idproducto" Mode="In" Type="Int32" />
+            <Parameter Name="precio" Mode="In" Type="Double" />
+            <Parameter Name="descuento" Mode="In" Type="Double" />
+            <Parameter Name="cantidad" Mode="In" Type="Int32" />
+            <Parameter Name="msg" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="UpdatePersonaXAdmin" ReturnType="Collection(String)">
+            <Parameter Name="idfolk" Mode="In" Type="Int32" />
+            <Parameter Name="name" Mode="In" Type="String" />
+            <Parameter Name="lastname" Mode="In" Type="String" />
+            <Parameter Name="old" Mode="In" Type="Int32" />
+            <Parameter Name="phone" Mode="In" Type="String" />
+            <Parameter Name="idpais" Mode="In" Type="Int32" />
+            <Parameter Name="idestadoP" Mode="In" Type="Int32" />
+            <Parameter Name="user" Mode="In" Type="String" />
+            <Parameter Name="password" Mode="In" Type="String" />
+            <Parameter Name="idestadoA" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="UpdatePersonaXCustumer" ReturnType="Collection(String)">
+            <Parameter Name="idfolk" Mode="In" Type="Int32" />
+            <Parameter Name="name" Mode="In" Type="String" />
+            <Parameter Name="lastname" Mode="In" Type="String" />
+            <Parameter Name="old" Mode="In" Type="Int32" />
+            <Parameter Name="phone" Mode="In" Type="String" />
+            <Parameter Name="idpais" Mode="In" Type="Int32" />
+            <Parameter Name="idestadoP" Mode="In" Type="Int32" />
+            <Parameter Name="usuario" Mode="In" Type="String" />
+            <Parameter Name="address" Mode="In" Type="String" />
+            <Parameter Name="password" Mode="In" Type="String" />
+            <Parameter Name="idestadoC" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="UpdateProducto" ReturnType="Collection(String)">
+            <Parameter Name="IdP" Mode="In" Type="Int32" />
+            <Parameter Name="name" Mode="In" Type="String" />
+            <Parameter Name="descript" Mode="In" Type="String" />
+            <Parameter Name="img" Mode="In" Type="String" />
+            <Parameter Name="price" Mode="In" Type="Double" />
+            <Parameter Name="existence" Mode="In" Type="Int32" />
+            <Parameter Name="idest" Mode="In" Type="Int32" />
+            <Parameter Name="idcat" Mode="In" Type="Int32" />
+            <Parameter Name="detalles" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="VeerEstados" ReturnType="Collection(BuyOnlineModel.VeerEstados_Result)" />
+        </EntityContainer>
+        <ComplexType Name="BuscarCat_Result">
+          <Property Type="Int32" Name="IdCat" Nullable="false" />
+          <Property Type="String" Name="Cat" Nullable="false" MaxLength="100" />
+        </ComplexType>
+        <ComplexType Name="BuscarEstado_Result">
+          <Property Type="Int32" Name="IdEstado" Nullable="false" />
+          <Property Type="String" Name="Estado" Nullable="false" MaxLength="25" />
+        </ComplexType>
+        <ComplexType Name="BuscarTPago_Result">
+          <Property Type="Int32" Name="IdTipoP" Nullable="false" />
+          <Property Type="String" Name="TipoPago" Nullable="false" MaxLength="20" />
+        </ComplexType>
+        <ComplexType Name="LeerCat_Result">
+          <Property Type="Int32" Name="IdCat" Nullable="false" />
+          <Property Type="String" Name="Cat" Nullable="false" MaxLength="100" />
+        </ComplexType>
+        <ComplexType Name="ListarTPago_Result">
+          <Property Type="Int32" Name="IdTipoP" Nullable="false" />
+          <Property Type="String" Name="TipoPago" Nullable="false" MaxLength="20" />
+        </ComplexType>
+        <ComplexType Name="LoginU_Result">
+          <Property Type="Int32" Name="IdCliente" Nullable="false" />
+          <Property Type="String" Name="Usuario" Nullable="false" MaxLength="100" />
+          <Property Type="Int32" Name="IdEstado" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="SearchAdmin_Result">
+          <Property Type="Int32" Name="IdAdmin" Nullable="false" />
+          <Property Type="String" Name="Usuario" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="Contraseña" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="IdPersona" Nullable="false" />
+          <Property Type="Int32" Name="IdEstado" Nullable="false" />
+          <Property Type="Int32" Name="IdPersona1" Nullable="false" />
+          <Property Type="String" Name="Nombre" Nullable="false" MaxLength="75" />
+          <Property Type="String" Name="Apellido" Nullable="false" MaxLength="75" />
+          <Property Type="Int32" Name="Edad" Nullable="false" />
+          <Property Type="String" Name="Telefono" Nullable="false" MaxLength="12" />
+          <Property Type="Int32" Name="IdPais" Nullable="false" />
+          <Property Type="Int32" Name="IdEstado1" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="SearchCard_Result">
+          <Property Type="Int32" Name="IdTar" Nullable="false" />
+          <Property Type="String" Name="Titular" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Numero" Nullable="false" MaxLength="16" />
+          <Property Type="String" Name="Ex" Nullable="false" MaxLength="5" />
+          <Property Type="Int32" Name="PinS" Nullable="false" />
+          <Property Type="String" Name="Estado" Nullable="false" MaxLength="25" />
+          <Property Type="String" Name="Usuario" Nullable="false" MaxLength="100" />
+        </ComplexType>
+        <ComplexType Name="SearchCompras_Result">
+          <Property Type="Int32" Name="IdCompra" Nullable="false" />
+          <Property Type="DateTime" Name="FechaCompra" Nullable="false" />
+          <Property Type="Int32" Name="IdTipoP" Nullable="false" />
+          <Property Type="Double" Name="IVA" Nullable="false" />
+          <Property Type="Double" Name="Total" Nullable="false" />
+          <Property Type="Int32" Name="IdCliente" Nullable="false" />
+          <Property Type="Int32" Name="IdEstado" Nullable="false" />
+          <Property Type="Int32" Name="IdCliente1" Nullable="false" />
+          <Property Type="String" Name="Usuario" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="Correo" Nullable="false" MaxLength="30" />
+          <Property Type="String" Name="Contraseña" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="IdPersona" Nullable="false" />
+          <Property Type="Int32" Name="IdEstado1" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="SearchCustumer_Result">
+          <Property Type="Int32" Name="IdPersona" Nullable="false" />
+          <Property Type="String" Name="Nombre" Nullable="false" MaxLength="75" />
+          <Property Type="String" Name="Apellido" Nullable="false" MaxLength="75" />
+          <Property Type="Int32" Name="Edad" Nullable="false" />
+          <Property Type="String" Name="Telefono" Nullable="false" MaxLength="12" />
+          <Property Type="String" Name="NombrePais" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="Estado" Nullable="false" MaxLength="25" />
+          <Property Type="Int32" Name="IdCliente" Nullable="false" />
+          <Property Type="String" Name="Usuario" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="Correo" Nullable="false" MaxLength="30" />
+          <Property Type="String" Name="Contraseña" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="SearchDetalleCompra_Result">
+          <Property Type="Int32" Name="IdDetC" Nullable="false" />
+          <Property Type="Int32" Name="IdCompra" Nullable="false" />
+          <Property Type="Int32" Name="IdProducto" Nullable="false" />
+          <Property Type="Double" Name="Precio" Nullable="false" />
+          <Property Type="Double" Name="Descuento" Nullable="false" />
+          <Property Type="Double" Name="Subtotal" Nullable="false" />
+          <Property Type="Int32" Name="Cantidad" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="SearchProducts_Result">
+          <Property Type="Int32" Name="IdProducto" Nullable="false" />
+          <Property Type="String" Name="Nombre" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="Descripcion" Nullable="false" MaxLength="500" />
+          <Property Type="String" Name="Imagen" Nullable="false" MaxLength="500" />
+          <Property Type="Double" Name="precio" Nullable="false" />
+          <Property Type="Int32" Name="Exis" Nullable="false" />
+          <Property Type="Int32" Name="Valoracion" Nullable="false" />
+          <Property Type="String" Name="Estado" Nullable="false" MaxLength="25" />
+          <Property Type="Int32" Name="IdEstado" Nullable="false" />
+          <Property Type="String" Name="Cat" Nullable="false" MaxLength="100" />
+          <Property Type="Int32" Name="IdCat" Nullable="false" />
+          <Property Type="String" Name="Detalles" Nullable="true" MaxLength="150" />
+        </ComplexType>
+        <ComplexType Name="ShowadminXfolk_Result">
+          <Property Type="Int32" Name="IdPersona" Nullable="false" />
+          <Property Type="String" Name="Nombre" Nullable="false" MaxLength="75" />
+          <Property Type="String" Name="Apellido" Nullable="false" MaxLength="75" />
+          <Property Type="Int32" Name="Edad" Nullable="false" />
+          <Property Type="String" Name="Telefono" Nullable="false" MaxLength="12" />
+          <Property Type="Int32" Name="IdPais" Nullable="false" />
+          <Property Type="Int32" Name="IdEstado" Nullable="false" />
+          <Property Type="Int32" Name="IdAdmin" Nullable="false" />
+          <Property Type="String" Name="Usuario" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="Contraseña" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="IdPersona1" Nullable="false" />
+          <Property Type="Int32" Name="IdEstado1" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="ShowCard_Result">
+          <Property Type="Int32" Name="IdTar" Nullable="false" />
+          <Property Type="String" Name="Titular" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Numero" Nullable="false" MaxLength="16" />
+          <Property Type="String" Name="Ex" Nullable="false" MaxLength="5" />
+          <Property Type="Int32" Name="PinS" Nullable="false" />
+          <Property Type="String" Name="Estado" Nullable="false" MaxLength="25" />
+        </ComplexType>
+        <ComplexType Name="ShowCompras_Result">
+          <Property Type="Int32" Name="IdCompra" Nullable="false" />
+          <Property Type="DateTime" Name="FechaCompra" Nullable="false" />
+          <Property Type="Int32" Name="IdTipoP" Nullable="false" />
+          <Property Type="Double" Name="IVA" Nullable="false" />
+          <Property Type="Double" Name="Total" Nullable="false" />
+          <Property Type="Int32" Name="IdCliente" Nullable="false" />
+          <Property Type="Int32" Name="IdEstado" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="ShowCostumerXPersona_Result">
+          <Property Type="Int32" Name="IdPersona" Nullable="false" />
+          <Property Type="String" Name="Nombre" Nullable="false" MaxLength="75" />
+          <Property Type="String" Name="Apellido" Nullable="false" MaxLength="75" />
+          <Property Type="Int32" Name="Edad" Nullable="false" />
+          <Property Type="String" Name="Telefono" Nullable="false" MaxLength="12" />
+          <Property Type="String" Name="NombrePais" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="Estado" Nullable="false" MaxLength="25" />
+          <Property Type="Int32" Name="IdCliente" Nullable="false" />
+          <Property Type="String" Name="Usuario" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="Correo" Nullable="false" MaxLength="30" />
+          <Property Type="String" Name="Contraseña" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="ShowProducts_Result">
+          <Property Type="Int32" Name="IdProducto" Nullable="false" />
+          <Property Type="String" Name="Nombre" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="Descripcion" Nullable="false" MaxLength="500" />
+          <Property Type="String" Name="Imagen" Nullable="false" MaxLength="500" />
+          <Property Type="Double" Name="precio" Nullable="false" />
+          <Property Type="Int32" Name="Exis" Nullable="false" />
+          <Property Type="Int32" Name="Valoracion" Nullable="false" />
+          <Property Type="String" Name="Estado" Nullable="false" MaxLength="25" />
+          <Property Type="Int32" Name="IdEstado" Nullable="false" />
+          <Property Type="String" Name="Cat" Nullable="false" MaxLength="100" />
+          <Property Type="Int32" Name="IdCat" Nullable="false" />
+          <Property Type="String" Name="Detalles" Nullable="true" MaxLength="150" />
+        </ComplexType>
+        <ComplexType Name="ShowProductsbyID_Result">
+          <Property Type="Int32" Name="IdProducto" Nullable="false" />
+          <Property Type="String" Name="Nombre" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="Descripcion" Nullable="false" MaxLength="500" />
+          <Property Type="String" Name="Imagen" Nullable="false" MaxLength="500" />
+          <Property Type="Double" Name="precio" Nullable="false" />
+          <Property Type="Int32" Name="Exis" Nullable="false" />
+          <Property Type="Int32" Name="Valoracion" Nullable="false" />
+          <Property Type="String" Name="Estado" Nullable="false" MaxLength="25" />
+          <Property Type="Int32" Name="IdEstado" Nullable="false" />
+          <Property Type="String" Name="Cat" Nullable="false" MaxLength="100" />
+          <Property Type="Int32" Name="IdCat" Nullable="false" />
+          <Property Type="String" Name="Detalles" Nullable="true" MaxLength="150" />
+        </ComplexType>
+        <ComplexType Name="VeerEstados_Result">
+          <Property Type="Int32" Name="IdEstado" Nullable="false" />
+          <Property Type="String" Name="Estado" Nullable="false" MaxLength="25" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="BuyOnlineModelStoreContainer" CdmEntityContainer="Datos">
+          <EntitySetMapping Name="Administrador">
+            <EntityTypeMapping TypeName="BuyOnlineModel.Administrador">
+              <MappingFragment StoreEntitySet="Administrador">
+                <ScalarProperty Name="IdAdmin" ColumnName="IdAdmin" />
+                <ScalarProperty Name="Usuario" ColumnName="Usuario" />
+                <ScalarProperty Name="Contraseña" ColumnName="Contraseña" />
+                <ScalarProperty Name="IdPersona" ColumnName="IdPersona" />
+                <ScalarProperty Name="IdEstado" ColumnName="IdEstado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Categoria">
+            <EntityTypeMapping TypeName="BuyOnlineModel.Categoria">
+              <MappingFragment StoreEntitySet="Categoria">
+                <ScalarProperty Name="IdCat" ColumnName="IdCat" />
+                <ScalarProperty Name="Cat" ColumnName="Cat" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cliente">
+            <EntityTypeMapping TypeName="BuyOnlineModel.Cliente">
+              <MappingFragment StoreEntitySet="Cliente">
+                <ScalarProperty Name="IdCliente" ColumnName="IdCliente" />
+                <ScalarProperty Name="Usuario" ColumnName="Usuario" />
+                <ScalarProperty Name="Correo" ColumnName="Correo" />
+                <ScalarProperty Name="Contraseña" ColumnName="Contraseña" />
+                <ScalarProperty Name="IdPersona" ColumnName="IdPersona" />
+                <ScalarProperty Name="IdEstado" ColumnName="IdEstado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Compra">
+            <EntityTypeMapping TypeName="BuyOnlineModel.Compra">
+              <MappingFragment StoreEntitySet="Compra">
+                <ScalarProperty Name="IdCompra" ColumnName="IdCompra" />
+                <ScalarProperty Name="FechaCompra" ColumnName="FechaCompra" />
+                <ScalarProperty Name="IdTipoP" ColumnName="IdTipoP" />
+                <ScalarProperty Name="IVA" ColumnName="IVA" />
+                <ScalarProperty Name="Total" ColumnName="Total" />
+                <ScalarProperty Name="IdCliente" ColumnName="IdCliente" />
+                <ScalarProperty Name="IdEstado" ColumnName="IdEstado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DetalleCompra">
+            <EntityTypeMapping TypeName="BuyOnlineModel.DetalleCompra">
+              <MappingFragment StoreEntitySet="DetalleCompra">
+                <ScalarProperty Name="IdDetC" ColumnName="IdDetC" />
+                <ScalarProperty Name="IdCompra" ColumnName="IdCompra" />
+                <ScalarProperty Name="IdProducto" ColumnName="IdProducto" />
+                <ScalarProperty Name="Precio" ColumnName="Precio" />
+                <ScalarProperty Name="Descuento" ColumnName="Descuento" />
+                <ScalarProperty Name="Subtotal" ColumnName="Subtotal" />
+                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Estado">
+            <EntityTypeMapping TypeName="BuyOnlineModel.Estado">
+              <MappingFragment StoreEntitySet="Estado">
+                <ScalarProperty Name="IdEstado" ColumnName="IdEstado" />
+                <ScalarProperty Name="Estado1" ColumnName="Estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ListaDeseos">
+            <EntityTypeMapping TypeName="BuyOnlineModel.ListaDeseos">
+              <MappingFragment StoreEntitySet="ListaDeseos">
+                <ScalarProperty Name="IDDESEOS" ColumnName="IDDESEOS" />
+                <ScalarProperty Name="IDPRODUCTO" ColumnName="IDPRODUCTO" />
+                <ScalarProperty Name="IDCLIENTE" ColumnName="IDCLIENTE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Pais">
+            <EntityTypeMapping TypeName="BuyOnlineModel.Pais">
+              <MappingFragment StoreEntitySet="Pais">
+                <ScalarProperty Name="IdPais" ColumnName="IdPais" />
+                <ScalarProperty Name="NombrePais" ColumnName="NombrePais" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Persona">
+            <EntityTypeMapping TypeName="BuyOnlineModel.Persona">
+              <MappingFragment StoreEntitySet="Persona">
+                <ScalarProperty Name="IdPersona" ColumnName="IdPersona" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+                <ScalarProperty Name="Edad" ColumnName="Edad" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="IdPais" ColumnName="IdPais" />
+                <ScalarProperty Name="IdEstado" ColumnName="IdEstado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Producto">
+            <EntityTypeMapping TypeName="BuyOnlineModel.Producto">
+              <MappingFragment StoreEntitySet="Producto">
+                <ScalarProperty Name="IdProducto" ColumnName="IdProducto" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Imagen" ColumnName="Imagen" />
+                <ScalarProperty Name="precio" ColumnName="precio" />
+                <ScalarProperty Name="Exis" ColumnName="Exis" />
+                <ScalarProperty Name="Valoracion" ColumnName="Valoracion" />
+                <ScalarProperty Name="IdEstado" ColumnName="IdEstado" />
+                <ScalarProperty Name="IdCat" ColumnName="IdCat" />
+                <ScalarProperty Name="Detalles" ColumnName="Detalles" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="BuyOnlineModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tarjeta">
+            <EntityTypeMapping TypeName="BuyOnlineModel.Tarjeta">
+              <MappingFragment StoreEntitySet="Tarjeta">
+                <ScalarProperty Name="IdTar" ColumnName="IdTar" />
+                <ScalarProperty Name="Titular" ColumnName="Titular" />
+                <ScalarProperty Name="Numero" ColumnName="Numero" />
+                <ScalarProperty Name="Ex" ColumnName="Ex" />
+                <ScalarProperty Name="PinS" ColumnName="PinS" />
+                <ScalarProperty Name="IdEstado" ColumnName="IdEstado" />
+                <ScalarProperty Name="IdCliente" ColumnName="IdCliente" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TipoPago">
+            <EntityTypeMapping TypeName="BuyOnlineModel.TipoPago">
+              <MappingFragment StoreEntitySet="TipoPago">
+                <ScalarProperty Name="IdTipoP" ColumnName="IdTipoP" />
+                <ScalarProperty Name="TipoPago1" ColumnName="TipoPago" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="ActualizarCat" FunctionName="BuyOnlineModel.Store.ActualizarCat" />
+          <FunctionImportMapping FunctionImportName="ActualizarEstado" FunctionName="BuyOnlineModel.Store.ActualizarEstado" />
+          <FunctionImportMapping FunctionImportName="ActualizarPais" FunctionName="BuyOnlineModel.Store.ActualizarPais" />
+          <FunctionImportMapping FunctionImportName="ActualizarTPago" FunctionName="BuyOnlineModel.Store.ActualizarTPago" />
+          <FunctionImportMapping FunctionImportName="AgregarCat" FunctionName="BuyOnlineModel.Store.AgregarCat" />
+          <FunctionImportMapping FunctionImportName="BuscarCat" FunctionName="BuyOnlineModel.Store.BuscarCat">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BuyOnlineModel.BuscarCat_Result">
+                <ScalarProperty Name="IdCat" ColumnName="IdCat" />
+                <ScalarProperty Name="Cat" ColumnName="Cat" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="BuscarEstado" FunctionName="BuyOnlineModel.Store.BuscarEstado">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BuyOnlineModel.BuscarEstado_Result">
+                <ScalarProperty Name="IdEstado" ColumnName="IdEstado" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="BuscarPais" FunctionName="BuyOnlineModel.Store.BuscarPais" />
+          <FunctionImportMapping FunctionImportName="BuscarTPago" FunctionName="BuyOnlineModel.Store.BuscarTPago">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BuyOnlineModel.BuscarTPago_Result">
+                <ScalarProperty Name="IdTipoP" ColumnName="IdTipoP" />
+                <ScalarProperty Name="TipoPago" ColumnName="TipoPago" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="ChanceStatusCompras" FunctionName="BuyOnlineModel.Store.ChanceStatusCompras" />
+          <FunctionImportMapping FunctionImportName="DeleteProducto" FunctionName="BuyOnlineModel.Store.DeleteProducto" />
+          <FunctionImportMapping FunctionImportName="DisableAdmin" FunctionName="BuyOnlineModel.Store.DisableAdmin" />
+          <FunctionImportMapping FunctionImportName="DisablePersonaXCustumer" FunctionName="BuyOnlineModel.Store.DisablePersonaXCustumer" />
+          <FunctionImportMapping FunctionImportName="EliminarCat" FunctionName="BuyOnlineModel.Store.EliminarCat" />
+          <FunctionImportMapping FunctionImportName="EliminarEstado" FunctionName="BuyOnlineModel.Store.EliminarEstado" />
+          <FunctionImportMapping FunctionImportName="EliminarPais" FunctionName="BuyOnlineModel.Store.EliminarPais" />
+          <FunctionImportMapping FunctionImportName="EliminarTPago" FunctionName="BuyOnlineModel.Store.EliminarTPago" />
+          <FunctionImportMapping FunctionImportName="InsertarEstado" FunctionName="BuyOnlineModel.Store.InsertarEstado" />
+          <FunctionImportMapping FunctionImportName="InsertarPais" FunctionName="BuyOnlineModel.Store.InsertarPais" />
+          <FunctionImportMapping FunctionImportName="InsertarTPago" FunctionName="BuyOnlineModel.Store.InsertarTPago" />
+          <FunctionImportMapping FunctionImportName="LeerCat" FunctionName="BuyOnlineModel.Store.LeerCat">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BuyOnlineModel.LeerCat_Result">
+                <ScalarProperty Name="IdCat" ColumnName="IdCat" />
+                <ScalarProperty Name="Cat" ColumnName="Cat" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="ListarPais" FunctionName="BuyOnlineModel.Store.ListarPais" />
+          <FunctionImportMapping FunctionImportName="ListarTPago" FunctionName="BuyOnlineModel.Store.ListarTPago">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BuyOnlineModel.ListarTPago_Result">
+                <ScalarProperty Name="IdTipoP" ColumnName="IdTipoP" />
+                <ScalarProperty Name="TipoPago" ColumnName="TipoPago" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="LoginU" FunctionName="BuyOnlineModel.Store.LoginU">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BuyOnlineModel.LoginU_Result">
+                <ScalarProperty Name="IdCliente" ColumnName="IdCliente" />
+                <ScalarProperty Name="Usuario" ColumnName="Usuario" />
+                <ScalarProperty Name="IdEstado" ColumnName="IdEstado" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="RecordAdminXFolk" FunctionName="BuyOnlineModel.Store.RecordAdminXFolk" />
+          <FunctionImportMapping FunctionImportName="RecordCard" FunctionName="BuyOnlineModel.Store.RecordCard" />
+          <FunctionImportMapping FunctionImportName="RecordCompra" FunctionName="BuyOnlineModel.Store.RecordCompra" />
+          <FunctionImportMapping FunctionImportName="RecordDetalleCompra" FunctionName="BuyOnlineModel.Store.RecordDetalleCompra" />
+          <FunctionImportMapping FunctionImportName="RecordPersonaXcostumer" FunctionName="BuyOnlineModel.Store.RecordPersonaXcostumer" />
+          <FunctionImportMapping FunctionImportName="RecordProductos" FunctionName="BuyOnlineModel.Store.RecordProductos" />
+          <FunctionImportMapping FunctionImportName="RecordWishList" FunctionName="BuyOnlineModel.Store.RecordWishList" />
+          <FunctionImportMapping FunctionImportName="SearchAdmin" FunctionName="BuyOnlineModel.Store.SearchAdmin">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BuyOnlineModel.SearchAdmin_Result">
+                <ScalarProperty Name="IdAdmin" ColumnName="IdAdmin" />
+                <ScalarProperty Name="Usuario" ColumnName="Usuario" />
+                <ScalarProperty Name="Contraseña" ColumnName="Contraseña" />
+                <ScalarProperty Name="IdPersona" ColumnName="IdPersona" />
+                <ScalarProperty Name="IdEstado" ColumnName="IdEstado" />
+                <ScalarProperty Name="IdPersona1" ColumnName="IdPersona1" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+                <ScalarProperty Name="Edad" ColumnName="Edad" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="IdPais" ColumnName="IdPais" />
+                <ScalarProperty Name="IdEstado1" ColumnName="IdEstado1" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SearchCard" FunctionName="BuyOnlineModel.Store.SearchCard">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BuyOnlineModel.SearchCard_Result">
+                <ScalarProperty Name="IdTar" ColumnName="IdTar" />
+                <ScalarProperty Name="Titular" ColumnName="Titular" />
+                <ScalarProperty Name="Numero" ColumnName="Numero" />
+                <ScalarProperty Name="Ex" ColumnName="Ex" />
+                <ScalarProperty Name="PinS" ColumnName="PinS" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="Usuario" ColumnName="Usuario" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SearchCompras" FunctionName="BuyOnlineModel.Store.SearchCompras">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BuyOnlineModel.SearchCompras_Result">
+                <ScalarProperty Name="IdCompra" ColumnName="IdCompra" />
+                <ScalarProperty Name="FechaCompra" ColumnName="FechaCompra" />
+                <ScalarProperty Name="IdTipoP" ColumnName="IdTipoP" />
+                <ScalarProperty Name="IVA" ColumnName="IVA" />
+                <ScalarProperty Name="Total" ColumnName="Total" />
+                <ScalarProperty Name="IdCliente" ColumnName="IdCliente" />
+                <ScalarProperty Name="IdEstado" ColumnName="IdEstado" />
+                <ScalarProperty Name="IdCliente1" ColumnName="IdCliente1" />
+                <ScalarProperty Name="Usuario" ColumnName="Usuario" />
+                <ScalarProperty Name="Correo" ColumnName="Correo" />
+                <ScalarProperty Name="Contraseña" ColumnName="Contraseña" />
+                <ScalarProperty Name="IdPersona" ColumnName="IdPersona" />
+                <ScalarProperty Name="IdEstado1" ColumnName="IdEstado1" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SearchCustumer" FunctionName="BuyOnlineModel.Store.SearchCustumer">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BuyOnlineModel.SearchCustumer_Result">
+                <ScalarProperty Name="IdPersona" ColumnName="IdPersona" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+                <ScalarProperty Name="Edad" ColumnName="Edad" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="NombrePais" ColumnName="NombrePais" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="IdCliente" ColumnName="IdCliente" />
+                <ScalarProperty Name="Usuario" ColumnName="Usuario" />
+                <ScalarProperty Name="Correo" ColumnName="Correo" />
+                <ScalarProperty Name="Contraseña" ColumnName="Contraseña" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SearchDetalleCompra" FunctionName="BuyOnlineModel.Store.SearchDetalleCompra">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BuyOnlineModel.SearchDetalleCompra_Result">
+                <ScalarProperty Name="IdDetC" ColumnName="IdDetC" />
+                <ScalarProperty Name="IdCompra" ColumnName="IdCompra" />
+                <ScalarProperty Name="IdProducto" ColumnName="IdProducto" />
+                <ScalarProperty Name="Precio" ColumnName="Precio" />
+                <ScalarProperty Name="Descuento" ColumnName="Descuento" />
+                <ScalarProperty Name="Subtotal" ColumnName="Subtotal" />
+                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SearchProducts" FunctionName="BuyOnlineModel.Store.SearchProducts">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BuyOnlineModel.SearchProducts_Result">
+                <ScalarProperty Name="IdProducto" ColumnName="IdProducto" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Imagen" ColumnName="Imagen" />
+                <ScalarProperty Name="precio" ColumnName="precio" />
+                <ScalarProperty Name="Exis" ColumnName="Exis" />
+                <ScalarProperty Name="Valoracion" ColumnName="Valoracion" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="IdEstado" ColumnName="IdEstado" />
+                <ScalarProperty Name="Cat" ColumnName="Cat" />
+                <ScalarProperty Name="IdCat" ColumnName="IdCat" />
+                <ScalarProperty Name="Detalles" ColumnName="Detalles" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="ShowadminXfolk" FunctionName="BuyOnlineModel.Store.ShowadminXfolk">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BuyOnlineModel.ShowadminXfolk_Result">
+                <ScalarProperty Name="IdPersona" ColumnName="IdPersona" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+                <ScalarProperty Name="Edad" ColumnName="Edad" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="IdPais" ColumnName="IdPais" />
+                <ScalarProperty Name="IdEstado" ColumnName="IdEstado" />
+                <ScalarProperty Name="IdAdmin" ColumnName="IdAdmin" />
+                <ScalarProperty Name="Usuario" ColumnName="Usuario" />
+                <ScalarProperty Name="Contraseña" ColumnName="Contraseña" />
+                <ScalarProperty Name="IdPersona1" ColumnName="IdPersona1" />
+                <ScalarProperty Name="IdEstado1" ColumnName="IdEstado1" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="ShowCard" FunctionName="BuyOnlineModel.Store.ShowCard">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BuyOnlineModel.ShowCard_Result">
+                <ScalarProperty Name="IdTar" ColumnName="IdTar" />
+                <ScalarProperty Name="Titular" ColumnName="Titular" />
+                <ScalarProperty Name="Numero" ColumnName="Numero" />
+                <ScalarProperty Name="Ex" ColumnName="Ex" />
+                <ScalarProperty Name="PinS" ColumnName="PinS" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="ShowCompras" FunctionName="BuyOnlineModel.Store.ShowCompras">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BuyOnlineModel.ShowCompras_Result">
+                <ScalarProperty Name="IdCompra" ColumnName="IdCompra" />
+                <ScalarProperty Name="FechaCompra" ColumnName="FechaCompra" />
+                <ScalarProperty Name="IdTipoP" ColumnName="IdTipoP" />
+                <ScalarProperty Name="IVA" ColumnName="IVA" />
+                <ScalarProperty Name="Total" ColumnName="Total" />
+                <ScalarProperty Name="IdCliente" ColumnName="IdCliente" />
+                <ScalarProperty Name="IdEstado" ColumnName="IdEstado" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="ShowCostumerXPersona" FunctionName="BuyOnlineModel.Store.ShowCostumerXPersona">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BuyOnlineModel.ShowCostumerXPersona_Result">
+                <ScalarProperty Name="IdPersona" ColumnName="IdPersona" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+                <ScalarProperty Name="Edad" ColumnName="Edad" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="NombrePais" ColumnName="NombrePais" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="IdCliente" ColumnName="IdCliente" />
+                <ScalarProperty Name="Usuario" ColumnName="Usuario" />
+                <ScalarProperty Name="Correo" ColumnName="Correo" />
+                <ScalarProperty Name="Contraseña" ColumnName="Contraseña" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="ShowProducts" FunctionName="BuyOnlineModel.Store.ShowProducts">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BuyOnlineModel.ShowProducts_Result">
+                <ScalarProperty Name="IdProducto" ColumnName="IdProducto" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Imagen" ColumnName="Imagen" />
+                <ScalarProperty Name="precio" ColumnName="precio" />
+                <ScalarProperty Name="Exis" ColumnName="Exis" />
+                <ScalarProperty Name="Valoracion" ColumnName="Valoracion" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="IdEstado" ColumnName="IdEstado" />
+                <ScalarProperty Name="Cat" ColumnName="Cat" />
+                <ScalarProperty Name="IdCat" ColumnName="IdCat" />
+                <ScalarProperty Name="Detalles" ColumnName="Detalles" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="ShowProductsbyID" FunctionName="BuyOnlineModel.Store.ShowProductsbyID">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BuyOnlineModel.ShowProductsbyID_Result">
+                <ScalarProperty Name="IdProducto" ColumnName="IdProducto" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Imagen" ColumnName="Imagen" />
+                <ScalarProperty Name="precio" ColumnName="precio" />
+                <ScalarProperty Name="Exis" ColumnName="Exis" />
+                <ScalarProperty Name="Valoracion" ColumnName="Valoracion" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="IdEstado" ColumnName="IdEstado" />
+                <ScalarProperty Name="Cat" ColumnName="Cat" />
+                <ScalarProperty Name="IdCat" ColumnName="IdCat" />
+                <ScalarProperty Name="Detalles" ColumnName="Detalles" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="BuyOnlineModel.Store.sp_alterdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="BuyOnlineModel.Store.sp_creatediagram" />
+          <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="BuyOnlineModel.Store.sp_dropdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="BuyOnlineModel.Store.sp_helpdiagramdefinition" />
+          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="BuyOnlineModel.Store.sp_helpdiagrams" />
+          <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="BuyOnlineModel.Store.sp_renamediagram" />
+          <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="BuyOnlineModel.Store.sp_upgraddiagrams" />
+          <FunctionImportMapping FunctionImportName="UpdateCard" FunctionName="BuyOnlineModel.Store.UpdateCard" />
+          <FunctionImportMapping FunctionImportName="UpdateCompras" FunctionName="BuyOnlineModel.Store.UpdateCompras" />
+          <FunctionImportMapping FunctionImportName="UpdateDetalleCompra" FunctionName="BuyOnlineModel.Store.UpdateDetalleCompra" />
+          <FunctionImportMapping FunctionImportName="UpdatePersonaXAdmin" FunctionName="BuyOnlineModel.Store.UpdatePersonaXAdmin" />
+          <FunctionImportMapping FunctionImportName="UpdatePersonaXCustumer" FunctionName="BuyOnlineModel.Store.UpdatePersonaXCustumer" />
+          <FunctionImportMapping FunctionImportName="UpdateProducto" FunctionName="BuyOnlineModel.Store.UpdateProducto" />
+          <FunctionImportMapping FunctionImportName="VeerEstados" FunctionName="BuyOnlineModel.Store.VeerEstados">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BuyOnlineModel.VeerEstados_Result">
+                <ScalarProperty Name="IdEstado" ColumnName="IdEstado" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

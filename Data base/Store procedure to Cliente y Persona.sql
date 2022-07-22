@@ -190,7 +190,7 @@ GO
 CREATE PROCEDURE ShowCostumerXPersona
 AS
 BEGIN
-    SELECT p.IdPersona, p.Nombre, p.Apellido, p.Edad, p.Telefono, a.Nombre, e.Estado, c.IdCliente, c.Usuario, c.Correo, c.Contraseña FROM dbo.Persona p 
+    SELECT p.IdPersona, p.Nombre, p.Apellido, p.Edad, p.Telefono, a.NombrePais, e.Estado, c.IdCliente, c.Usuario, c.Correo, c.Contraseña FROM dbo.Persona p 
     INNER JOIN dbo.Cliente c ON c.IdPersona = p.IdPersona INNER JOIN Pais AS a ON p.IdPais = a.IdPais INNER JOIN Estado as e ON p.IdEstado = e.IdEstado
 END
 GO
@@ -216,7 +216,7 @@ CREATE PROCEDURE SearchCustumer
 )
 AS
 BEGIN
-    SELECT p.IdPersona, p.Nombre, p.Apellido, p.Edad, p.Telefono, a.Nombre, e.Estado, c.IdCliente, c.Usuario, c.Correo, c.Contraseña FROM dbo.Persona p INNER JOIN dbo.Cliente c 
+    SELECT p.IdPersona, p.Nombre, p.Apellido, p.Edad, p.Telefono, a.NombrePais, e.Estado, c.IdCliente, c.Usuario, c.Correo, c.Contraseña FROM dbo.Persona p INNER JOIN dbo.Cliente c 
     ON p.IdPersona = c.IdPersona INNER JOIN Pais AS a ON p.IdPais = a.IdPais INNER JOIN Estado as e ON p.IdEstado = e.IdEstado
     WHERE p.Nombre LIKE '%'+@dat+'%' OR p.Apellido LIKE '%'+@dat+'%' OR c.Usuario LIKE '%'+@dat+'%' OR c.Correo LIKE '%'+@dat+'%'
 END

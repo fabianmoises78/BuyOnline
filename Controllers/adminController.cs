@@ -32,12 +32,11 @@ namespace BuyOnline.Controllers
             return View();
         }
 
-        [HttpGet]
+        [HttpPost]
         [Route("ListarClientes")]
         public JsonResult ListarClientes()
         {
             List<ShowCostumerXPersona_Result> clientes = new List<ShowCostumerXPersona_Result>();
-
             using (conexion)    
             {
                 var listarClientes = conexion.ShowCostumerXPersona();
@@ -51,7 +50,7 @@ namespace BuyOnline.Controllers
                         Apellido = item.Apellido,
                         Edad = item.Edad,
                         Telefono = item.Telefono,
-                        Nombre1 = item.Nombre1, //este es el nombre del pais
+                        NombrePais = item.NombrePais, //este es el nombre del pais
                         Estado = item.Estado,
                         IdCliente = item.IdCliente,
                         Usuario = item.Usuario,
