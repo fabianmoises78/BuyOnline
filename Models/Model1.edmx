@@ -1444,14 +1444,12 @@
           <Property Type="String" Name="Apellido" Nullable="false" MaxLength="75" />
           <Property Type="Int32" Name="Edad" Nullable="false" />
           <Property Type="String" Name="Telefono" Nullable="false" MaxLength="12" />
-          <Property Type="Int32" Name="IdPais" Nullable="false" />
-          <Property Type="Int32" Name="IdEstado" Nullable="false" />
+          <Property Type="String" Name="Nombre1" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="Estado" Nullable="false" MaxLength="25" />
           <Property Type="Int32" Name="IdCliente" Nullable="false" />
           <Property Type="String" Name="Usuario" Nullable="false" MaxLength="100" />
           <Property Type="String" Name="Correo" Nullable="false" MaxLength="30" />
           <Property Type="String" Name="Contraseña" Nullable="false" MaxLength="50" />
-          <Property Type="Int32" Name="IdPersona1" Nullable="false" />
-          <Property Type="Int32" Name="IdEstado1" Nullable="false" />
         </ComplexType>
         <ComplexType Name="SearchDetalleCompra_Result">
           <Property Type="Int32" Name="IdDetC" Nullable="false" />
@@ -1513,14 +1511,12 @@
           <Property Type="String" Name="Apellido" Nullable="false" MaxLength="75" />
           <Property Type="Int32" Name="Edad" Nullable="false" />
           <Property Type="String" Name="Telefono" Nullable="false" MaxLength="12" />
-          <Property Type="Int32" Name="IdPais" Nullable="false" />
-          <Property Type="Int32" Name="IdEstado" Nullable="false" />
+          <Property Type="String" Name="Nombre1" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="Estado" Nullable="false" MaxLength="25" />
           <Property Type="Int32" Name="IdCliente" Nullable="false" />
           <Property Type="String" Name="Usuario" Nullable="false" MaxLength="100" />
           <Property Type="String" Name="Correo" Nullable="false" MaxLength="30" />
           <Property Type="String" Name="Contraseña" Nullable="false" MaxLength="50" />
-          <Property Type="Int32" Name="IdPersona1" Nullable="false" />
-          <Property Type="Int32" Name="IdEstado1" Nullable="false" />
         </ComplexType>
         <ComplexType Name="ShowProducts_Result">
           <Property Type="Int32" Name="IdProducto" Nullable="false" />
@@ -1849,14 +1845,12 @@
                 <ScalarProperty Name="Apellido" ColumnName="Apellido" />
                 <ScalarProperty Name="Edad" ColumnName="Edad" />
                 <ScalarProperty Name="Telefono" ColumnName="Telefono" />
-                <ScalarProperty Name="IdPais" ColumnName="IdPais" />
-                <ScalarProperty Name="IdEstado" ColumnName="IdEstado" />
+                <ScalarProperty Name="Nombre1" ColumnName="Nombre1" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
                 <ScalarProperty Name="IdCliente" ColumnName="IdCliente" />
                 <ScalarProperty Name="Usuario" ColumnName="Usuario" />
                 <ScalarProperty Name="Correo" ColumnName="Correo" />
                 <ScalarProperty Name="Contraseña" ColumnName="Contraseña" />
-                <ScalarProperty Name="IdPersona1" ColumnName="IdPersona1" />
-                <ScalarProperty Name="IdEstado1" ColumnName="IdEstado1" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
@@ -1942,14 +1936,12 @@
                 <ScalarProperty Name="Apellido" ColumnName="Apellido" />
                 <ScalarProperty Name="Edad" ColumnName="Edad" />
                 <ScalarProperty Name="Telefono" ColumnName="Telefono" />
-                <ScalarProperty Name="IdPais" ColumnName="IdPais" />
-                <ScalarProperty Name="IdEstado" ColumnName="IdEstado" />
+                <ScalarProperty Name="Nombre1" ColumnName="Nombre1" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
                 <ScalarProperty Name="IdCliente" ColumnName="IdCliente" />
                 <ScalarProperty Name="Usuario" ColumnName="Usuario" />
                 <ScalarProperty Name="Correo" ColumnName="Correo" />
                 <ScalarProperty Name="Contraseña" ColumnName="Contraseña" />
-                <ScalarProperty Name="IdPersona1" ColumnName="IdPersona1" />
-                <ScalarProperty Name="IdEstado1" ColumnName="IdEstado1" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
