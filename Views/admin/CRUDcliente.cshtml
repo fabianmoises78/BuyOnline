@@ -11,9 +11,8 @@
     <button class="btn btn-success">Agregar nuevo usuario</button>
 </div>
 
-<script>VerClientes();</script>
 <div class="my-4" id="listarclientes">
-    
+
     <table class="table">
         <thead>
             <tr>
@@ -31,7 +30,7 @@
                 <th scope="col"></th>
             </tr>
         </thead>
-        <tbody id="ListaClientes" onload="VerClientes()">
+        <tbody id="ListaClientes">
         </tbody>
     </table>
 </div>
@@ -39,4 +38,11 @@
 @section scripts
 {
     <script src="~/Content/js/UsuariosCRUD.js"></script>
+
+    <script>
+        VerClientes();
+    </script>
+
 }
+
+
