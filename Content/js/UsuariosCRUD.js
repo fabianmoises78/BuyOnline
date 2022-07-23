@@ -25,7 +25,7 @@ function VerClientes() {
                 html += '<td> ' + row.Usuario + ' </td>';
                 html += '<td> ' + row.Correo + '  </td>';
                 html += '<td> '+ row.Contraseña +' </td>';
-                html += '<td><button class="btn btn-success" onclick="" value=" ' + row.IdPersona +'">Editar</button></td>';
+                html += '<td><button class="btn btn-success" onclick="" data-toggle="modal" data-target=".bd-example-modal-lg" value=" ' + row.IdPersona +'">Editar</button></td>';
                 html += '<tr>';
             });
             $('#ListaClientes').append(html);
