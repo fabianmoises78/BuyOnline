@@ -1147,7 +1147,7 @@
           <FunctionImport Name="BuscarEstado" ReturnType="Collection(BuyOnlineModel.BuscarEstado_Result)">
             <Parameter Name="estadob" Mode="In" Type="String" />
           </FunctionImport>
-          <FunctionImport Name="BuscarPais">
+          <FunctionImport Name="BuscarPais" ReturnType="Collection(BuyOnlineModel.BuscarPais_Result)">
             <Parameter Name="Nom" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="BuscarTPago" ReturnType="Collection(BuyOnlineModel.BuscarTPago_Result)">
@@ -1190,7 +1190,7 @@
             <Parameter Name="tipo" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="LeerCat" ReturnType="Collection(BuyOnlineModel.LeerCat_Result)" />
-          <FunctionImport Name="ListarPais" />
+          <FunctionImport Name="ListarPais" ReturnType="Collection(BuyOnlineModel.ListarPais_Result)" />
           <FunctionImport Name="ListarTPago" ReturnType="Collection(BuyOnlineModel.ListarTPago_Result)" />
           <FunctionImport Name="LoginU" ReturnType="Collection(BuyOnlineModel.LoginU_Result)">
             <Parameter Name="User" Mode="In" Type="String" />
@@ -1375,6 +1375,10 @@
           <Property Type="Int32" Name="IdEstado" Nullable="false" />
           <Property Type="String" Name="Estado" Nullable="false" MaxLength="25" />
         </ComplexType>
+        <ComplexType Name="BuscarPais_Result">
+          <Property Type="Int32" Name="IdPais" Nullable="false" />
+          <Property Type="String" Name="NombrePais" Nullable="false" MaxLength="100" />
+        </ComplexType>
         <ComplexType Name="BuscarTPago_Result">
           <Property Type="Int32" Name="IdTipoP" Nullable="false" />
           <Property Type="String" Name="TipoPago" Nullable="false" MaxLength="20" />
@@ -1382,6 +1386,10 @@
         <ComplexType Name="LeerCat_Result">
           <Property Type="Int32" Name="IdCat" Nullable="false" />
           <Property Type="String" Name="Cat" Nullable="false" MaxLength="100" />
+        </ComplexType>
+        <ComplexType Name="ListarPais_Result">
+          <Property Type="Int32" Name="IdPais" Nullable="false" />
+          <Property Type="String" Name="NombrePais" Nullable="false" MaxLength="100" />
         </ComplexType>
         <ComplexType Name="ListarTPago_Result">
           <Property Type="Int32" Name="IdTipoP" Nullable="false" />
@@ -1712,7 +1720,14 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="BuscarPais" FunctionName="BuyOnlineModel.Store.BuscarPais" />
+          <FunctionImportMapping FunctionImportName="BuscarPais" FunctionName="BuyOnlineModel.Store.BuscarPais">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BuyOnlineModel.BuscarPais_Result">
+                <ScalarProperty Name="IdPais" ColumnName="IdPais" />
+                <ScalarProperty Name="NombrePais" ColumnName="NombrePais" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="BuscarTPago" FunctionName="BuyOnlineModel.Store.BuscarTPago">
             <ResultMapping>
               <ComplexTypeMapping TypeName="BuyOnlineModel.BuscarTPago_Result">
@@ -1740,7 +1755,14 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="ListarPais" FunctionName="BuyOnlineModel.Store.ListarPais" />
+          <FunctionImportMapping FunctionImportName="ListarPais" FunctionName="BuyOnlineModel.Store.ListarPais">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BuyOnlineModel.ListarPais_Result">
+                <ScalarProperty Name="IdPais" ColumnName="IdPais" />
+                <ScalarProperty Name="NombrePais" ColumnName="NombrePais" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="ListarTPago" FunctionName="BuyOnlineModel.Store.ListarTPago">
             <ResultMapping>
               <ComplexTypeMapping TypeName="BuyOnlineModel.ListarTPago_Result">

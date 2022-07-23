@@ -148,6 +148,9 @@
     <Compile Include="Models\BuscarEstado_Result.cs">
       <DependentUpon>BuyOnline.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\BuscarPais_Result.cs">
+      <DependentUpon>BuyOnline.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\BuscarTPago_Result.cs">
       <DependentUpon>BuyOnline.tt</DependentUpon>
     </Compile>
@@ -185,6 +188,9 @@
       <DependentUpon>BuyOnline.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ListaDeseos.cs">
+      <DependentUpon>BuyOnline.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ListarPais_Result.cs">
       <DependentUpon>BuyOnline.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ListarTPago_Result.cs">

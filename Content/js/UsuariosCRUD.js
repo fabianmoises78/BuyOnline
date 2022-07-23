@@ -12,20 +12,20 @@ function VerClientes() {
             debugger;
             var html = "";
 
-            $.each(clientes, function () {
+            $.each(clientes, function (index, row) {
                 html += '<tr>';
-                html += '<th scope="row"> ' + clientes.IdPersona + ' </th>';
-                html += '<td>' + clientes.Nombre + '</td>';
-                html += '<td>' + clientes.Apellido + '</td>';
-                html += '<td>' + clientes.Edad + '</td>';
-                html += '<td>' + clientes.Telefono + '</td>';
-                html += '<td>' + clientes.Estado + '</td>';
-                html += '<td>' + clientes.NombrePais + '</td>';
-                html += '<td>' + clientes.IDCliente + '</td>';
-                html += '<td>' + clientes.Usuario + '</td>';
-                html += '<td>' + clientes.Correo + '</td>';
-                html += '<td>' + clientes.Contraseña + '</td>';
-                html += '<td><button class="btn btn-success" onclick="">Editar</button></td>';
+                html += '<th scope="row">  '+row.IdPersona+' </th>';
+                html += '<td> '+ row.Nombre+' </td>';
+                html += '<td> '+ row.Apellido +'</td>';
+                html += '<td> '+row.Edad +' </td>';
+                html += '<td> '+row.Telefono +' </td>';
+                html += '<td> ' + row.NombrePais+' </td>';
+                html += '<td> ' + row.Estado + ' </td>';
+                html += '<td> ' + row.IdCliente + ' </td>';
+                html += '<td> ' + row.Usuario + ' </td>';
+                html += '<td> ' + row.Correo + '  </td>';
+                html += '<td> '+ row.Contraseña +' </td>';
+                html += '<td><button class="btn btn-success" onclick="" value=" ' + row.IdPersona +'">Editar</button></td>';
                 html += '<tr>';
             });
             $('#ListaClientes').append(html);

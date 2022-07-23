@@ -120,13 +120,13 @@ namespace BuyOnline.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<BuscarEstado_Result>("BuscarEstado", estadobParameter);
         }
     
-        public virtual int BuscarPais(string nom)
+        public virtual ObjectResult<BuscarPais_Result> BuscarPais(string nom)
         {
             var nomParameter = nom != null ?
                 new ObjectParameter("Nom", nom) :
                 new ObjectParameter("Nom", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("BuscarPais", nomParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<BuscarPais_Result>("BuscarPais", nomParameter);
         }
     
         public virtual ObjectResult<BuscarTPago_Result> BuscarTPago(string busque)
@@ -254,9 +254,9 @@ namespace BuyOnline.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<LeerCat_Result>("LeerCat");
         }
     
-        public virtual int ListarPais()
+        public virtual ObjectResult<ListarPais_Result> ListarPais()
         {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ListarPais");
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ListarPais_Result>("ListarPais");
         }
     
         public virtual ObjectResult<ListarTPago_Result> ListarTPago()

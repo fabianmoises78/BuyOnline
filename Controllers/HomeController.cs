@@ -201,7 +201,7 @@ namespace BuyOnline.Controllers
             }
         }
 
-        /*public ActionResult Registro()
+        public ActionResult Registro()
         {
             ViewBag.ListarPaises = ListarPaises();
             return View();
@@ -221,13 +221,13 @@ namespace BuyOnline.Controllers
                     var asignar = new Pais
                     {
                         IdPais = item.IdPais,
-                        NombrePais = item.Nombre
+                        NombrePais = item.NombrePais
                     };
                     ListaPais.Add(asignar);
                 }
             }
             return ListaPais;
-        }*/
+        }
 
         public ActionResult RegistroNuevo(string nombre, string apellido, string edad, string numero, string pais, string usuario, string correo, string contraseña)
         {
