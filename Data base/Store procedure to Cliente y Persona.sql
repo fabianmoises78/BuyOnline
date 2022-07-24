@@ -93,16 +93,13 @@ BEGIN
         Apellido = @lastname,
         Edad = @old,
         Telefono = @phone,
-        IdPais = @idpais,
-        IdEstado = @idestadoP
+        IdPais = @idpais
         WHERE IdPersona = @idfolk
 
         UPDATE dbo.Cliente SET
         Usuario = @usuario,
         Correo = @address,
-        Contraseña = @password,
-        IdPersona = @idfolkU,
-        IdEstado = @idestadoC
+        Contraseña = @password
         WHERE IdPersona = @idfolkU
 
         COMMIT TRAN persona_customer
@@ -146,19 +143,13 @@ BEGIN
         IF(@idestado = 2)
         BEGIN
             UPDATE dbo.Cliente SET
-            IdEstado = 2
-            WHERE IdCliente = @idcustume
-        END
-        ELSE IF(@idestado = 3)
-        BEGIN
-            UPDATE dbo.Cliente SET
-            IdEstado = 3
+            IdEstado = 1
             WHERE IdCliente = @idcustume
         END
         ELSE IF(@idestado = 1)
         BEGIN
             UPDATE dbo.Cliente SET
-            IdEstado = 1
+            IdEstado = 2
             WHERE IdCliente = @idcustume
         END
         COMMIT TRAN Disable_folk_custumer
@@ -191,7 +182,7 @@ CREATE PROCEDURE ShowCostumerXPersona
 AS
 BEGIN
     SELECT p.IdPersona, p.Nombre, p.Apellido, p.Edad, p.Telefono, a.NombrePais, e.Estado, c.IdCliente, c.Usuario, c.Correo, c.Contraseña FROM dbo.Persona p 
-    INNER JOIN dbo.Cliente c ON c.IdPersona = p.IdPersona INNER JOIN Pais AS a ON p.IdPais = a.IdPais INNER JOIN Estado as e ON p.IdEstado = e.IdEstado
+    INNER JOIN dbo.Cliente c ON c.IdPersona = p.IdPersona INNER JOIN Pais AS a ON p.IdPais = a.IdPais INNER JOIN Estado as e ON c.IdEstado = e.IdEstado
 END
 GO
 
@@ -217,7 +208,7 @@ CREATE PROCEDURE SearchCustumer
 AS
 BEGIN
     SELECT p.IdPersona, p.Nombre, p.Apellido, p.Edad, p.Telefono, a.NombrePais, e.Estado, c.IdCliente, c.Usuario, c.Correo, c.Contraseña FROM dbo.Persona p INNER JOIN dbo.Cliente c 
-    ON p.IdPersona = c.IdPersona INNER JOIN Pais AS a ON p.IdPais = a.IdPais INNER JOIN Estado as e ON p.IdEstado = e.IdEstado
+    ON p.IdPersona = c.IdPersona INNER JOIN Pais AS a ON p.IdPais = a.IdPais INNER JOIN Estado as e ON c.IdEstado = e.IdEstado
     WHERE p.Nombre LIKE '%'+@dat+'%' OR p.Apellido LIKE '%'+@dat+'%' OR c.Usuario LIKE '%'+@dat+'%' OR c.Correo LIKE '%'+@dat+'%'
 END
 GO
