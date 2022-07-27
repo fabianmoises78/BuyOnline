@@ -271,6 +271,7 @@
     <Content Include="Content\imgdb\des1.jpg" />
     <Content Include="Content\imgdb\lg2.jpg" />
     <Content Include="Content\js\Car.js" />
+    <Content Include="Content\js\ListarPaises.js" />
     <Content Include="Content\js\Login.js" />
     <Content Include="Content\js\loginingresos.js" />
     <Content Include="Content\js\registro.js" />

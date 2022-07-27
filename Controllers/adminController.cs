@@ -12,6 +12,28 @@ namespace BuyOnline.Controllers
         // GET: admin
         Datos conexion = new Datos();
 
+        [HttpPost]
+        [Route("ListaPais")]
+        public JsonResult ListaPais()
+        {
+            List<ListarPais_Result> ListaPais = new List<ListarPais_Result>();
+
+            using (conexion)
+            {
+                var listarpaises = conexion.ListarPais();
+                foreach(var item in listarpaises)
+                {
+                    var asignar = new ListarPais_Result()
+                    {
+                        IdPais = item.IdPais,
+                        NombrePais = item.NombrePais
+                    };
+                    ListaPais.Add(asignar);
+                }
+            }
+            return Json(ListaPais);
+        }
+
         public ActionResult Mantenimiento()
         {
             return View();
