@@ -72,7 +72,7 @@ namespace BuyOnline.Controllers
                         Apellido = item.Apellido,
                         Edad = item.Edad,
                         Telefono = item.Telefono,
-                        NombrePais = item.NombrePais, //este es el nombre del pais
+                        NombrePais = item.NombrePais,
                         Estado = item.Estado,
                         IdCliente = item.IdCliente,
                         Usuario = item.Usuario,
@@ -83,6 +83,11 @@ namespace BuyOnline.Controllers
                 }
             }
             return Json(clientes);
+        }
+
+        public JsonResult RegistrarClientes(string nombre, string apellido, string edad, string numero, string idpais, string usuario, string correo, string contraseña)
+        {
+
         }
 
         public ActionResult CRUDadmin()
