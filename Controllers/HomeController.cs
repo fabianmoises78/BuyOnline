@@ -94,14 +94,11 @@ namespace BuyOnline.Controllers
 
         public ActionResult Login()
         {
-            if (Session["Message"] != null)
-            {
-                ViewBag.Message = Session["Message"];
-                Session["Message"] = null;
-            }
             return View();
         }
-        //public Management LoginIniciar(Cliente cliente)
+
+        [HttpPost]
+        [Route("LoginIniciar")]
         public JsonResult LoginIniciar(Cliente cliente)
         {
             Datos dtl = new Datos();
