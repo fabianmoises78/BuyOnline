@@ -276,6 +276,7 @@
     <Content Include="Content\js\loginingresos.js" />
     <Content Include="Content\js\RegistrarClienteA.js" />
     <Content Include="Content\js\registro.js" />
+    <Content Include="Content\js\Routes.js" />
     <Content Include="Content\js\SearchProduct.js" />
     <Content Include="Content\js\UsuariosCRUD.js" />
     <Content Include="Content\js\validadlogin.js" />
