@@ -59,7 +59,7 @@
                 </ul>
                 <div class="card-body d-flex justify-content-between">
                     @Html.ActionLink("Ver Producto", "VistaProducto", new { id = item.IdProducto, IdProducto = item.IdProducto }, new { @class = "card-link" })
-                    <button onclick="AddToCar(@item.IdProducto)">Favoritos</button>
+                    <button onclick="AddToCar(@item.IdProducto)" class="card-link">Favoritos</button>
                     @Html.ActionLink("Favorito", "WishList", new { id = item.IdProducto, IdProducto = item.IdProducto }, new { @class = "card-link" })
                 </div>
             </div>

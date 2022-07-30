@@ -1,4 +1,5 @@
-﻿using BuyOnline.Models;
+﻿using BuyOnline.DTO;
+using BuyOnline.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -87,7 +88,24 @@ namespace BuyOnline.Controllers
 
         public JsonResult RegistrarClientes(string nombre, string apellido, string edad, string numero, string idpais, string usuario, string correo, string contraseña)
         {
+            GenericDTO response = new GenericDTO();
 
+            var idpais1 = Convert.ToInt32(idpais);
+            var edad1 = Convert.ToInt32(edad);
+
+            try
+            {
+                conexion.RecordPersonaXcostumer(nombre, apellido, edad1, numero, idpais1, usuario, correo, contraseña);
+                response.Message = "Usuario registrado con exito.";
+                response.Status = 1;
+                return Json(response);
+            }
+            catch
+            {
+                response.Message = "Un error ha ocurrido.";
+                response.Status = 0;
+                return Json(response);
+            }
         }
 
         public ActionResult CRUDadmin()

@@ -2,7 +2,7 @@
     var url = window.localStorage.getItem("url");
 
     $('#LogIn').on('click', function () {
-
+        debugger;
         var datos = {
             Usuario: $('#usuario').val(),
             Contraseña: $('#contraseña').val()
@@ -10,7 +10,7 @@
         
         debugger;
         $.ajax({
-            url: url + "/Home/LoginIniciar",
+            url: "https://localhost:44372/Home/LoginIniciar",
             contentType: "Application/json",
             method: "POST",
             data: JSON.stringify(datos),
