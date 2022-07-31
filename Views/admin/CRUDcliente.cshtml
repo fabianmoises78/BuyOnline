@@ -35,7 +35,7 @@
     </table>
 </div>
 
-<div class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+<div class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true" id="modal">
     <div class="modal-dialog modal-sm">
         <div id="modalMantenimiento" class="modal-content">
             <div class="mx-auto my-4">
@@ -59,8 +59,8 @@
                 </form>
             </div>
             <div class=" row my-3 mx-auto">
-                <button onclick="" class="btn btn-success mx-3" id="registro">Ingresar</button>
-                <button onclick="" class="btn btn-success">Cancelar</button>
+                <button class="btn btn-success mx-3" id="registro">Ingresar</button>
+                <button class="btn btn-danger" id="cancelar">Cancelar</button>
             </div>
         </div>
     </div>
@@ -71,6 +71,9 @@
     <script src="~/Content/js/UsuariosCRUD.js"></script>
     <script src="~/Content/js/ListarPaises.js"></script>
     <script src="~/Content/js/validarregistro.js"></script>
+    <script src="~/Content/js/RegistrarClienteA.js"></script>
+    <script src="~/Content/js/ClientebyID.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.20/dist/sweetalert2.all.min.js"></script>
     <script>
         VerClientes();
     </script>

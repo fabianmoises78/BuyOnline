@@ -550,6 +550,15 @@ namespace BuyOnline.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ShowCostumerXPersona_Result>("ShowCostumerXPersona");
         }
     
+        public virtual ObjectResult<ShowCostumerXPersonabyId_Result> ShowCostumerXPersonabyId(Nullable<int> idperson)
+        {
+            var idpersonParameter = idperson.HasValue ?
+                new ObjectParameter("idperson", idperson) :
+                new ObjectParameter("idperson", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ShowCostumerXPersonabyId_Result>("ShowCostumerXPersonabyId", idpersonParameter);
+        }
+    
         public virtual ObjectResult<ShowProducts_Result> ShowProducts()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ShowProducts_Result>("ShowProducts");
@@ -779,7 +788,7 @@ namespace BuyOnline.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("UpdatePersonaXAdmin", idfolkParameter, nameParameter, lastnameParameter, oldParameter, phoneParameter, idpaisParameter, idestadoPParameter, userParameter, passwordParameter, idestadoAParameter);
         }
     
-        public virtual ObjectResult<string> UpdatePersonaXCustumer(Nullable<int> idfolk, string name, string lastname, Nullable<int> old, string phone, Nullable<int> idpais, Nullable<int> idestadoP, string usuario, string address, string password, Nullable<int> idestadoC)
+        public virtual ObjectResult<string> UpdatePersonaXCustumer(Nullable<int> idfolk, string name, string lastname, Nullable<int> old, string phone, Nullable<int> idpais, Nullable<int> idestadoP, string usuario, string address, string password)
         {
             var idfolkParameter = idfolk.HasValue ?
                 new ObjectParameter("idfolk", idfolk) :
@@ -821,11 +830,7 @@ namespace BuyOnline.Models
                 new ObjectParameter("password", password) :
                 new ObjectParameter("password", typeof(string));
     
-            var idestadoCParameter = idestadoC.HasValue ?
-                new ObjectParameter("idestadoC", idestadoC) :
-                new ObjectParameter("idestadoC", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("UpdatePersonaXCustumer", idfolkParameter, nameParameter, lastnameParameter, oldParameter, phoneParameter, idpaisParameter, idestadoPParameter, usuarioParameter, addressParameter, passwordParameter, idestadoCParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("UpdatePersonaXCustumer", idfolkParameter, nameParameter, lastnameParameter, oldParameter, phoneParameter, idpaisParameter, idestadoPParameter, usuarioParameter, addressParameter, passwordParameter);
         }
     
         public virtual ObjectResult<string> UpdateProducto(Nullable<int> idP, string name, string descript, string img, Nullable<double> price, Nullable<int> existence, Nullable<int> idest, Nullable<int> idcat, string detalles)

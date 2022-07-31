@@ -10,8 +10,6 @@ function AddToCar(Id) {
         IdProducto : Id
     }
 
-    debugger;
-
     $.ajax({
         url: "https://localhost:44372/Home/WishList",
         contentType: "Application/json",

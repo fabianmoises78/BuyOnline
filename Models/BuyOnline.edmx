@@ -493,6 +493,9 @@
         <Function Name="ShowCard" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="ShowCompras" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="ShowCostumerXPersona" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="ShowCostumerXPersonabyId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idperson" Type="int" Mode="In" />
+        </Function>
         <Function Name="ShowProducts" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="ShowProductsbyID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="idproducto" Type="int" Mode="In" />
@@ -570,7 +573,6 @@
           <Parameter Name="usuario" Type="varchar" Mode="In" />
           <Parameter Name="address" Type="varchar" Mode="In" />
           <Parameter Name="password" Type="varchar" Mode="In" />
-          <Parameter Name="idestadoC" Type="int" Mode="In" />
         </Function>
         <Function Name="UpdateProducto" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="IdP" Type="int" Mode="In" />
@@ -1275,6 +1277,9 @@
           <FunctionImport Name="ShowCard" ReturnType="Collection(BuyOnlineModel.ShowCard_Result)" />
           <FunctionImport Name="ShowCompras" ReturnType="Collection(BuyOnlineModel.ShowCompras_Result)" />
           <FunctionImport Name="ShowCostumerXPersona" ReturnType="Collection(BuyOnlineModel.ShowCostumerXPersona_Result)" />
+          <FunctionImport Name="ShowCostumerXPersonabyId" ReturnType="Collection(BuyOnlineModel.ShowCostumerXPersonabyId_Result)">
+            <Parameter Name="idperson" Mode="In" Type="Int32" />
+          </FunctionImport>
           <FunctionImport Name="ShowProducts" ReturnType="Collection(BuyOnlineModel.ShowProducts_Result)" />
           <FunctionImport Name="ShowProductsbyID" ReturnType="Collection(BuyOnlineModel.ShowProductsbyID_Result)">
             <Parameter Name="idproducto" Mode="In" Type="Int32" />
@@ -1352,7 +1357,6 @@
             <Parameter Name="usuario" Mode="In" Type="String" />
             <Parameter Name="address" Mode="In" Type="String" />
             <Parameter Name="password" Mode="In" Type="String" />
-            <Parameter Name="idestadoC" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="UpdateProducto" ReturnType="Collection(String)">
             <Parameter Name="IdP" Mode="In" Type="Int32" />
@@ -1444,7 +1448,9 @@
           <Property Type="String" Name="Apellido" Nullable="false" MaxLength="75" />
           <Property Type="Int32" Name="Edad" Nullable="false" />
           <Property Type="String" Name="Telefono" Nullable="false" MaxLength="12" />
+          <Property Type="Int32" Name="IdPais" Nullable="false" />
           <Property Type="String" Name="NombrePais" Nullable="false" MaxLength="100" />
+          <Property Type="Int32" Name="IdEstado" Nullable="false" />
           <Property Type="String" Name="Estado" Nullable="false" MaxLength="25" />
           <Property Type="Int32" Name="IdCliente" Nullable="false" />
           <Property Type="String" Name="Usuario" Nullable="false" MaxLength="100" />
@@ -1511,7 +1517,24 @@
           <Property Type="String" Name="Apellido" Nullable="false" MaxLength="75" />
           <Property Type="Int32" Name="Edad" Nullable="false" />
           <Property Type="String" Name="Telefono" Nullable="false" MaxLength="12" />
+          <Property Type="Int32" Name="IdPais" Nullable="false" />
           <Property Type="String" Name="NombrePais" Nullable="false" MaxLength="100" />
+          <Property Type="Int32" Name="IdEstado" Nullable="false" />
+          <Property Type="String" Name="Estado" Nullable="false" MaxLength="25" />
+          <Property Type="Int32" Name="IdCliente" Nullable="false" />
+          <Property Type="String" Name="Usuario" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="Correo" Nullable="false" MaxLength="30" />
+          <Property Type="String" Name="Contraseña" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="ShowCostumerXPersonabyId_Result">
+          <Property Type="Int32" Name="IdPersona" Nullable="false" />
+          <Property Type="String" Name="Nombre" Nullable="false" MaxLength="75" />
+          <Property Type="String" Name="Apellido" Nullable="false" MaxLength="75" />
+          <Property Type="Int32" Name="Edad" Nullable="false" />
+          <Property Type="String" Name="Telefono" Nullable="false" MaxLength="12" />
+          <Property Type="Int32" Name="IdPais" Nullable="false" />
+          <Property Type="String" Name="NombrePais" Nullable="false" MaxLength="100" />
+          <Property Type="Int32" Name="IdEstado" Nullable="false" />
           <Property Type="String" Name="Estado" Nullable="false" MaxLength="25" />
           <Property Type="Int32" Name="IdCliente" Nullable="false" />
           <Property Type="String" Name="Usuario" Nullable="false" MaxLength="100" />
@@ -1845,7 +1868,9 @@
                 <ScalarProperty Name="Apellido" ColumnName="Apellido" />
                 <ScalarProperty Name="Edad" ColumnName="Edad" />
                 <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="IdPais" ColumnName="IdPais" />
                 <ScalarProperty Name="NombrePais" ColumnName="NombrePais" />
+                <ScalarProperty Name="IdEstado" ColumnName="IdEstado" />
                 <ScalarProperty Name="Estado" ColumnName="Estado" />
                 <ScalarProperty Name="IdCliente" ColumnName="IdCliente" />
                 <ScalarProperty Name="Usuario" ColumnName="Usuario" />
@@ -1936,7 +1961,28 @@
                 <ScalarProperty Name="Apellido" ColumnName="Apellido" />
                 <ScalarProperty Name="Edad" ColumnName="Edad" />
                 <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="IdPais" ColumnName="IdPais" />
                 <ScalarProperty Name="NombrePais" ColumnName="NombrePais" />
+                <ScalarProperty Name="IdEstado" ColumnName="IdEstado" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="IdCliente" ColumnName="IdCliente" />
+                <ScalarProperty Name="Usuario" ColumnName="Usuario" />
+                <ScalarProperty Name="Correo" ColumnName="Correo" />
+                <ScalarProperty Name="Contraseña" ColumnName="Contraseña" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="ShowCostumerXPersonabyId" FunctionName="BuyOnlineModel.Store.ShowCostumerXPersonabyId">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BuyOnlineModel.ShowCostumerXPersonabyId_Result">
+                <ScalarProperty Name="IdPersona" ColumnName="IdPersona" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+                <ScalarProperty Name="Edad" ColumnName="Edad" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="IdPais" ColumnName="IdPais" />
+                <ScalarProperty Name="NombrePais" ColumnName="NombrePais" />
+                <ScalarProperty Name="IdEstado" ColumnName="IdEstado" />
                 <ScalarProperty Name="Estado" ColumnName="Estado" />
                 <ScalarProperty Name="IdCliente" ColumnName="IdCliente" />
                 <ScalarProperty Name="Usuario" ColumnName="Usuario" />

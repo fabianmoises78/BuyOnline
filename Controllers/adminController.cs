@@ -73,7 +73,9 @@ namespace BuyOnline.Controllers
                         Apellido = item.Apellido,
                         Edad = item.Edad,
                         Telefono = item.Telefono,
+                        IdPais = item.IdPais,
                         NombrePais = item.NombrePais,
+                        IdEstado = item.IdEstado,
                         Estado = item.Estado,
                         IdCliente = item.IdCliente,
                         Usuario = item.Usuario,
@@ -86,15 +88,46 @@ namespace BuyOnline.Controllers
             return Json(clientes);
         }
 
+        [HttpPost]
+        [Route("VerClienteID")]
+        public JsonResult VerClienteID(int idpersona)
+        {
+            List<ShowCostumerXPersonabyId_Result> ClienteId = new List<ShowCostumerXPersonabyId_Result>();
+            using (conexion)
+            {
+                var clienteID = conexion.ShowCostumerXPersonabyId(idpersona).ToList();
+
+                var asignar = new ShowCostumerXPersonabyId_Result()
+                {
+                    IdPersona = clienteID[0].IdPersona,
+                    Nombre = clienteID[0].Nombre,
+                    Apellido = clienteID[0].Apellido,
+                    Edad = clienteID[0].Edad,
+                    Telefono = clienteID[0].Telefono,
+                    IdPais = clienteID[0].IdPais,
+                    NombrePais = clienteID[0].NombrePais,
+                    IdEstado = clienteID[0].IdEstado,
+                    Estado = clienteID[0].Estado,
+                    IdCliente = clienteID[0].IdCliente,
+                    Usuario = clienteID[0].Usuario,
+                    Correo = clienteID[0].Usuario,
+                    Contraseña = clienteID[0].Contraseña
+                };
+                ClienteId.Add(asignar);
+            }
+            return Json(ClienteId);
+        }
+
+        [HttpPost]
+        [Route("RegistrarClientes")]
         public JsonResult RegistrarClientes(string nombre, string apellido, string edad, string numero, string idpais, string usuario, string correo, string contraseña)
         {
             GenericDTO response = new GenericDTO();
 
-            var idpais1 = Convert.ToInt32(idpais);
-            var edad1 = Convert.ToInt32(edad);
-
             try
             {
+                var idpais1 = Convert.ToInt32(idpais);
+                var edad1 = Convert.ToInt32(edad);
                 conexion.RecordPersonaXcostumer(nombre, apellido, edad1, numero, idpais1, usuario, correo, contraseña);
                 response.Message = "Usuario registrado con exito.";
                 response.Status = 1;

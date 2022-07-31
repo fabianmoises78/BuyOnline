@@ -11,7 +11,7 @@ namespace BuyOnline.Models
 {
     using System;
     
-    public partial class ShowCostumerXPersona_Result
+    public partial class ShowCostumerXPersonabyId_Result
     {
         public int IdPersona { get; set; }
         public string Nombre { get; set; }

@@ -2,13 +2,11 @@
     var url = window.localStorage.getItem("url");
 
     $('#LogIn').on('click', function () {
-        debugger;
         var datos = {
             Usuario: $('#usuario').val(),
             Contraseña: $('#contraseña').val()
         };
         
-        debugger;
         $.ajax({
             url: "https://localhost:44372/Home/LoginIniciar",
             contentType: "Application/json",

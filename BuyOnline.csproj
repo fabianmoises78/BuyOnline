@@ -236,6 +236,9 @@
     <Compile Include="Models\ShowCompras_Result.cs">
       <DependentUpon>BuyOnline.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\ShowCostumerXPersonabyId_Result.cs">
+      <DependentUpon>BuyOnline.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\ShowCostumerXPersona_Result.cs">
       <DependentUpon>BuyOnline.tt</DependentUpon>
     </Compile>
@@ -271,6 +274,7 @@
     <Content Include="Content\imgdb\des1.jpg" />
     <Content Include="Content\imgdb\lg2.jpg" />
     <Content Include="Content\js\Car.js" />
+    <Content Include="Content\js\ClientebyID.js" />
     <Content Include="Content\js\ListarPaises.js" />
     <Content Include="Content\js\Login.js" />
     <Content Include="Content\js\loginingresos.js" />

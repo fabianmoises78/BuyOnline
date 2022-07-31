@@ -18,7 +18,9 @@ namespace BuyOnline.Models
         public string Apellido { get; set; }
         public int Edad { get; set; }
         public string Telefono { get; set; }
+        public int IdPais { get; set; }
         public string NombrePais { get; set; }
+        public int IdEstado { get; set; }
         public string Estado { get; set; }
         public int IdCliente { get; set; }
         public string Usuario { get; set; }

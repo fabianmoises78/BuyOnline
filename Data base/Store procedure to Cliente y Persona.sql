@@ -212,3 +212,30 @@ BEGIN
     WHERE p.Nombre LIKE '%'+@dat+'%' OR p.Apellido LIKE '%'+@dat+'%' OR c.Usuario LIKE '%'+@dat+'%' OR c.Correo LIKE '%'+@dat+'%'
 END
 GO
+
+IF EXISTS --Store procedure to show all costumers by idperson
+(
+    SELECT type_desc, type 
+    FROM sys.procedures
+    WHERE NAME = 'ShowCostumerXPersonabyId'
+    AND type = 'p'
+)
+DROP PROCEDURE dbo.ShowCostumerXPersonabyId
+GO
+
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE PROCEDURE ShowCostumerXPersonabyId
+(
+    @idperson INT
+)
+AS
+BEGIN
+    SELECT p.IdPersona, p.Nombre, p.Apellido, p.Edad, p.Telefono,a.IdPais, a.NombrePais,e.IdEstado, e.Estado, c.IdCliente, c.Usuario, c.Correo, c.Contraseña FROM dbo.Persona p 
+    INNER JOIN dbo.Cliente c ON c.IdPersona = p.IdPersona INNER JOIN Pais AS a ON p.IdPais = a.IdPais INNER JOIN Estado as e ON c.IdEstado = e.IdEstado
+    WHERE p.IdPersona = @idperson
+END
+GO
