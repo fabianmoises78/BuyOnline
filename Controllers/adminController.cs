@@ -110,7 +110,7 @@ namespace BuyOnline.Controllers
                     Estado = clienteID[0].Estado,
                     IdCliente = clienteID[0].IdCliente,
                     Usuario = clienteID[0].Usuario,
-                    Correo = clienteID[0].Usuario,
+                    Correo = clienteID[0].Correo,
                     Contraseña = clienteID[0].Contraseña
                 };
                 ClienteId.Add(asignar);

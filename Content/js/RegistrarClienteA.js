@@ -28,6 +28,16 @@
                         text: response.Message
                     })
 
+                    $('#nombre').val('');
+                    $('#apellido').val('');
+                    $('#edad').val('');
+                    $('#numero').val('');
+                    $('#paisdata').select('Pais');
+                    $('#usuario').val('');
+                    $('#correo').val('');
+                    $('#contraseña').val('');
+                    $('contraseña2').val('');
+
                 } else {
                     Swal.fire({
                         icon: "error",

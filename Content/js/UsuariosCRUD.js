@@ -9,7 +9,6 @@ function VerClientes() {
         method: "POST",
         dataType: "json",
         success: function (clientes) {
-            debugger;
             var html = "";
 
             $.each(clientes, function (index, row) {
