@@ -273,6 +273,7 @@
     <Content Include="Content\EstiloRegistro.css" />
     <Content Include="Content\imgdb\des1.jpg" />
     <Content Include="Content\imgdb\lg2.jpg" />
+    <Content Include="Content\js\Botones.js" />
     <Content Include="Content\js\Car.js" />
     <Content Include="Content\js\ClientebyID.js" />
     <Content Include="Content\js\ListarPaises.js" />

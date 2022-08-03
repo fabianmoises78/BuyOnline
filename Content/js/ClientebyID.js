@@ -15,41 +15,40 @@ function VerCliente(Id) {
         data: JSON.stringify(datos),
         dataType: "json",
         success: function (cliente) {
-            //limpiamos el formulario donde esta alojado el ingresar usuarios
-            $("#modalMantenimiento").html(null);
+            $("#titulo").html(null);
 
             var html = "";
 
             $.each(cliente, function (index, row) {
-                html += '<div class="mx-auto my-4">';
+
+                html += '<div id="titulo" class="mx-auto my-4">';
                 html += '<h4>Editar Usuario ' + row.Nombre + '</h4>';
-                html += '</div>'
-                html += '<div class="mx-auto">';
-                html += '<form id="validarregistro">';
-                html += '<input type="text" id="nombre" value=" ' + row.Nombre + '" name="nombre" placeholder="Nombre" class="form-control input-lg my-3 txt" />';
-                html += '<input type="text" id="apellido" value="' + row.Apellido + '" name="apellido" placeholder="Apellido" class="form-control input-lg my-3 txt" />';
-                html += '<input type="number" id="edad" value="' + row.Edad + '" name="edad" placeholder="Edad" class="form-control my-3 txt" />';
-                html += '<input type="text" id="numero" value="' + row.Telefono + '" name="numero" placeholder="Número Telefónico" class="form-control input-lg my-3 txt" />';
-                html += '<select id="paisdata" name="pais" class="form-control input-lg my-3 txt">';
-                html += '<option selected value="' + row.IdPais + '" >' + row.NombrePais + '</option>';
-                html += '</select>';
-                html += '<input type="text" id="usuario" value="' + row.Usuario + '" name="usuario" placeholder="Usuario" class="form-control input-lg my-3 txt" />';
-                html += '<input type="email" id="correo" value="' + row.Correo + '" name="correo" placeholder="Correo" class="form-control input-lg my-3 txt" />';
-                html += '<input id="contraseña" value="' + row.Contraseña + '" name="contraseña" placeholder="Contraseña" class="form-control input-lg my-3 txt" />';
-                html += '</form>';
                 html += '</div>';
-                html += '<div class=" row my-3 mx-auto">';
-                html += '<button class="btn btn-success mx-1" id="EditarUsuario">Editar</button>';
+
+                $("#nombre").val(row.Nombre);
+                $("#apellido").val(row.Apellido);
+                $("#edad").val(row.Edad);
+                $("#numero").val(row.Telefono);
+                $("#paisdata option[value=" + row.IdPais + "]").attr("selected", true);
+                $("#usuario").val(row.Usuario);
+                $("#correo").val(row.Correo);
+                $("#contraseña").val(row.Contraseña);
+                $("#contraseña2").hide();
+                $("#mensaje").hide();
+                $("#registro").hide();
+                $("#EditarUsuario").show();
                 if (row.IdEstado == 1) {
-                    html += '<button class="btn btn-success mx-1" id="ActiDesac">Desactivar</button>';
+                    $("#ActiDesac").show();
+                    $("#ActiDesac2").hide();
                 } else if (row.IdEstado == 2) {
-                    html += '<button class="btn btn-success mx-1" id="ActiDesac">Activar</button>';
+                    $("#ActiDesac2").show();
+                    $("#ActiDesac").hide();
                 }
-                html += '<button class="btn btn-danger mx-1" onclick="location.reload()" id="">Salir</button>';
-                html += '</div>';
+
+                $("#salir").show();
             });
 
-            $("#modalMantenimiento").append(html);
+            $("#titulo").append(html);
         }
     });
 }
