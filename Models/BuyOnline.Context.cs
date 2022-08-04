@@ -788,7 +788,7 @@ namespace BuyOnline.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("UpdatePersonaXAdmin", idfolkParameter, nameParameter, lastnameParameter, oldParameter, phoneParameter, idpaisParameter, idestadoPParameter, userParameter, passwordParameter, idestadoAParameter);
         }
     
-        public virtual ObjectResult<string> UpdatePersonaXCustumer(Nullable<int> idfolk, string name, string lastname, Nullable<int> old, string phone, Nullable<int> idpais, Nullable<int> idestadoP, string usuario, string address, string password)
+        public virtual ObjectResult<string> UpdatePersonaXCustumer(Nullable<int> idfolk, string name, string lastname, Nullable<int> old, string phone, Nullable<int> idpais, string usuario, string address, string password)
         {
             var idfolkParameter = idfolk.HasValue ?
                 new ObjectParameter("idfolk", idfolk) :
@@ -814,10 +814,6 @@ namespace BuyOnline.Models
                 new ObjectParameter("idpais", idpais) :
                 new ObjectParameter("idpais", typeof(int));
     
-            var idestadoPParameter = idestadoP.HasValue ?
-                new ObjectParameter("idestadoP", idestadoP) :
-                new ObjectParameter("idestadoP", typeof(int));
-    
             var usuarioParameter = usuario != null ?
                 new ObjectParameter("usuario", usuario) :
                 new ObjectParameter("usuario", typeof(string));
@@ -830,7 +826,7 @@ namespace BuyOnline.Models
                 new ObjectParameter("password", password) :
                 new ObjectParameter("password", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("UpdatePersonaXCustumer", idfolkParameter, nameParameter, lastnameParameter, oldParameter, phoneParameter, idpaisParameter, idestadoPParameter, usuarioParameter, addressParameter, passwordParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("UpdatePersonaXCustumer", idfolkParameter, nameParameter, lastnameParameter, oldParameter, phoneParameter, idpaisParameter, usuarioParameter, addressParameter, passwordParameter);
         }
     
         public virtual ObjectResult<string> UpdateProducto(Nullable<int> idP, string name, string descript, string img, Nullable<double> price, Nullable<int> existence, Nullable<int> idest, Nullable<int> idcat, string detalles)

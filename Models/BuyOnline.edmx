@@ -569,7 +569,6 @@
           <Parameter Name="old" Type="int" Mode="In" />
           <Parameter Name="phone" Type="varchar" Mode="In" />
           <Parameter Name="idpais" Type="int" Mode="In" />
-          <Parameter Name="idestadoP" Type="int" Mode="In" />
           <Parameter Name="usuario" Type="varchar" Mode="In" />
           <Parameter Name="address" Type="varchar" Mode="In" />
           <Parameter Name="password" Type="varchar" Mode="In" />
@@ -1353,7 +1352,6 @@
             <Parameter Name="old" Mode="In" Type="Int32" />
             <Parameter Name="phone" Mode="In" Type="String" />
             <Parameter Name="idpais" Mode="In" Type="Int32" />
-            <Parameter Name="idestadoP" Mode="In" Type="Int32" />
             <Parameter Name="usuario" Mode="In" Type="String" />
             <Parameter Name="address" Mode="In" Type="String" />
             <Parameter Name="password" Mode="In" Type="String" />

@@ -141,6 +141,58 @@ namespace BuyOnline.Controllers
             }
         }
 
+        [HttpPost]
+        [Route("EditarCliente")]
+        public JsonResult EditarCliente(string idpersona, string nombre, string apellido, string edad, string telefono, string idpais, string usuario, string correo, string contraseña)
+        {
+            GenericDTO response = new GenericDTO();
+            try
+            {
+                var idpersona2 = Convert.ToInt32(idpersona);
+                var idpais2 = Convert.ToInt32(idpais);
+                var edad2 = Convert.ToInt32(edad);
+
+                conexion.UpdatePersonaXCustumer(idpersona2, nombre, apellido, edad2,telefono , idpais2, usuario, correo, contraseña);
+
+                response.Message = "Usuario editado.";
+                response.Status = 1;
+                return Json(response);
+            }
+            catch(Exception e)
+            {
+                response.Message = "Un error ha ocurrido " + e;
+                response.Status = 0;
+                return Json(response);
+            }
+        }
+
+        [HttpPost]
+        [Route("ActiDesac")]
+        public JsonResult ActiDesac(int idcliente, int idestado)
+        {
+            GenericDTO response = new GenericDTO();
+            try
+            {
+                conexion.DisablePersonaXCustumer(idcliente, idestado);
+                if(idestado == 1)
+                {
+                    response.Message = "Usuario Desactivado.";
+                    response.Status = 1;
+                }else if (idestado == 2)
+                {
+                    response.Message = "Usuario Activado";
+                    response.Status = 1;
+                }
+                return Json(response);
+            }
+            catch
+            {
+                response.Message = "Un error ha ocurrido.";
+                response.Status = 0;
+                return Json(response);
+            }
+        }
+
         public ActionResult CRUDadmin()
         {
             return View();
