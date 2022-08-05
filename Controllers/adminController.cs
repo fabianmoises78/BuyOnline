@@ -168,17 +168,20 @@ namespace BuyOnline.Controllers
 
         [HttpPost]
         [Route("ActiDesac")]
-        public JsonResult ActiDesac(int idcliente, int idestado)
+        public JsonResult ActiDesac(string idcliente, string idestado)
         {
             GenericDTO response = new GenericDTO();
             try
             {
-                conexion.DisablePersonaXCustumer(idcliente, idestado);
-                if(idestado == 1)
+                var idcliente2 = Convert.ToInt32(idcliente);
+                var idestado2 = Convert.ToInt32(idestado);
+
+                conexion.DisablePersonaXCustumer(idcliente2, idestado2);
+                if(idestado == "1")
                 {
                     response.Message = "Usuario Desactivado.";
                     response.Status = 1;
-                }else if (idestado == 2)
+                }else if (idestado == "2")
                 {
                     response.Message = "Usuario Activado";
                     response.Status = 1;

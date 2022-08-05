@@ -21,18 +21,19 @@ function VerCliente(Id) {
 
             $.each(cliente, function (index, row) {
 
+                sessionStorage.setItem("idpersona", row.IdPersona);
+                sessionStorage.setItem("idcliente", row.IdCliente);
+                sessionStorage.setItem("idestado", row.IdEstado);
+
                 html += '<div id="titulo" class="mx-auto my-4">';
                 html += '<h4>Editar Usuario ' + row.Nombre + '</h4>';
                 html += '</div>';
 
-                $("#idpersona").val(row.IdPersona);
                 $("#nombre").val(row.Nombre);
                 $("#apellido").val(row.Apellido);
                 $("#edad").val(row.Edad);
                 $("#numero").val(row.Telefono);
-                $("#idestado").val(row.IdEstado)
                 $("#paisdata option[value=" + row.IdPais + "]").attr("selected", true);
-                $("#idcliente").val(row.IdCliente);
                 $("#usuario").val(row.Usuario);
                 $("#correo").val(row.Correo);
                 $("#contraseña").val(row.Contraseña);
