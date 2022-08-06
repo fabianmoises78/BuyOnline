@@ -9,7 +9,6 @@
             idestado: idestado
         };
 
-        debugger;
         $.ajax({
             url: "https://localhost:44372/admin/ActiDesac",
             contentType: "Application/json",

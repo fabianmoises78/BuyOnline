@@ -127,7 +127,7 @@ var cambiosPass = function () {
 
     if (cont2 == cont) {
         $('#mensaje').hide();
-        $('#mensaje').attr("class", "form-control");
+        $('#mensaje').attr("class", "");
         $('#mensaje').show();
         $('#mensaje').html("Las contraseñas si coinciden.");
     }

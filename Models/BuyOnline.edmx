@@ -1345,7 +1345,7 @@
             <Parameter Name="password" Mode="In" Type="String" />
             <Parameter Name="idestadoA" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="UpdatePersonaXCustumer" ReturnType="Collection(String)">
+          <FunctionImport Name="UpdatePersonaXCustumer" ReturnType="Collection(Int32)">
             <Parameter Name="idfolk" Mode="In" Type="Int32" />
             <Parameter Name="name" Mode="In" Type="String" />
             <Parameter Name="lastname" Mode="In" Type="String" />

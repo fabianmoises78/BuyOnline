@@ -277,6 +277,7 @@
     <Content Include="Content\js\Botones.js" />
     <Content Include="Content\js\Car.js" />
     <Content Include="Content\js\ClientebyID.js" />
+    <Content Include="Content\js\EditarCliente.js" />
     <Content Include="Content\js\ListarPaises.js" />
     <Content Include="Content\js\Login.js" />
     <Content Include="Content\js\loginingresos.js" />

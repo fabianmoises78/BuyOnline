@@ -1,21 +1,22 @@
 ﻿$(document).ready(function () {
-    $('#registro').on('click', function () {
-
-        var idpais = $('#paisdata').val();
+    $("#EditarUsuario").on('click', function () {
+        idpersona = sessionStorage.getItem("idpersona");
+        idpais = $("#paisdata").val();
 
         var datos = {
-            nombre: $('#nombre').val(),
-            apellido: $('#apellido').val(),
-            edad: $('#edad').val(),
-            numero: $('#numero').val(),
+            idpersona: idpersona,
+            nombre: $("#nombre").val(),
+            apellido: $("#apellido").val(),
+            edad: $("#edad").val(),
+            numero: $("#numero").val(),
             idpais: idpais,
-            usuario: $('#usuario').val(),
-            correo: $('#correo').val(),
-            contraseña: $('#contraseña').val()
+            usuario: $("#usuario").val(),
+            correo: $("#correo").val(),
+            contraseña: $("#contraseña").val()
         };
 
         $.ajax({
-            url: "https://localhost:44372/admin/RegistrarClientes",
+            url: "https://localhost:44372/admin/EditarCliente",
             contentType: "Application/json",
             method: "POST",
             data: JSON.stringify(datos),
@@ -27,7 +28,6 @@
                         title: "Exito",
                         text: response.Message
                     })
-
                 } else {
                     Swal.fire({
                         icon: "error",
@@ -35,19 +35,7 @@
                         text: response.Message
                     })
                 }
-            },
-            error: function (error) {
-                Swal.fire({
-                    icon: "error",
-                    title: "Error",
-                    text: error.responseText
-                })
             }
         });
-    })
-
-    $('#cancelar').on('click', function () {
-        $('#modal').modal('hide')
-    })
+    });
 });
-

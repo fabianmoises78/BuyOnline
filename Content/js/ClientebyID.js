@@ -37,8 +37,6 @@ function VerCliente(Id) {
                 $("#usuario").val(row.Usuario);
                 $("#correo").val(row.Correo);
                 $("#contraseña").val(row.Contraseña);
-                $("#contraseña2").hide();
-                $("#mensaje").hide();
                 $("#registro").hide();
                 $("#EditarUsuario").show();
                 if (row.IdEstado == 1) {

@@ -3,7 +3,6 @@ using BuyOnline.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace BuyOnline.Controllers
@@ -22,7 +21,7 @@ namespace BuyOnline.Controllers
             using (conexion)
             {
                 var listarpaises = conexion.ListarPais();
-                foreach(var item in listarpaises)
+                foreach (var item in listarpaises)
                 {
                     var asignar = new ListarPais_Result()
                     {
@@ -60,11 +59,11 @@ namespace BuyOnline.Controllers
         public JsonResult ListarClientes()
         {
             List<ShowCostumerXPersona_Result> clientes = new List<ShowCostumerXPersona_Result>();
-            using (conexion)    
+            using (conexion)
             {
                 var listarClientes = conexion.ShowCostumerXPersona();
 
-                foreach(var item in listarClientes)
+                foreach (var item in listarClientes)
                 {
                     var asignar = new ShowCostumerXPersona_Result()
                     {
@@ -143,7 +142,7 @@ namespace BuyOnline.Controllers
 
         [HttpPost]
         [Route("EditarCliente")]
-        public JsonResult EditarCliente(string idpersona, string nombre, string apellido, string edad, string telefono, string idpais, string usuario, string correo, string contraseña)
+        public JsonResult EditarCliente(string idpersona, string nombre, string apellido, string edad, string numero, string idpais, string usuario, string correo, string contraseña)
         {
             GenericDTO response = new GenericDTO();
             try
@@ -152,13 +151,13 @@ namespace BuyOnline.Controllers
                 var idpais2 = Convert.ToInt32(idpais);
                 var edad2 = Convert.ToInt32(edad);
 
-                conexion.UpdatePersonaXCustumer(idpersona2, nombre, apellido, edad2,telefono , idpais2, usuario, correo, contraseña);
+                conexion.UpdatePersonaXCustumer(idpersona2, nombre, apellido, edad2, numero, idpais2, usuario, correo, contraseña);
 
                 response.Message = "Usuario editado.";
                 response.Status = 1;
                 return Json(response);
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 response.Message = "Un error ha ocurrido " + e;
                 response.Status = 0;
@@ -177,11 +176,12 @@ namespace BuyOnline.Controllers
                 var idestado2 = Convert.ToInt32(idestado);
 
                 conexion.DisablePersonaXCustumer(idcliente2, idestado2);
-                if(idestado == "1")
+                if (idestado == "1")
                 {
                     response.Message = "Usuario Desactivado.";
                     response.Status = 1;
-                }else if (idestado == "2")
+                }
+                else if (idestado == "2")
                 {
                     response.Message = "Usuario Activado";
                     response.Status = 1;

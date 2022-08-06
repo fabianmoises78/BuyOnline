@@ -1,10 +1,8 @@
 ﻿using BuyOnline.DTO;
 using BuyOnline.Models;
-using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net;
 using System.Web.Mvc;
 
 namespace BuyOnline.Controllers
@@ -149,7 +147,7 @@ namespace BuyOnline.Controllers
                     return Json(dto);
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 dto.Status = 0;
                 dto.Message = ex.Message;
@@ -199,7 +197,7 @@ namespace BuyOnline.Controllers
                     response.Message = "Producto agregao a favoritos.";
                     response.Status = 1;
                     return Json(response);
-                    
+
                 }
                 else
                 {
@@ -207,7 +205,8 @@ namespace BuyOnline.Controllers
                     response.Status = 0;
                     return Json(response);
                 }
-            }catch (Exception ex)
+            }
+            catch (Exception ex)
             {
                 response.Message = ex.Message;
                 response.Status = 0;
@@ -246,18 +245,11 @@ namespace BuyOnline.Controllers
         public ActionResult RegistroNuevo(string nombre, string apellido, string edad, string numero, string pais, string usuario, string correo, string contraseña)
         {
             Datos dt = new Datos();
-            //Console.WriteLine(Convert.ToInt32(opciones));
             var edad1 = Convert.ToInt32(edad);
             var pais1 = Convert.ToInt32(pais);
             dt.RecordPersonaXcostumer(nombre, apellido, edad1, numero, pais1, usuario, correo, contraseña);
 
             return RedirectToAction("Login");
-            // var result =  dt.Nombre_SP();
-            //if(result.target == "0")
-            //{
-            //    ViewBag.message = result.msg;
-            //}
-            //throw new NotImplementedException();
         }
 
         public ActionResult Carrito()
