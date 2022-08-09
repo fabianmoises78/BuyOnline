@@ -11,6 +11,13 @@
     <button class="btn btn-success" data-toggle="modal" data-target=".bd-example-modal-sm" onclick="botones()">Agregar nuevo usuario</button>
 </div>
 
+<div class="input-group mb-3">
+    <input id="buscarcliente" type="text" class="form-control" placeholder="Buscar clientes" aria-label="Buscar" aria-describedby="basic-addon2">
+    <div class="input-group-append">
+        <button id="buscar" class="btn btn-outline-secondary" type="button">Buscar</button>
+    </div>
+</div>
+
 <div class="my-4" id="listarclientes">
 
     <table class="table">
@@ -38,12 +45,12 @@
 <div class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true" id="modal">
     <div class="modal-dialog modal-sm">
         <div id="modalMantenimiento" class="modal-content">
-            <div id="titulo" class="mx-auto my-1">
+            <div id="titulo" class="mx-auto my-2">
                 <h4>Insertar nuevo Usuario</h4>
             </div>
             <div class="mx-auto">
                 <form id="validarregistro">
-                    <input type="text" id="nombre" name="nombre" placeholder="Nombre" class="form-control input-lg my-3 txt" />
+                    <input type="text" id="nombre" name="nombre" placeholder="Nombre" class="form-control input-lg my-1 txt" />
                     <input type="text" id="apellido" name="apellido" placeholder="Apellido" class="form-control input-lg my-3 txt" />
                     <input type="number" id="edad" name="edad" placeholder="Edad" class="form-control my-3 txt" />
                     <input type="text" id="numero" name="numero" placeholder="Número Telefónico" class="form-control input-lg my-3 txt" />
@@ -78,13 +85,13 @@
     <script src="~/Content/js/ActivarDesactivar.js"></script>
     <script src="~/Content/js/EditarCliente.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.20/dist/sweetalert2.all.min.js"></script>
+    <script src="~/Content/js/BuscarCliente.js"></script>
     <script>
         VerClientes();
     </script>
     <script>
         ListarPais();
     </script>
-
 }
 
 

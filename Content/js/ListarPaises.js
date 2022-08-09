@@ -10,7 +10,6 @@ function ListarPais() {
         method: "POST",
         dataType: "json",
         success: function (paises) {
-            debugger;
             var html = "";
 
             $.each(paises, function (index, row) {

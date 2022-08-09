@@ -118,6 +118,40 @@ namespace BuyOnline.Controllers
         }
 
         [HttpPost]
+        [Route("BuscarCliente")]
+        public JsonResult BuscarCliente(string dat)
+        {
+            List<SearchCustumer_Result> busqueda = new List<SearchCustumer_Result>();
+
+            using(conexion)
+            {
+                var bsuquedacliente = conexion.SearchCustumer(dat);
+
+                foreach(var item in bsuquedacliente)
+                {
+                    var asignar = new SearchCustumer_Result()
+                    {
+                        IdPersona = item.IdPersona,
+                        Nombre = item.Nombre,
+                        Apellido = item.Apellido,
+                        Edad = item.Edad,
+                        Telefono = item.Telefono,
+                        IdPais = item.IdPais,
+                        NombrePais = item.NombrePais,
+                        IdEstado = item.IdEstado,
+                        Estado = item.Estado,
+                        IdCliente = item.IdCliente,
+                        Usuario = item.Usuario,
+                        Correo = item.Correo,
+                        Contraseña = item.Contraseña
+                    };
+                    busqueda.Add(asignar);
+                }
+            }
+            return Json(busqueda);
+        }
+
+        [HttpPost]
         [Route("RegistrarClientes")]
         public JsonResult RegistrarClientes(string nombre, string apellido, string edad, string numero, string idpais, string usuario, string correo, string contraseña)
         {

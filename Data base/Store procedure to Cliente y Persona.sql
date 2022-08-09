@@ -74,17 +74,15 @@ CREATE OR ALTER PROCEDURE UpdatePersonaXCustumer
     @old INT,
     @phone VARCHAR(12),
     @idpais INT,
-    @idestadoP INT,
     -------------------
     @usuario VARCHAR(100),
     @address VARCHAR(30),
-    @password VARCHAR(100),
-    @idestadoC INT
+    @password VARCHAR(100)
 )
 AS
 BEGIN
     SET NOCOUNT ON;
-    DECLARE @idfolkU VARCHAR, @msg VARCHAR(50)
+    DECLARE @idfolkU int, @msg VARCHAR(50)
     SET @idfolkU = (SELECT IdPersona from Cliente WHERE IdPersona = @idfolk)
     BEGIN TRAN persona_customer
     BEGIN TRY
@@ -106,7 +104,9 @@ BEGIN
         SET @msg = 'successful update user.'
     END TRY
     BEGIN CATCH
-        SET @msg = 'A problem has occurred ' + ERROR_MESSAGE() 
+        SET @msg = ERROR_MESSAGE()
+        select ERROR_LINE() AS ErrorLine;
+        select ERROR_MESSAGE() AS ErrorMessage;
         ROLLBACK TRAN persona_customer
     END CATCH
     SELECT @msg
