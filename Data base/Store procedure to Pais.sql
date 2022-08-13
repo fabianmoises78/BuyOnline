@@ -51,3 +51,15 @@ begin
     where NombrePais like '%' + @Nom + '%'
 end 
 GO
+
+create procedure ListarPaisbyid
+(
+    @id int
+) --Lista todos los datos de la tabla paises NOT READY
+as 
+begin 
+    select p.IdPais, p.NombrePais from dbo.Pais as p WHERE p.IdPais = @id
+end 
+GO
+
+EXEC ListarPaisbyid 1

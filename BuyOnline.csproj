@@ -190,6 +190,9 @@
     <Compile Include="Models\ListaDeseos.cs">
       <DependentUpon>BuyOnline.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\ListarPaisbyid_Result.cs">
+      <DependentUpon>BuyOnline.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\ListarPais_Result.cs">
       <DependentUpon>BuyOnline.tt</DependentUpon>
     </Compile>
@@ -279,10 +282,14 @@
     <Content Include="Content\js\Car.js" />
     <Content Include="Content\js\ClientebyID.js" />
     <Content Include="Content\js\EditarCliente.js" />
+    <Content Include="Content\js\EditarPais.js" />
     <Content Include="Content\js\ListarPaises.js" />
+    <Content Include="Content\js\ListarPaisesCRUD.js" />
     <Content Include="Content\js\Login.js" />
     <Content Include="Content\js\loginingresos.js" />
+    <Content Include="Content\js\PaisId.js" />
     <Content Include="Content\js\RegistrarClienteA.js" />
+    <Content Include="Content\js\RegistrarPaisA.js" />
     <Content Include="Content\js\registro.js" />
     <Content Include="Content\js\Routes.js" />
     <Content Include="Content\js\SearchProduct.js" />

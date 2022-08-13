@@ -259,6 +259,15 @@ namespace BuyOnline.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ListarPais_Result>("ListarPais");
         }
     
+        public virtual ObjectResult<ListarPaisbyid_Result> ListarPaisbyid(Nullable<int> id)
+        {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("id", id) :
+                new ObjectParameter("id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ListarPaisbyid_Result>("ListarPaisbyid", idParameter);
+        }
+    
         public virtual ObjectResult<ListarTPago_Result> ListarTPago()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ListarTPago_Result>("ListarTPago");

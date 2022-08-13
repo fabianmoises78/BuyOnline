@@ -49,6 +49,47 @@ namespace BuyOnline.Controllers
             return View();
         }
 
+        [HttpPost]
+        [Route("RegistrarPais")]
+        public JsonResult RegistrarPais(string nombrepais)
+        {
+            GenericDTO response = new GenericDTO();
+
+            try
+            {
+                conexion.InsertarPais(nombrepais);
+                response.Status = 1;
+                response.Message = "Pais registrado con éxito.";
+                return Json(response);
+            }
+            catch
+            {
+                response.Status = 0;
+                response.Message = "Un problema ha ocurrido...";
+                return Json(response);
+            }
+        }
+
+        public JsonResult PaisbyId(string id)
+        {
+            List<ListarPaisbyid_Result> ListaPais = new List<ListarPaisbyid_Result>();
+
+            var idpais2 = Convert.ToInt32(id);
+
+            using (conexion)
+            {
+                var PaisId = conexion.ListarPaisbyid(idpais2).ToList();
+
+                var asiganr = new ListarPaisbyid_Result() //esto es un array
+                {
+                    IdPais = PaisId[0].IdPais,
+                    NombrePais = PaisId[0].NombrePais
+                };
+                ListaPais.Add(asiganr);
+            }
+            return Json(ListaPais);
+        }
+
         public ActionResult CRUDcliente()
         {
             return View();
