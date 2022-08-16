@@ -283,6 +283,7 @@
     <Content Include="Content\js\ClientebyID.js" />
     <Content Include="Content\js\EditarCliente.js" />
     <Content Include="Content\js\EditarPais.js" />
+    <Content Include="Content\js\EliminarPais.js" />
     <Content Include="Content\js\ListarPaises.js" />
     <Content Include="Content\js\ListarPaisesCRUD.js" />
     <Content Include="Content\js\Login.js" />

@@ -70,7 +70,7 @@ namespace BuyOnline.Controllers
             }
         }
 
-        public JsonResult PaisbyId(string id)
+        public JsonResult PaisbyId(string id) //this controller will show you on a Modal the country's name
         {
             List<ListarPaisbyid_Result> ListaPais = new List<ListarPaisbyid_Result>();
 
@@ -88,6 +88,51 @@ namespace BuyOnline.Controllers
                 ListaPais.Add(asiganr);
             }
             return Json(ListaPais);
+        }
+
+        [HttpPost]
+        [Route("EditarPais")]
+        public JsonResult EditarPais(string idpais, string nombrepais) //this controller will edit the country
+        {
+            GenericDTO response = new GenericDTO();
+
+            try
+            {
+                var idpais2 = Convert.ToInt32(idpais);
+                conexion.ActualizarPais(nombrepais, idpais2);
+                response.Status = 1;
+                response.Message = "País editado con éxito.";
+                return Json(response);
+            }
+            catch
+            {
+                response.Status = 0;
+                response.Message = "Un error ha ocurrido";
+                return Json(response);
+            }
+        }
+
+        [HttpPost]
+        [Route("EliminarPais")]
+        public JsonResult EliminarPais(string idpais)
+        {
+            GenericDTO response = new GenericDTO();
+
+            try
+            {
+                var idpais2 = Convert.ToInt32(idpais);
+
+                conexion.EliminarPais(idpais2);
+                response.Status = 1;
+                response.Message = "País Eliminado con éxito, recuerda esta acción es irreversible...";
+                return Json(response);
+            }
+            catch
+            {
+                response.Status = 0;
+                response.Message = "Un error ha ocurrido...";
+                return Json(response);
+            }
         }
 
         public ActionResult CRUDcliente()
