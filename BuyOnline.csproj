@@ -279,6 +279,7 @@
     <Content Include="Content\js\ActivarDesactivar.js" />
     <Content Include="Content\js\Botones.js" />
     <Content Include="Content\js\BuscarCliente.js" />
+    <Content Include="Content\js\BuscarPais.js" />
     <Content Include="Content\js\Car.js" />
     <Content Include="Content\js\ClientebyID.js" />
     <Content Include="Content\js\EditarCliente.js" />

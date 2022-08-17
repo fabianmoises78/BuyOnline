@@ -14,13 +14,10 @@
             data: JSON.stringify(datos),
             dataType: "json",
             success: function (busqueda) {
-                console.log();
                 $('#ListaClientes').html(null);
-                console.log();
                 var html = "";
 
                 $.each(busqueda, function (index, row) {
-                    console.log();
                     html += '<tr>';
                     html += '<th scope="row">  ' + row.IdPersona + ' </th>';
                     html += '<td> ' + row.Nombre + ' </td>';
@@ -39,7 +36,7 @@
                 $('#ListaClientes').append(html);
             },
             error: function (error) {
-                alert("tuvimos un problema" + error);
+
             }
         });
     });

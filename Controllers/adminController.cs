@@ -135,6 +135,29 @@ namespace BuyOnline.Controllers
             }
         }
 
+        [HttpPost]
+        [Route("BuscarPais")]
+        public JsonResult BuscarPais(string pais)
+        {
+            List<BuscarPais_Result> BuscarPais = new List<BuscarPais_Result>();
+
+            using(conexion)
+            {
+                var paises = conexion.BuscarPais(pais);
+
+                foreach (var item in paises)
+                {
+                    var asignar = new BuscarPais_Result()
+                    {
+                        IdPais = item.IdPais,
+                        NombrePais = item.NombrePais
+                    };
+                    BuscarPais.Add(asignar);
+                }
+            }
+            return Json(BuscarPais);
+        }
+
         public ActionResult CRUDcliente()
         {
             return View();
