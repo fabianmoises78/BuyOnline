@@ -273,6 +273,19 @@ namespace BuyOnline.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ListarTPago_Result>("ListarTPago");
         }
     
+        public virtual ObjectResult<LoginA_Result> LoginA(string user, string password)
+        {
+            var userParameter = user != null ?
+                new ObjectParameter("User", user) :
+                new ObjectParameter("User", typeof(string));
+    
+            var passwordParameter = password != null ?
+                new ObjectParameter("password", password) :
+                new ObjectParameter("password", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<LoginA_Result>("LoginA", userParameter, passwordParameter);
+        }
+    
         public virtual ObjectResult<LoginU_Result> LoginU(string user, string password)
         {
             var userParameter = user != null ?
@@ -752,7 +765,7 @@ namespace BuyOnline.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("UpdateDetalleCompra", idcompraParameter, idproductoParameter, precioParameter, descuentoParameter, cantidadParameter, msg);
         }
     
-        public virtual ObjectResult<string> UpdatePersonaXAdmin(Nullable<int> idfolk, string name, string lastname, Nullable<int> old, string phone, Nullable<int> idpais, Nullable<int> idestadoP, string user, string password, Nullable<int> idestadoA)
+        public virtual ObjectResult<string> UpdatePersonaXAdmin(Nullable<int> idfolk, string name, string lastname, Nullable<int> old, string phone, Nullable<int> idpais, string user, string password)
         {
             var idfolkParameter = idfolk.HasValue ?
                 new ObjectParameter("idfolk", idfolk) :
@@ -778,10 +791,6 @@ namespace BuyOnline.Models
                 new ObjectParameter("idpais", idpais) :
                 new ObjectParameter("idpais", typeof(int));
     
-            var idestadoPParameter = idestadoP.HasValue ?
-                new ObjectParameter("idestadoP", idestadoP) :
-                new ObjectParameter("idestadoP", typeof(int));
-    
             var userParameter = user != null ?
                 new ObjectParameter("user", user) :
                 new ObjectParameter("user", typeof(string));
@@ -790,11 +799,7 @@ namespace BuyOnline.Models
                 new ObjectParameter("password", password) :
                 new ObjectParameter("password", typeof(string));
     
-            var idestadoAParameter = idestadoA.HasValue ?
-                new ObjectParameter("idestadoA", idestadoA) :
-                new ObjectParameter("idestadoA", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("UpdatePersonaXAdmin", idfolkParameter, nameParameter, lastnameParameter, oldParameter, phoneParameter, idpaisParameter, idestadoPParameter, userParameter, passwordParameter, idestadoAParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("UpdatePersonaXAdmin", idfolkParameter, nameParameter, lastnameParameter, oldParameter, phoneParameter, idpaisParameter, userParameter, passwordParameter);
         }
     
         public virtual ObjectResult<Nullable<int>> UpdatePersonaXCustumer(Nullable<int> idfolk, string name, string lastname, Nullable<int> old, string phone, Nullable<int> idpais, string usuario, string address, string password)

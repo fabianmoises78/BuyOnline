@@ -413,6 +413,10 @@
           <Parameter Name="id" Type="int" Mode="In" />
         </Function>
         <Function Name="ListarTPago" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="LoginA" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="User" Type="varchar" Mode="In" />
+          <Parameter Name="password" Type="varchar" Mode="In" />
+        </Function>
         <Function Name="LoginU" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="User" Type="varchar" Mode="In" />
           <Parameter Name="password" Type="varchar" Mode="In" />
@@ -560,10 +564,8 @@
           <Parameter Name="old" Type="int" Mode="In" />
           <Parameter Name="phone" Type="varchar" Mode="In" />
           <Parameter Name="idpais" Type="int" Mode="In" />
-          <Parameter Name="idestadoP" Type="int" Mode="In" />
           <Parameter Name="user" Type="varchar" Mode="In" />
           <Parameter Name="password" Type="varchar" Mode="In" />
-          <Parameter Name="idestadoA" Type="int" Mode="In" />
         </Function>
         <Function Name="UpdatePersonaXCustumer" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="idfolk" Type="int" Mode="In" />
@@ -1199,6 +1201,10 @@
             <Parameter Name="id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="ListarTPago" ReturnType="Collection(BuyOnlineModel.ListarTPago_Result)" />
+          <FunctionImport Name="LoginA" ReturnType="Collection(BuyOnlineModel.LoginA_Result)">
+            <Parameter Name="User" Mode="In" Type="String" />
+            <Parameter Name="password" Mode="In" Type="String" />
+          </FunctionImport>
           <FunctionImport Name="LoginU" ReturnType="Collection(BuyOnlineModel.LoginU_Result)">
             <Parameter Name="User" Mode="In" Type="String" />
             <Parameter Name="password" Mode="In" Type="String" />
@@ -1346,10 +1352,8 @@
             <Parameter Name="old" Mode="In" Type="Int32" />
             <Parameter Name="phone" Mode="In" Type="String" />
             <Parameter Name="idpais" Mode="In" Type="Int32" />
-            <Parameter Name="idestadoP" Mode="In" Type="Int32" />
             <Parameter Name="user" Mode="In" Type="String" />
             <Parameter Name="password" Mode="In" Type="String" />
-            <Parameter Name="idestadoA" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="UpdatePersonaXCustumer" ReturnType="Collection(Int32)">
             <Parameter Name="idfolk" Mode="In" Type="Int32" />
@@ -1407,24 +1411,29 @@
           <Property Type="Int32" Name="IdTipoP" Nullable="false" />
           <Property Type="String" Name="TipoPago" Nullable="false" MaxLength="20" />
         </ComplexType>
+        <ComplexType Name="LoginA_Result">
+          <Property Type="Int32" Name="IdAdmin" Nullable="false" />
+          <Property Type="String" Name="Usuario" Nullable="false" MaxLength="100" />
+          <Property Type="Int32" Name="IdEstado" Nullable="false" />
+        </ComplexType>
         <ComplexType Name="LoginU_Result">
           <Property Type="Int32" Name="IdCliente" Nullable="false" />
           <Property Type="String" Name="Usuario" Nullable="false" MaxLength="100" />
           <Property Type="Int32" Name="IdEstado" Nullable="false" />
         </ComplexType>
         <ComplexType Name="SearchAdmin_Result">
+          <Property Type="Int32" Name="IdPersona" Nullable="false" />
+          <Property Type="String" Name="Nombre" Nullable="false" MaxLength="75" />
+          <Property Type="String" Name="Apellido" Nullable="false" MaxLength="75" />
+          <Property Type="String" Name="Telefono" Nullable="false" MaxLength="12" />
+          <Property Type="Int32" Name="Edad" Nullable="false" />
+          <Property Type="Int32" Name="IdPais" Nullable="false" />
+          <Property Type="String" Name="NombrePais" Nullable="false" MaxLength="100" />
+          <Property Type="Int32" Name="IdEstado" Nullable="false" />
+          <Property Type="String" Name="Estado" Nullable="false" MaxLength="25" />
           <Property Type="Int32" Name="IdAdmin" Nullable="false" />
           <Property Type="String" Name="Usuario" Nullable="false" MaxLength="100" />
           <Property Type="String" Name="Contraseña" Nullable="false" MaxLength="50" />
-          <Property Type="Int32" Name="IdPersona" Nullable="false" />
-          <Property Type="Int32" Name="IdEstado" Nullable="false" />
-          <Property Type="Int32" Name="IdPersona1" Nullable="false" />
-          <Property Type="String" Name="Nombre" Nullable="false" MaxLength="75" />
-          <Property Type="String" Name="Apellido" Nullable="false" MaxLength="75" />
-          <Property Type="Int32" Name="Edad" Nullable="false" />
-          <Property Type="String" Name="Telefono" Nullable="false" MaxLength="12" />
-          <Property Type="Int32" Name="IdPais" Nullable="false" />
-          <Property Type="Int32" Name="IdEstado1" Nullable="false" />
         </ComplexType>
         <ComplexType Name="SearchCard_Result">
           <Property Type="Int32" Name="IdTar" Nullable="false" />
@@ -1492,15 +1501,15 @@
           <Property Type="Int32" Name="IdPersona" Nullable="false" />
           <Property Type="String" Name="Nombre" Nullable="false" MaxLength="75" />
           <Property Type="String" Name="Apellido" Nullable="false" MaxLength="75" />
-          <Property Type="Int32" Name="Edad" Nullable="false" />
           <Property Type="String" Name="Telefono" Nullable="false" MaxLength="12" />
+          <Property Type="Int32" Name="Edad" Nullable="false" />
           <Property Type="Int32" Name="IdPais" Nullable="false" />
+          <Property Type="String" Name="NombrePais" Nullable="false" MaxLength="100" />
           <Property Type="Int32" Name="IdEstado" Nullable="false" />
+          <Property Type="String" Name="Estado" Nullable="false" MaxLength="25" />
           <Property Type="Int32" Name="IdAdmin" Nullable="false" />
           <Property Type="String" Name="Usuario" Nullable="false" MaxLength="100" />
           <Property Type="String" Name="Contraseña" Nullable="false" MaxLength="50" />
-          <Property Type="Int32" Name="IdPersona1" Nullable="false" />
-          <Property Type="Int32" Name="IdEstado1" Nullable="false" />
         </ComplexType>
         <ComplexType Name="ShowCard_Result">
           <Property Type="Int32" Name="IdTar" Nullable="false" />
@@ -1810,6 +1819,15 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="LoginA" FunctionName="BuyOnlineModel.Store.LoginA">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BuyOnlineModel.LoginA_Result">
+                <ScalarProperty Name="IdAdmin" ColumnName="IdAdmin" />
+                <ScalarProperty Name="Usuario" ColumnName="Usuario" />
+                <ScalarProperty Name="IdEstado" ColumnName="IdEstado" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="LoginU" FunctionName="BuyOnlineModel.Store.LoginU">
             <ResultMapping>
               <ComplexTypeMapping TypeName="BuyOnlineModel.LoginU_Result">
@@ -1829,18 +1847,18 @@
           <FunctionImportMapping FunctionImportName="SearchAdmin" FunctionName="BuyOnlineModel.Store.SearchAdmin">
             <ResultMapping>
               <ComplexTypeMapping TypeName="BuyOnlineModel.SearchAdmin_Result">
+                <ScalarProperty Name="IdPersona" ColumnName="IdPersona" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="Edad" ColumnName="Edad" />
+                <ScalarProperty Name="IdPais" ColumnName="IdPais" />
+                <ScalarProperty Name="NombrePais" ColumnName="NombrePais" />
+                <ScalarProperty Name="IdEstado" ColumnName="IdEstado" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
                 <ScalarProperty Name="IdAdmin" ColumnName="IdAdmin" />
                 <ScalarProperty Name="Usuario" ColumnName="Usuario" />
                 <ScalarProperty Name="Contraseña" ColumnName="Contraseña" />
-                <ScalarProperty Name="IdPersona" ColumnName="IdPersona" />
-                <ScalarProperty Name="IdEstado" ColumnName="IdEstado" />
-                <ScalarProperty Name="IdPersona1" ColumnName="IdPersona1" />
-                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
-                <ScalarProperty Name="Apellido" ColumnName="Apellido" />
-                <ScalarProperty Name="Edad" ColumnName="Edad" />
-                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
-                <ScalarProperty Name="IdPais" ColumnName="IdPais" />
-                <ScalarProperty Name="IdEstado1" ColumnName="IdEstado1" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
@@ -1932,15 +1950,15 @@
                 <ScalarProperty Name="IdPersona" ColumnName="IdPersona" />
                 <ScalarProperty Name="Nombre" ColumnName="Nombre" />
                 <ScalarProperty Name="Apellido" ColumnName="Apellido" />
-                <ScalarProperty Name="Edad" ColumnName="Edad" />
                 <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="Edad" ColumnName="Edad" />
                 <ScalarProperty Name="IdPais" ColumnName="IdPais" />
+                <ScalarProperty Name="NombrePais" ColumnName="NombrePais" />
                 <ScalarProperty Name="IdEstado" ColumnName="IdEstado" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
                 <ScalarProperty Name="IdAdmin" ColumnName="IdAdmin" />
                 <ScalarProperty Name="Usuario" ColumnName="Usuario" />
                 <ScalarProperty Name="Contraseña" ColumnName="Contraseña" />
-                <ScalarProperty Name="IdPersona1" ColumnName="IdPersona1" />
-                <ScalarProperty Name="IdEstado1" ColumnName="IdEstado1" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

@@ -22,13 +22,6 @@ namespace BuyOnline.Controllers
             ViewBag.ListarProducto = ListarProducto();
             return View();
         }
-        //[HttpGet]
-        //public Producto SearchProduct(String nombre)
-        //{
-        //    //Datos dt = new Datos();
-        //    ViewBag.ListarProducto = ListarProducto();
-        //    return View();
-        //}
 
         public List<ShowProducts_Result> ListarProducto()
         {

@@ -61,5 +61,3 @@ begin
     select p.IdPais, p.NombrePais from dbo.Pais as p WHERE p.IdPais = @id
 end 
 GO
-
-EXEC ListarPaisbyid 1

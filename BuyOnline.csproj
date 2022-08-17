@@ -199,6 +199,9 @@
     <Compile Include="Models\ListarTPago_Result.cs">
       <DependentUpon>BuyOnline.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\LoginA_Result.cs">
+      <DependentUpon>BuyOnline.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\LoginU_Result.cs">
       <DependentUpon>BuyOnline.tt</DependentUpon>
     </Compile>
@@ -288,6 +291,7 @@
     <Content Include="Content\js\ListarPaises.js" />
     <Content Include="Content\js\ListarPaisesCRUD.js" />
     <Content Include="Content\js\Login.js" />
+    <Content Include="Content\js\LoginAdministrador.js" />
     <Content Include="Content\js\loginingresos.js" />
     <Content Include="Content\js\PaisId.js" />
     <Content Include="Content\js\RegistrarClienteA.js" />

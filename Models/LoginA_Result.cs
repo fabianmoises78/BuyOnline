@@ -11,19 +11,10 @@ namespace BuyOnline.Models
 {
     using System;
     
-    public partial class SearchAdmin_Result
+    public partial class LoginA_Result
     {
-        public int IdPersona { get; set; }
-        public string Nombre { get; set; }
-        public string Apellido { get; set; }
-        public string Telefono { get; set; }
-        public int Edad { get; set; }
-        public int IdPais { get; set; }
-        public string NombrePais { get; set; }
-        public int IdEstado { get; set; }
-        public string Estado { get; set; }
         public int IdAdmin { get; set; }
         public string Usuario { get; set; }
-        public string Contraseña { get; set; }
+        public int IdEstado { get; set; }
     }
 }

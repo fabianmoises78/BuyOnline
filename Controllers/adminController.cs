@@ -44,6 +44,63 @@ namespace BuyOnline.Controllers
             return View();
         }
 
+        [HttpPost]
+        [Route("inicioAdmin")]
+        public JsonResult inicioAdmin(Administrador administradores)
+        {
+            GenericDTO response = new GenericDTO();
+
+            try
+            {
+                List<LoginA_Result> LoginAdmin = conexion.LoginA(administradores.Usuario, administradores.Contraseña).ToList();
+
+                if(LoginAdmin.Count > 0)
+                {
+                    if(LoginAdmin[0].IdEstado == 1)
+                    {
+                        response.Status = 1;
+                        response.Message = "Bienvenido!";
+
+                        Session["Status"] = "true";
+                        Session["IdAdmin"] = LoginAdmin[0].IdAdmin;
+                        Session["Usuario"] = LoginAdmin[0].Usuario;
+
+                        return Json(response);
+                    }
+                    else
+                    {
+                        response.Status = 0;
+                        response.Message = "El Administrador está desactivado.";
+
+                        Session["Status"] = "False";
+                        Session["IdAdmin"] = "";
+                        Session["Usuario"] = "";
+
+                        return Json(response);
+                    }
+                    
+                }
+                else
+                {
+                    response.Status = 0;
+                    response.Message = "El usuario o contraseña son invalidos.";
+
+                    Session["Status"] = "False";
+                    Session["IdAdmin"] = "";
+                    Session["Usuario"] = "";
+
+                    return Json(response);
+                }
+
+            }
+            catch(Exception ex)
+            {
+                response.Status = 0;
+                response.Message = "Error "+ ex;
+                return Json(response);
+            }
+        }
+
         public ActionResult CRUDpais()
         {
             return View();
