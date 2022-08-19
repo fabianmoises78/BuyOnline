@@ -73,16 +73,14 @@ CREATE OR ALTER PROCEDURE UpdatePersonaXAdmin
     @old INT,
     @phone VARCHAR(12),
     @idpais INT,
-    @idestadoP INT,
     ----------------------
     @user VARCHAR(100),
-    @password VARCHAR(50),
-    @idestadoA INT
+    @password VARCHAR(50)
 )
 AS 
 BEGIN
     SET NOCOUNT ON;
-    DECLARE @target VARCHAR(50), @idfolkU VARCHAR(20),@msg VARCHAR(50)
+    DECLARE @target VARCHAR(50), @idfolkU INT,@msg VARCHAR(50)
     SET @idfolkU = (SELECT IdPersona FROM dbo.Administrador
     WHERE IdPersona = @idfolk)
     BEGIN TRAN update_persona_admin
@@ -91,15 +89,13 @@ BEGIN
         Nombre = @name,
         Apellido = @lastname,
         Edad = @old,
-        Telefono = @phone,
-        IdEstado = @idestadoP
+        IdPais = @idpais,
+        Telefono = @phone
         WHERE IdPersona = @idfolk
 
         UPDATE dbo.Administrador SET
         Usuario = @user,
-        Contraseña = @password,
-        IdPersona = @idfolkU,
-        IdEstado = @idestadoA
+        Contraseña = @password
         WHERE IdPersona = @idfolkU
 
         COMMIT TRAN persona_customer
@@ -141,19 +137,13 @@ BEGIN
     DECLARE @target VARCHAR(50), @msg VARCHAR(50)
     BEGIN TRAN Disable_admin
     BEGIN TRY
-        IF(@idesta = 2)
+        IF(@idesta = 1)
         BEGIN
             UPDATE dbo.Administrador SET
             IdEstado = 2
             WHERE IdAdmin = @idadmin
         END
-        ELSE IF(@idesta = 3)
-        BEGIN
-            UPDATE dbo.Administrador SET
-            IdEstado = 3
-            WHERE IdAdmin = @idadmin
-        END
-        ELSE IF(@idesta = 1)
+        ELSE IF(@idesta = 2)
         BEGIN
             UPDATE dbo.Administrador SET
             IdEstado = 1
@@ -198,9 +188,13 @@ BEGIN
     DECLARE @target VARCHAR(50), @msg VARCHAR(100)
     BEGIN TRAN search_admin
     BEGIN TRY
-        SELECT * 
-        FROM dbo.Administrador a INNER JOIN dbo.Persona p 
-        ON a.IdPersona = p.IdPersona
+        SELECT p.IdPersona, p.Nombre, p.Apellido, p.Telefono, p.Edad,c.IdPais ,c.NombrePais, e.IdEstado, e.Estado, a.IdAdmin, a.Usuario, a.Contraseña FROM dbo.Persona p 
+        INNER JOIN dbo.Administrador a 
+        ON p.IdPersona = a.IdPersona
+        INNER JOIN dbo.Pais c
+        ON p.IdPais = c.IdPais
+        INNER JOIN dbo.Estado e
+        ON a.IdEstado = e.IdEstado
         WHERE a.Usuario LIKE '%'+@dat+'%' OR p.Nombre LIKE '%'+@dat+'%' OR p.Apellido LIKE '%'+@dat+'%'
 
         COMMIT TRAN search_admin
@@ -237,9 +231,13 @@ BEGIN
     DECLARE @target VARCHAR(100), @msg VARCHAR(100)
     BEGIN TRAN show_admin_folk
     BEGIN TRY
-        SELECT * FROM dbo.Persona p 
+        SELECT p.IdPersona, p.Nombre, p.Apellido, p.Telefono, p.Edad,c.IdPais ,c.NombrePais, e.IdEstado, e.Estado, a.IdAdmin, a.Usuario, a.Contraseña FROM dbo.Persona p 
         INNER JOIN dbo.Administrador a 
         ON p.IdPersona = a.IdPersona
+        INNER JOIN dbo.Pais c
+        ON p.IdPais = c.IdPais
+        INNER JOIN dbo.Estado e
+        ON a.IdEstado = e.IdEstado
 
         COMMIT TRAN show_admin_folk
         SET @target = 1

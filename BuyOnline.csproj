@@ -293,6 +293,7 @@
     <Content Include="Content\js\Login.js" />
     <Content Include="Content\js\LoginAdministrador.js" />
     <Content Include="Content\js\loginingresos.js" />
+    <Content Include="Content\js\MantenimientoCategorias.js" />
     <Content Include="Content\js\PaisId.js" />
     <Content Include="Content\js\RegistrarClienteA.js" />
     <Content Include="Content\js\RegistrarPaisA.js" />

@@ -75,8 +75,6 @@ namespace BuyOnline.Controllers
         {
             Datos dtl = new Datos();
 
-            //var iniciar = dtl.LoginU(user, password);
-
             using (dtl)
             {
                 var iniciarseion = dtl.LoginU(user, password);

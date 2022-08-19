@@ -33,7 +33,7 @@ namespace BuyOnline.Controllers
             }
             return Json(ListaPais);
         }
-
+        
         public ActionResult Mantenimiento()
         {
             return View();
@@ -44,6 +44,7 @@ namespace BuyOnline.Controllers
             return View();
         }
 
+        /*
         [HttpPost]
         [Route("inicioAdmin")]
         public JsonResult inicioAdmin(Administrador administradores)
@@ -99,7 +100,7 @@ namespace BuyOnline.Controllers
                 response.Message = "Error "+ ex;
                 return Json(response);
             }
-        }
+        }*/
 
         public ActionResult CRUDpais()
         {
@@ -404,6 +405,27 @@ namespace BuyOnline.Controllers
         public ActionResult CRUDcategoria()
         {
             return View();
+        }
+
+        public JsonResult ListarPaises()
+        {
+            List<LeerCat_Result> Categorias = new List<LeerCat_Result>();
+
+            using (conexion)
+            {
+                var listarCate = conexion.LeerCat();
+
+                foreach(var item in listarCate)
+                {
+                    var asignar = new LeerCat_Result()
+                    {
+                        IdCat = item.IdCat,
+                        Cat = item.Cat
+                    };
+                    Categorias.Add(asignar);
+                }
+            }
+            return Json(Categorias);
         }
 
         public ActionResult CRUDestados()
