@@ -407,7 +407,9 @@ namespace BuyOnline.Controllers
             return View();
         }
 
-        public JsonResult ListarPaises()
+        [HttpPost]
+        [Route("ListarPCategorias")]
+        public JsonResult ListarPCategorias()
         {
             List<LeerCat_Result> Categorias = new List<LeerCat_Result>();
 
@@ -426,6 +428,49 @@ namespace BuyOnline.Controllers
                 }
             }
             return Json(Categorias);
+        }
+
+        [HttpPost]
+        [Route("ListarPaisbyId")]
+        public JsonResult ListarPaisbyId(string idcat)
+        {
+            var IdCat = Convert.ToInt32(idcat);
+
+            List<listarCatbyid_Result> ListarCat = new List<listarCatbyid_Result>();
+
+            using (conexion)
+            {
+                var CatId = conexion.listarCatbyid(IdCat).ToList();
+
+                var asignar = new listarCatbyid_Result()
+                {
+                    IdCat = CatId[0].IdCat,
+                    Cat = CatId[0].Cat
+                };
+                ListarCat.Add(asignar);
+            }
+            return Json(ListarCat);
+        }
+
+        [HttpPost]
+        [Route("InsertarCategoria")]
+        public JsonResult InsertarCategoria(string nombreCat)
+        {
+            GenericDTO response = new GenericDTO();
+
+            try
+            {
+                conexion.AgregarCat(nombreCat);
+                response.Status = 1;
+                response.Message = "Categoría registrada con éxito.";
+                return Json(response);
+            }
+            catch(Exception ex)
+            {
+                response.Status = 0;
+                response.Message = "Un error ha ocurrido " + ex;
+                return Json(response);
+            }
         }
 
         public ActionResult CRUDestados()

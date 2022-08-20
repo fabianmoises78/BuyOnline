@@ -408,6 +408,9 @@
           <Parameter Name="tipo" Type="varchar" Mode="In" />
         </Function>
         <Function Name="LeerCat" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="listarCatbyid" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idcat" Type="int" Mode="In" />
+        </Function>
         <Function Name="ListarPais" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="ListarPaisbyid" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="id" Type="int" Mode="In" />
@@ -1196,6 +1199,9 @@
             <Parameter Name="tipo" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="LeerCat" ReturnType="Collection(BuyOnlineModel.LeerCat_Result)" />
+          <FunctionImport Name="listarCatbyid" ReturnType="Collection(BuyOnlineModel.listarCatbyid_Result)">
+            <Parameter Name="idcat" Mode="In" Type="Int32" />
+          </FunctionImport>
           <FunctionImport Name="ListarPais" ReturnType="Collection(BuyOnlineModel.ListarPais_Result)" />
           <FunctionImport Name="ListarPaisbyid" ReturnType="Collection(BuyOnlineModel.ListarPaisbyid_Result)">
             <Parameter Name="id" Mode="In" Type="Int32" />
@@ -1396,6 +1402,10 @@
           <Property Type="String" Name="TipoPago" Nullable="false" MaxLength="20" />
         </ComplexType>
         <ComplexType Name="LeerCat_Result">
+          <Property Type="Int32" Name="IdCat" Nullable="false" />
+          <Property Type="String" Name="Cat" Nullable="false" MaxLength="100" />
+        </ComplexType>
+        <ComplexType Name="listarCatbyid_Result">
           <Property Type="Int32" Name="IdCat" Nullable="false" />
           <Property Type="String" Name="Cat" Nullable="false" MaxLength="100" />
         </ComplexType>
@@ -1790,6 +1800,14 @@
           <FunctionImportMapping FunctionImportName="LeerCat" FunctionName="BuyOnlineModel.Store.LeerCat">
             <ResultMapping>
               <ComplexTypeMapping TypeName="BuyOnlineModel.LeerCat_Result">
+                <ScalarProperty Name="IdCat" ColumnName="IdCat" />
+                <ScalarProperty Name="Cat" ColumnName="Cat" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="listarCatbyid" FunctionName="BuyOnlineModel.Store.listarCatbyid">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BuyOnlineModel.listarCatbyid_Result">
                 <ScalarProperty Name="IdCat" ColumnName="IdCat" />
                 <ScalarProperty Name="Cat" ColumnName="Cat" />
               </ComplexTypeMapping>

@@ -190,6 +190,9 @@
     <Compile Include="Models\ListaDeseos.cs">
       <DependentUpon>BuyOnline.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\listarCatbyid_Result.cs">
+      <DependentUpon>BuyOnline.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\ListarPaisbyid_Result.cs">
       <DependentUpon>BuyOnline.tt</DependentUpon>
     </Compile>
