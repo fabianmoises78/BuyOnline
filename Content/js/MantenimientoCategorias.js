@@ -17,6 +17,8 @@
                         title: "Éxito",
                         text: response.Message
                     })
+
+                    $("#nombreCat").val("");
                 }
                 else {
                     Swal.fire({
@@ -35,7 +37,88 @@
             }
         });
     });
-});
+
+    $("#EditarUsuario").on('click', function () {
+        var IdCat = sessionStorage.getItem("idcat");
+
+        var datos = {
+            idcat: IdCat,
+            cat: $("#nombreCat").val()
+        };
+
+        $.ajax({
+            url: "https://localhost:44372/admin/EditarCategoria",
+            contentType: "Application/json",
+            method: "POST",
+            data: JSON.stringify(datos),
+            dataType: "json",
+            success: function (response) {
+                if (response.Status == 1) {
+                    Swal.fire({
+                        icon: "success",
+                        title: "Éxito",
+                        text: response.Message
+                    })
+                } else {
+                    Swal.fire({
+                        icon: "error",
+                        title: "Error",
+                        text: response.Message
+                    })
+                }
+            },
+            error: function (error) {
+                Swal.fire({
+                    icon: "error",
+                    title: "Error",
+                    text: error.responseText
+                })
+            }
+        });
+    });
+
+    $("#eliminar").on('click', function () {
+        var idcat = sessionStorage.getItem("idcat");
+
+        var datos = { idcat: idcat };
+
+        $.ajax({
+            url: "https://localhost:44372/admin/EliminarCategoria",
+            contentType: "Application/json",
+            method: "POST",
+            data: JSON.stringify(datos),
+            dataType: "json",
+            success: function (response) {
+                if (response.Status == 1) {
+                    Swal.fire({
+                        icon: "success",
+                        title: "Éxito",
+                        text: response.Message
+                    })
+                } else {
+                    Swal.fire({
+                        icon: "error",
+                        title: "Error",
+                        text: response.Message
+                    })
+                }
+            },
+            error: function (error) {
+                Swal.fire({
+                    icon: "error",
+                    title: "Error",
+                    text: error.responseText
+                })
+            }
+        });
+    });
+
+    $("#eliminar").on('click', function () {
+        $("#modal").modal("hide");
+        localtion.reload();
+    });
+}); 
+
 
 function ListarCategorias() {
     $.ajax({
@@ -64,7 +147,7 @@ function ListarCategoria(id) {
     };
 
     $.ajax({
-        url: "https://localhost:44372/admin/ListarPaisbyId",
+        url: "https://localhost:44372/admin/ListarCatbyId",
         contentType: "Application/json",
         method: "POST",
         data: JSON.stringify(datos),

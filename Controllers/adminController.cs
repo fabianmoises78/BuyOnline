@@ -431,8 +431,8 @@ namespace BuyOnline.Controllers
         }
 
         [HttpPost]
-        [Route("ListarPaisbyId")]
-        public JsonResult ListarPaisbyId(string idcat)
+        [Route("ListarCatbyId")]
+        public JsonResult ListarCatbyId(string idcat)
         {
             var IdCat = Convert.ToInt32(idcat);
 
@@ -463,6 +463,48 @@ namespace BuyOnline.Controllers
                 conexion.AgregarCat(nombreCat);
                 response.Status = 1;
                 response.Message = "Categoría registrada con éxito.";
+                return Json(response);
+            }
+            catch(Exception ex)
+            {
+                response.Status = 0;
+                response.Message = "Un error ha ocurrido " + ex;
+                return Json(response);
+            }
+        }
+
+        [HttpPost]
+        [Route("EditarCategoria")]
+        public JsonResult EditarCategoria(string idcat, string cat)
+        {
+            GenericDTO response = new GenericDTO();
+
+            try
+            {
+                var idcat2 = Convert.ToInt32(idcat);
+                conexion.ActualizarCat(cat, idcat2);
+                response.Status = 1;
+                response.Message = "Categoria editada con éxito.";
+                return Json(response);
+            }catch(Exception error)
+            {
+                response.Status = 0;
+                response.Message = "Un error ha ocurrido " + error;
+                return Json(response);
+            }
+        }
+
+        [HttpPost]
+        [Route("EliminarCategoria")]
+        public JsonResult EliminarCategoria(int idcat)
+        {
+            GenericDTO response = new GenericDTO();
+
+            try
+            {
+                conexion.EliminarCat(idcat);
+                response.Status = 1;
+                response.Message = "Categoría eliminada, esta acción es irreversible....";
                 return Json(response);
             }
             catch(Exception ex)
