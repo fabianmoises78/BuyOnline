@@ -93,8 +93,12 @@
                     Swal.fire({
                         icon: "success",
                         title: "Éxito",
-                        text: response.Message
-                    })
+                        text: response.Message,
+                        timer: 2000
+                    }).then(function () {
+                        Swal.close()
+                        location.reload()
+                    });
                 } else {
                     Swal.fire({
                         icon: "error",
@@ -113,9 +117,45 @@
         });
     });
 
+    $("#buscar").on('click', function () {
+        var cat = $("#buscarCat").val();
+
+        var datos = {
+            cat: cat
+        };
+
+        $.ajax({
+            url: "https://localhost:44372/admin/BuscarCategoria",
+            contentType: "Application/json",
+            method: "POST",
+            data: JSON.stringify(datos),
+            dataType: "json",
+            success: function (busqueda) {
+                $("#ListaCat").html(null);
+
+                var html = "";
+
+                $.each(busqueda, function (index, row) {
+                    html += '<tr>';
+                    html += '<th scope="row">  ' + row.IdCat + ' </th>';
+                    html += '<td> ' + row.Cat + ' </td>';
+                    html += '<td><button class="btn btn-success" onclick="ListarCategoria(' + row.IdCat + ')" data-toggle="modal" data-target=".bd-example-modal-sm" value="">Editar</button></td>';
+                    html += '<tr>';
+                });
+                $("#ListaCat").append(html);
+            }, error: function (error) {
+                Swal.fire({
+                    icon: "error",
+                    title: "Error",
+                    text: error.responseText,
+                    timer: 1000
+                })
+            }
+        });
+    });
+
     $("#eliminar").on('click', function () {
         $("#modal").modal("hide");
-        localtion.reload();
     });
 }); 
 

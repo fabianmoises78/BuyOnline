@@ -33,7 +33,7 @@ namespace BuyOnline.Controllers
             }
             return Json(ListaPais);
         }
-        
+
         public ActionResult Mantenimiento()
         {
             return View();
@@ -199,7 +199,7 @@ namespace BuyOnline.Controllers
         {
             List<BuscarPais_Result> BuscarPais = new List<BuscarPais_Result>();
 
-            using(conexion)
+            using (conexion)
             {
                 var paises = conexion.BuscarPais(pais);
 
@@ -290,11 +290,11 @@ namespace BuyOnline.Controllers
         {
             List<SearchCustumer_Result> busqueda = new List<SearchCustumer_Result>();
 
-            using(conexion)
+            using (conexion)
             {
                 var bsuquedacliente = conexion.SearchCustumer(dat);
 
-                foreach(var item in bsuquedacliente)
+                foreach (var item in bsuquedacliente)
                 {
                     var asignar = new SearchCustumer_Result()
                     {
@@ -417,7 +417,7 @@ namespace BuyOnline.Controllers
             {
                 var listarCate = conexion.LeerCat();
 
-                foreach(var item in listarCate)
+                foreach (var item in listarCate)
                 {
                     var asignar = new LeerCat_Result()
                     {
@@ -465,7 +465,7 @@ namespace BuyOnline.Controllers
                 response.Message = "Categoría registrada con éxito.";
                 return Json(response);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 response.Status = 0;
                 response.Message = "Un error ha ocurrido " + ex;
@@ -486,7 +486,7 @@ namespace BuyOnline.Controllers
                 response.Status = 1;
                 response.Message = "Categoria editada con éxito.";
                 return Json(response);
-            }catch(Exception error)
+            } catch (Exception error)
             {
                 response.Status = 0;
                 response.Message = "Un error ha ocurrido " + error;
@@ -507,12 +507,35 @@ namespace BuyOnline.Controllers
                 response.Message = "Categoría eliminada, esta acción es irreversible....";
                 return Json(response);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 response.Status = 0;
                 response.Message = "Un error ha ocurrido " + ex;
                 return Json(response);
             }
+        }
+        
+        [HttpPost]
+        [Route("BuscarCategoria")]
+        public JsonResult BuscarCategoria(string cat)
+        {
+            List<BuscarCat_Result> BuscarCategoria = new List<BuscarCat_Result>();
+
+            using (conexion)
+            {
+                var Bcat = conexion.BuscarCat(cat).ToList();
+
+                foreach(var item in Bcat)
+                {
+                    var asignar = new BuscarCat_Result()
+                    {
+                        IdCat = item.IdCat,
+                        Cat = item.Cat
+                    };
+                    BuscarCategoria.Add(asignar);
+                }
+            }
+            return Json(BuscarCategoria);
         }
 
         public ActionResult CRUDestados()
