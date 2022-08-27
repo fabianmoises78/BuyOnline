@@ -567,5 +567,117 @@ namespace BuyOnline.Controllers
         {
             return View();
         }
+
+        [HttpPost]
+        [Route("ListarTipoPago")]
+        public JsonResult ListarTipoPago()
+        {
+            List<ListarTPago_Result> TipoPago = new List<ListarTPago_Result>();
+
+            using (conexion)
+            {
+                var listatp = conexion.ListarTPago();
+
+                foreach(var item in listatp)
+                {
+                    var asignar = new ListarTPago_Result()
+                    {
+                        IdTipoP = item.IdTipoP,
+                        TipoPago = item.TipoPago
+                    };
+                    TipoPago.Add(asignar);
+                }
+            }
+            return Json(TipoPago);
+        }
+
+        [HttpPost]
+        [Route("InsertarTipoPago")]
+        public JsonResult InsertarTipoPago(string nombreTP)
+        {
+            GenericDTO response = new GenericDTO();
+
+            try
+            {
+                if(nombreTP != "")
+                {
+                    conexion.InsertarTPago(nombreTP);
+                    response.Status = 1;
+                    response.Message = "Tipo de pago insertado con éxito";
+                    return Json(response);
+                }
+                else
+                {
+                    response.Status = 0;
+                    response.Message = "Por favor no deje en blanco el espacio...";
+                    return Json(response);
+                }
+            }catch(Exception er)
+            {
+                response.Status = 0;
+                response.Message = "Un error ha ocurrido " + er;
+                return Json(response);
+            }
+        }
+
+        [HttpPost]
+        [Route("ListarTPbyId")]
+        public JsonResult ListarTPbyId(int idtp)
+        {
+            List<ListarTPagobyId_Result> ListarTPId = new List<ListarTPagobyId_Result>();
+
+            using (conexion)
+            {
+                var tpid = conexion.ListarTPagobyId(idtp).ToList();
+
+                var asignar = new ListarTPagobyId_Result()
+                {
+                    IdTipoP = tpid[0].IdTipoP,
+                    TipoPago = tpid[0].TipoPago
+                };
+                ListarTPId.Add(asignar);
+            }
+            return Json(ListarTPId);
+        }
+
+
+        [HttpPost]
+        [Route("EditarTipoPago")]
+        public JsonResult EditarTipoPago(string idtp, string nombretp)
+        {
+            GenericDTO response = new GenericDTO();
+            try
+            {
+                var idtp2 = Convert.ToInt32(idtp);
+                conexion.ActualizarTPago(idtp2, nombretp);
+                response.Status = 1;
+                response.Message = "Tipo Pago editado con éxito.";
+                return Json(response);
+            }catch(Exception ex)
+            {
+                response.Status = 0;
+                response.Message = "Un error ha ocurrido " + ex;
+                return Json(response);
+            }
+        }
+
+        [HttpPost]
+        [Route("EliminarTipoPago")]
+        public JsonResult EliminarTipoPago(int idtp)
+        {
+            GenericDTO response = new GenericDTO();
+            try
+            {
+                conexion.EliminarTPago(idtp);
+                response.Status = 1;
+                response.Message = "Tipo Pago eliminado, esta acción es irreversible...";
+                return Json(response);
+            } catch(Exception ex)
+            {
+                response.Status = 0;
+                response.Message = "Un error ha ocurrido " +  ex;
+                return Json(response);
+            }
+        }
     }
 }

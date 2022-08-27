@@ -1,6 +1,68 @@
 ﻿
 @{
-    ViewBag.Title = "CRUDtipopago";
+    ViewBag.Title = "Mantenimiento de Tipos de Pagos";
 }
 
-<h2>CRUDtipopago</h2>
+<div class="my-4">
+    <h2>Mantenimiento de Tipo de Pagos.</h2>
+</div>
+
+<div class="my-4">
+    <button class="btn btn-success" data-toggle="modal" data-target=".bd-example-modal-sm" onclick="botones()">Agregar nuevo Tipo de Pago</button>
+    <a href="~/admin/Mantenimiento" class="btn btn-dark mx-3 text-white">Regresar a Mantenimiento</a>
+</div>
+
+<div class="input-group mb-3">
+    <input id="buscarCat" type="text" class="form-control" placeholder="Buscar tipo de pago" aria-label="Buscar" aria-describedby="basic-addon2">
+    <div class="input-group-append">
+        <button id="buscar" class="btn btn-outline-secondary" type="button">Buscar</button>
+    </div>
+</div>
+
+<div class="my-4" id="listarpaises">
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Código</th>
+                <th scope="col">Tipo de Pago</th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody id="ListaTP">
+
+        </tbody>
+    </table>
+</div>
+
+<div class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true" id="modal">
+    <div class="modal-dialog modal-sm">
+        <div id="modalMantenimiento" class="modal-content">
+            <div id="titulo" class="mx-auto my-2">
+                <h4>Insertar nueva Categoría</h4>
+            </div>
+            <div class="mx-auto">
+                <form id="validarregistro">
+                    <input type="text" id="nombreTP" placeholder="Nombre Tipo de Pago" class="form-control input-lg my-1 txt" />
+                </form>
+            </div>
+            <div id="titulo" class=" row my-3 mx-auto">
+                <button class="btn btn-success mx-1" id="registro">Ingresar</button>
+                <button class="btn btn-success mx-1" id="EditarUsuario">Editar</button>
+                <button class="btn btn-success mx-1" id="ActiDesac">Desactivar</button>
+                <button class="btn btn-danger" id="eliminar">Eliminar</button>
+                <button class="btn btn-success mx-1" id="ActiDesac2">Activar</button>
+                <button class="btn btn-danger mx-1" onclick="location.reload()" id="salir">Salir</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    <script src="~/Content/js/Botones.js"></script>
+    <script src="~/Content/js/MantenimientoTipoPago.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.20/dist/sweetalert2.all.min.js"></script>
+    <script>
+        ListarTP();
+    </script>
+}

@@ -20,23 +20,26 @@
                     Swal.fire({
                         icon: "success",
                         title: "Exito",
-                        text: response.Message
-                    })
+                        text: response.Message,
+                        timer: 2000
+                    }).then(function () {
+                        Swal.close()
+                        $("#modal").modal('handleUpdate')
+                    });
                 }
-                else if (response.Status == 0) {
+                else{
                     Swal.fire({
                         icon: "error",
                         title: "Error",
                         text: response.Message
                     })
                 }
-                else {
-                    Swal.fire({
-                        icon: "error",
-                        title: "Error",
-                        text: "Error"
-                    })
-                }
+            }, error: function (error) {
+                Swal.fire({
+                    icon: "error",
+                    title: "Error",
+                    text: error.responseText
+                })
             }
         });
     });
@@ -62,23 +65,26 @@
                     Swal.fire({
                         icon: "success",
                         title: "Exito",
-                        text: response.Message
-                    })
+                        text: response.Message,
+                        timer: 2000
+                    }).then(function () {
+                        Swal.close()
+                        $("#modal").modal('handleUpdate')
+                    });
                 }
-                else if (response.Status == 0) {
+                else{
                     Swal.fire({
                         icon: "error",
                         title: "Error",
                         text: response.Message
                     })
                 }
-                else {
-                    Swal.fire({
-                        icon: "error",
-                        title: "Error",
-                        text: "Error"
-                    })
-                }
+            }, error: function (error) {
+                Swal.fire({
+                    icon: "error",
+                    title: "Error",
+                    text: error.responseText
+                })
             }
         });
     });

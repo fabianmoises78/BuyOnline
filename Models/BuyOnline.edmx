@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="BuyOnlineModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="BuyOnlineModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Administrador">
           <Key>
             <PropertyRef Name="IdAdmin" />
@@ -416,6 +416,9 @@
           <Parameter Name="id" Type="int" Mode="In" />
         </Function>
         <Function Name="ListarTPago" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="ListarTPagobyId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idtp" Type="int" Mode="In" />
+        </Function>
         <Function Name="LoginA" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="User" Type="varchar" Mode="In" />
           <Parameter Name="password" Type="varchar" Mode="In" />
@@ -676,8 +679,7 @@
             <End Role="Compra" EntitySet="Compra" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="BuyOnlineModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -1148,26 +1150,26 @@
             <Parameter Name="pago" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="AgregarCat">
-            <Parameter Name="Ncat" Mode="In" Type="String" />
+          <Parameter Name="Ncat" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="BuscarCat" ReturnType="Collection(BuyOnlineModel.BuscarCat_Result)">
-            <Parameter Name="cat" Mode="In" Type="String" />
+          <Parameter Name="cat" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="BuscarEstado" ReturnType="Collection(BuyOnlineModel.BuscarEstado_Result)">
-            <Parameter Name="estadob" Mode="In" Type="String" />
+          <Parameter Name="estadob" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="BuscarPais" ReturnType="Collection(BuyOnlineModel.BuscarPais_Result)">
-            <Parameter Name="Nom" Mode="In" Type="String" />
+          <Parameter Name="Nom" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="BuscarTPago" ReturnType="Collection(BuyOnlineModel.BuscarTPago_Result)">
-            <Parameter Name="busque" Mode="In" Type="String" />
+          <Parameter Name="busque" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="ChanceStatusCompras" ReturnType="Collection(String)">
             <Parameter Name="idstatus" Mode="In" Type="Int32" />
             <Parameter Name="idbuy" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="DeleteProducto" ReturnType="Collection(String)">
-            <Parameter Name="IdP" Mode="In" Type="Int32" />
+          <Parameter Name="IdP" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="DisableAdmin" ReturnType="Collection(String)">
             <Parameter Name="idadmin" Mode="In" Type="Int32" />
@@ -1178,33 +1180,33 @@
             <Parameter Name="idestado" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="EliminarCat">
-            <Parameter Name="catI" Mode="In" Type="Int32" />
+          <Parameter Name="catI" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="EliminarEstado">
-            <Parameter Name="EstadoId" Mode="In" Type="Int32" />
+          <Parameter Name="EstadoId" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="EliminarPais">
-            <Parameter Name="IdP" Mode="In" Type="Int32" />
+          <Parameter Name="IdP" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="EliminarTPago">
-            <Parameter Name="IdT" Mode="In" Type="Int32" />
+          <Parameter Name="IdT" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="InsertarEstado">
-            <Parameter Name="estado" Mode="In" Type="String" />
+          <Parameter Name="estado" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="InsertarPais">
-            <Parameter Name="pais" Mode="In" Type="String" />
+          <Parameter Name="pais" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="InsertarTPago">
-            <Parameter Name="tipo" Mode="In" Type="String" />
+          <Parameter Name="tipo" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="LeerCat" ReturnType="Collection(BuyOnlineModel.LeerCat_Result)" />
           <FunctionImport Name="listarCatbyid" ReturnType="Collection(BuyOnlineModel.listarCatbyid_Result)">
-            <Parameter Name="idcat" Mode="In" Type="Int32" />
+          <Parameter Name="idcat" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="ListarPais" ReturnType="Collection(BuyOnlineModel.ListarPais_Result)" />
           <FunctionImport Name="ListarPaisbyid" ReturnType="Collection(BuyOnlineModel.ListarPaisbyid_Result)">
-            <Parameter Name="id" Mode="In" Type="Int32" />
+          <Parameter Name="id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="ListarTPago" ReturnType="Collection(BuyOnlineModel.ListarTPago_Result)" />
           <FunctionImport Name="LoginA" ReturnType="Collection(BuyOnlineModel.LoginA_Result)">
@@ -1272,34 +1274,34 @@
             <Parameter Name="idusuario" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="SearchAdmin" ReturnType="Collection(BuyOnlineModel.SearchAdmin_Result)">
-            <Parameter Name="dat" Mode="In" Type="String" />
+          <Parameter Name="dat" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="SearchCard" ReturnType="Collection(BuyOnlineModel.SearchCard_Result)">
-            <Parameter Name="dat" Mode="In" Type="String" />
+          <Parameter Name="dat" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="SearchCompras" ReturnType="Collection(BuyOnlineModel.SearchCompras_Result)">
-            <Parameter Name="data" Mode="In" Type="String" />
+          <Parameter Name="data" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="SearchCustumer" ReturnType="Collection(BuyOnlineModel.SearchCustumer_Result)">
-            <Parameter Name="dat" Mode="In" Type="String" />
+          <Parameter Name="dat" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="SearchDetalleCompra" ReturnType="Collection(BuyOnlineModel.SearchDetalleCompra_Result)">
             <Parameter Name="data" Mode="In" Type="String" />
             <Parameter Name="msg" Mode="InOut" Type="String" />
           </FunctionImport>
           <FunctionImport Name="SearchProducts" ReturnType="Collection(BuyOnlineModel.SearchProducts_Result)">
-            <Parameter Name="data" Mode="In" Type="String" />
+          <Parameter Name="data" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="ShowadminXfolk" ReturnType="Collection(BuyOnlineModel.ShowadminXfolk_Result)" />
           <FunctionImport Name="ShowCard" ReturnType="Collection(BuyOnlineModel.ShowCard_Result)" />
           <FunctionImport Name="ShowCompras" ReturnType="Collection(BuyOnlineModel.ShowCompras_Result)" />
           <FunctionImport Name="ShowCostumerXPersona" ReturnType="Collection(BuyOnlineModel.ShowCostumerXPersona_Result)" />
           <FunctionImport Name="ShowCostumerXPersonabyId" ReturnType="Collection(BuyOnlineModel.ShowCostumerXPersonabyId_Result)">
-            <Parameter Name="idperson" Mode="In" Type="Int32" />
+          <Parameter Name="idperson" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="ShowProducts" ReturnType="Collection(BuyOnlineModel.ShowProducts_Result)" />
           <FunctionImport Name="ShowProductsbyID" ReturnType="Collection(BuyOnlineModel.ShowProductsbyID_Result)">
-            <Parameter Name="idproducto" Mode="In" Type="Int32" />
+          <Parameter Name="idproducto" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="sp_alterdiagram">
             <Parameter Name="diagramname" Mode="In" Type="String" />
@@ -1384,6 +1386,9 @@
             <Parameter Name="detalles" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="VeerEstados" ReturnType="Collection(BuyOnlineModel.VeerEstados_Result)" />
+          <FunctionImport Name="ListarTPagobyId" ReturnType="Collection(BuyOnlineModel.ListarTPagobyId_Result)">
+          <Parameter Name="idtp" Mode="In" Type="Int32" />
+          </FunctionImport>
         </EntityContainer>
         <ComplexType Name="BuscarCat_Result">
           <Property Type="Int32" Name="IdCat" Nullable="false" />
@@ -1599,6 +1604,10 @@
         <ComplexType Name="VeerEstados_Result">
           <Property Type="Int32" Name="IdEstado" Nullable="false" />
           <Property Type="String" Name="Estado" Nullable="false" MaxLength="25" />
+        </ComplexType>
+        <ComplexType Name="ListarTPagobyId_Result">
+          <Property Type="Int32" Name="IdTipoP" Nullable="false" />
+          <Property Type="String" Name="TipoPago" Nullable="false" MaxLength="20" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -2097,6 +2106,14 @@
               <ComplexTypeMapping TypeName="BuyOnlineModel.VeerEstados_Result">
                 <ScalarProperty Name="IdEstado" ColumnName="IdEstado" />
                 <ScalarProperty Name="Estado" ColumnName="Estado" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="ListarTPagobyId" FunctionName="BuyOnlineModel.Store.ListarTPagobyId">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BuyOnlineModel.ListarTPagobyId_Result">
+                <ScalarProperty Name="IdTipoP" ColumnName="IdTipoP" />
+                <ScalarProperty Name="TipoPago" ColumnName="TipoPago" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

@@ -49,3 +49,13 @@ begin
     where Cat like '%'+@cat+'%'
 END
 GO
+
+create procedure listarCatbyid --muestra datos de nuestra tabla LISTO will be update
+(
+    @idcat INT
+)
+as 
+BEGIN
+select c.IdCat, c.Cat from dbo.Categoria as c  WHERE c.IdCat = @idcat
+end 
+GO

@@ -1,11 +1,11 @@
 ﻿$(document).ready(function () {
     $("#registro").on('click', function () {
         var datos = {
-            nombrecat: $("#nombreCat").val()
+            nombreTP: $("#nombreTP").val()
         };
 
         $.ajax({
-            url: "https://localhost:44372/admin/InsertarCategoria",
+            url: "https://localhost:44372/admin/InsertarTipoPago",
             contentType: "Application/json",
             method: "POST",
             data: JSON.stringify(datos),
@@ -14,40 +14,46 @@
                 if (response.Status == 1) {
                     Swal.fire({
                         icon: "success",
-                        title: "Éxito",
-                        text: response.Message
+                        title: "Exito",
+                        text: response.Message,
+                        timer: 2000
+                    }).then(function () {
+                        $("#nombreTP").val("")
+                        Swal.close()
                     })
-
-                    $("#nombreCat").val("");
-                }
-                else {
+                } else {
                     Swal.fire({
                         icon: "error",
                         title: "Error",
-                        text: response.Message
+                        text: response.Message,
+                        timer: 2000
+                    }).then(function () {
+                        Swal.close()
                     })
                 }
-            },
-            error: function (error) {
+            }, error: function (error) {
                 Swal.fire({
                     icon: "error",
-                    title: "Error",
-                    text: error.responseText
+                    title: Error,
+                    text: error.responseText,
+                    timer: 2000
+                }).then(function () {
+                    Swal.close()
                 })
             }
         });
     });
 
     $("#EditarUsuario").on('click', function () {
-        var IdCat = sessionStorage.getItem("idcat");
+        var id = sessionStorage.getItem("idtp");
 
         var datos = {
-            idcat: IdCat,
-            cat: $("#nombreCat").val()
+            idtp: id,
+            nombretp: $("#nombreTP").val()
         };
 
         $.ajax({
-            url: "https://localhost:44372/admin/EditarCategoria",
+            url: "https://localhost:44372/admin/EditarTipoPago",
             contentType: "Application/json",
             method: "POST",
             data: JSON.stringify(datos),
@@ -58,6 +64,9 @@
                         icon: "success",
                         title: "Éxito",
                         text: response.Message
+                    }).then(function () {
+                        Swal.close()
+                        Location.reload()
                     })
                 } else {
                     Swal.fire({
@@ -66,8 +75,7 @@
                         text: response.Message
                     })
                 }
-            },
-            error: function (error) {
+            }, error: function (error) {
                 Swal.fire({
                     icon: "error",
                     title: "Error",
@@ -78,12 +86,14 @@
     });
 
     $("#eliminar").on('click', function () {
-        var idcat = sessionStorage.getItem("idcat");
+        var id = sessionStorage.getItem("idtp");
 
-        var datos = { idcat: idcat };
+        var datos = {
+            idtp: id
+        };
 
         $.ajax({
-            url: "https://localhost:44372/admin/EliminarCategoria",
+            url: "https://localhost:44372/admin/EliminarTipoPago",
             contentType: "Application/json",
             method: "POST",
             data: JSON.stringify(datos),
@@ -98,114 +108,75 @@
                     }).then(function () {
                         Swal.close()
                         location.reload()
-                    });
+                    })
                 } else {
                     Swal.fire({
                         icon: "error",
                         title: "Error",
-                        text: response.Message
+                        text: response.Message,
+                        timer: 2000
                     })
                 }
-            },
-            error: function (error) {
-                Swal.fire({
-                    icon: "error",
-                    title: "Error",
-                    text: error.responseText
-                })
-            }
-        });
-    });
-
-    $("#buscar").on('click', function () {
-        var cat = $("#buscarCat").val();
-
-        var datos = {
-            cat: cat
-        };
-
-        $.ajax({
-            url: "https://localhost:44372/admin/BuscarCategoria",
-            contentType: "Application/json",
-            method: "POST",
-            data: JSON.stringify(datos),
-            dataType: "json",
-            success: function (busqueda) {
-                $("#ListaCat").html(null);
-
-                var html = "";
-
-                $.each(busqueda, function (index, row) {
-                    html += '<tr>';
-                    html += '<th scope="row">  ' + row.IdCat + ' </th>';
-                    html += '<td> ' + row.Cat + ' </td>';
-                    html += '<td><button class="btn btn-success" onclick="ListarCategoria(' + row.IdCat + ')" data-toggle="modal" data-target=".bd-example-modal-sm" value="">Editar</button></td>';
-                    html += '<tr>';
-                });
-                $("#ListaCat").append(html);
             }, error: function (error) {
                 Swal.fire({
                     icon: "error",
                     title: "Error",
                     text: error.responseText,
-                    timer: 1000
+                    timer: 2000
                 })
             }
         });
     });
 
     $("#eliminar").on('click', function () {
-        $("#modal").modal("dispose");
+        $("#modal").modal("hide");
     });
-}); 
+});
 
-
-function ListarCategorias() {
+function ListarTP() {
     $.ajax({
-        url: "https://localhost:44372/admin/ListarPCategorias",
+        url: "https://localhost:44372/admin/ListarTipoPago",
         contentType: "Application/json",
         method: "POST",
         dataType: "json",
-        success: function (listaPais) {
+        success: function (listarTP) {
             var html = "";
 
-            $.each(listaPais, function (index, row) {
+            $.each(listarTP, function (index, row) {
                 html += '<tr>';
-                html += '<th scope="row">  ' + row.IdCat + ' </th>';
-                html += '<td> ' + row.Cat + ' </td>';
-                html += '<td><button class="btn btn-success" onclick="ListarCategoria(' + row.IdCat + ')" data-toggle="modal" data-target=".bd-example-modal-sm" value="">Editar</button></td>';
+                html += '<th scope="row">  ' + row.IdTipoP + ' </th>';
+                html += '<td> ' + row.TipoPago + ' </td>';
+                html += '<td><button class="btn btn-success" onclick="ListarTipoPago(' + row.IdTipoP + ')" data-toggle="modal" data-target=".bd-example-modal-sm" value="' + row.IdTipoP + '">Editar</button></td>';
                 html += '<tr>';
             });
-            $("#ListaCat").append(html);
+            $("#ListaTP").append(html)
         }
     });
 }
 
-function ListarCategoria(id) {
+function ListarTipoPago(id) {
     var datos = {
-        idcat: id
+        idtp: id
     };
 
     $.ajax({
-        url: "https://localhost:44372/admin/ListarCatbyId",
+        url: "https://localhost:44372/admin/ListarTPbyId",
         contentType: "Application/json",
         method: "POST",
         data: JSON.stringify(datos),
         dataType: "json",
-        success: function (listarid) {
+        success: function (listartpid) {
             $("#titulo").html(null);
-
             var html = "";
 
-            $.each(listarid, function (index, row) {
-                sessionStorage.setItem("idcat", row.IdCat);
-
+            $.each(listartpid, function (index, row) {
+                sessionStorage.setItem("idtp", row.IdTipoP);
 
                 html += '<div id="titulo" class="text-center my-4">';
-                html += '<h4>Editar Categoría ' + row.Cat + '</h4>';
+                html += '<h4>Editar Tipo de Pago: ' + row.TipoPago + '</h4>';
                 html += '</div>';
 
-                $("#nombreCat").val(row.Cat);
+                $("#nombreTP").val(row.TipoPago);
                 $("#registro").hide();
                 $("#EditarUsuario").show();
                 $("#ActiDesac").hide();

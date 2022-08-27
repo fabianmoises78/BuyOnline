@@ -51,3 +51,14 @@ begin
     where t.TipoPago like '%'+@busque+'%'
 END
 go
+
+create procedure ListarTPagobyId --Procedure to list to all table´s register NOT READY
+(
+    @idtp int
+)
+as 
+begin 
+    select t.IdTipoP, t.TipoPago from dbo.TipoPago as t
+    WHERE t.IdTipoP = @idtp
+end 
+GO
