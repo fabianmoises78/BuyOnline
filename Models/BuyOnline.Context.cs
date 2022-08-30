@@ -282,6 +282,15 @@ namespace BuyOnline.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ListarTPago_Result>("ListarTPago");
         }
     
+        public virtual ObjectResult<ListarTPagobyId_Result> ListarTPagobyId(Nullable<int> idtp)
+        {
+            var idtpParameter = idtp.HasValue ?
+                new ObjectParameter("idtp", idtp) :
+                new ObjectParameter("idtp", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ListarTPagobyId_Result>("ListarTPagobyId", idtpParameter);
+        }
+    
         public virtual ObjectResult<LoginA_Result> LoginA(string user, string password)
         {
             var userParameter = user != null ?
@@ -896,15 +905,6 @@ namespace BuyOnline.Models
         public virtual ObjectResult<VeerEstados_Result> VeerEstados()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<VeerEstados_Result>("VeerEstados");
-        }
-    
-        public virtual ObjectResult<ListarTPagobyId_Result> ListarTPagobyId(Nullable<int> idtp)
-        {
-            var idtpParameter = idtp.HasValue ?
-                new ObjectParameter("idtp", idtp) :
-                new ObjectParameter("idtp", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ListarTPagobyId_Result>("ListarTPagobyId", idtpParameter);
         }
     }
 }

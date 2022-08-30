@@ -486,7 +486,8 @@ namespace BuyOnline.Controllers
                 response.Status = 1;
                 response.Message = "Categoria editada con éxito.";
                 return Json(response);
-            } catch (Exception error)
+            }
+            catch (Exception error)
             {
                 response.Status = 0;
                 response.Message = "Un error ha ocurrido " + error;
@@ -514,7 +515,7 @@ namespace BuyOnline.Controllers
                 return Json(response);
             }
         }
-        
+
         [HttpPost]
         [Route("BuscarCategoria")]
         public JsonResult BuscarCategoria(string cat)
@@ -525,7 +526,7 @@ namespace BuyOnline.Controllers
             {
                 var Bcat = conexion.BuscarCat(cat).ToList();
 
-                foreach(var item in Bcat)
+                foreach (var item in Bcat)
                 {
                     var asignar = new BuscarCat_Result()
                     {
@@ -578,7 +579,7 @@ namespace BuyOnline.Controllers
             {
                 var listatp = conexion.ListarTPago();
 
-                foreach(var item in listatp)
+                foreach (var item in listatp)
                 {
                     var asignar = new ListarTPago_Result()
                     {
@@ -599,7 +600,7 @@ namespace BuyOnline.Controllers
 
             try
             {
-                if(nombreTP != "")
+                if (nombreTP != "")
                 {
                     conexion.InsertarTPago(nombreTP);
                     response.Status = 1;
@@ -612,7 +613,8 @@ namespace BuyOnline.Controllers
                     response.Message = "Por favor no deje en blanco el espacio...";
                     return Json(response);
                 }
-            }catch(Exception er)
+            }
+            catch (Exception er)
             {
                 response.Status = 0;
                 response.Message = "Un error ha ocurrido " + er;
@@ -653,7 +655,8 @@ namespace BuyOnline.Controllers
                 response.Status = 1;
                 response.Message = "Tipo Pago editado con éxito.";
                 return Json(response);
-            }catch(Exception ex)
+            }
+            catch (Exception ex)
             {
                 response.Status = 0;
                 response.Message = "Un error ha ocurrido " + ex;
@@ -672,10 +675,11 @@ namespace BuyOnline.Controllers
                 response.Status = 1;
                 response.Message = "Tipo Pago eliminado, esta acción es irreversible...";
                 return Json(response);
-            } catch(Exception ex)
+            }
+            catch (Exception ex)
             {
                 response.Status = 0;
-                response.Message = "Un error ha ocurrido " +  ex;
+                response.Message = "Un error ha ocurrido " + ex;
                 return Json(response);
             }
         }

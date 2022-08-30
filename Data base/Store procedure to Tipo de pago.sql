@@ -1,6 +1,6 @@
 create procedure InsertarTPago --Procedimiento almacenado de insertar Tipos de pagos NOT READY
 (
-    @tipo VARCHAR(20)
+    @tipo VARCHAR(50)
 )
 as 
 begin 
@@ -12,7 +12,7 @@ GO
 create procedure ActualizarTPago --Procedure to update the table of Tipo de pago NOT READY 
 (
     @IdT int,
-    @pago varchar(20)
+    @pago varchar(50)
 )
 as 
 BEGIN
@@ -43,7 +43,7 @@ GO
 ---------------------------------------------------------------------------------------------------
 create procedure BuscarTPago --Procedure to search many register or only one by parameter NOT READY
 (
-    @busque varchar(25)
+    @busque varchar(50)
 )
 as 
 begin 
