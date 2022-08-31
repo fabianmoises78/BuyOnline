@@ -128,6 +128,40 @@
         });
     });
 
+    $("#buscar").on('click', function () {
+        var datos = {
+            data: $("#buscarTP").val()
+        };
+
+        $.ajax({
+            url: "https://localhost:44372/admin/BuscvarTipoPago",
+            contentType: "Application/json",
+            method: "POST",
+            data: JSON.stringify(datos),
+            dataType: "json",
+            success: function (Buscar) {
+                $("#ListaTP").html(null);
+
+                var html = "";
+
+                $.each(Buscar, function (index, row) {
+                    html += '<tr>';
+                    html += '<th scope="row">  ' + row.IdTipoP + ' </th>';
+                    html += '<td> ' + row.TipoPago + ' </td>';
+                    html += '<td><button class="btn btn-success" onclick="ListarTipoPago(' + row.IdTipoP + ')" data-toggle="modal" data-target=".bd-example-modal-sm" value="' + row.IdTipoP + '">Editar</button></td>';
+                    html += '<tr>';
+                });
+                $("#ListaTP").append(html)
+            }, error: function (error) {
+                Swal.fire({
+                    icon: "error",
+                    title: "Error",
+                    text: error.responseText
+                })
+            }
+        });
+    });
+
     $("#eliminar").on('click', function () {
         $("#modal").modal("hide");
     });

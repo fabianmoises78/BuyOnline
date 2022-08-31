@@ -1,7 +1,35 @@
 ﻿
 @{
-    ViewBag.Title = "CRUDproductos";
+    ViewBag.Title = "Mantenimiento de Productos";
 }
 
-<h2>CRUDproductos</h2>
+<div class="my-4">
+    <h2>Mantenimiento de Productos.</h2>
+</div>
 
+<div class="my-4">
+    <button class="btn btn-success" data-toggle="modal" data-target=".bd-example-modal-sm" onclick="botones()">Agregar nuevo Producto</button>
+    <a href="~/admin/Mantenimiento" class="btn btn-dark mx-3 text-white">Regresar a Mantenimiento</a>
+</div>
+
+<div class="input-group mb-3">
+    <input id="buscarP" type="text" class="form-control" placeholder="Buscar Producto" aria-label="Buscar" aria-describedby="basic-addon2">
+    <div class="input-group-append">
+        <button id="buscar" class="btn btn-outline-secondary" type="button">Buscar</button>
+    </div>
+</div>
+
+<div class="my-4" id="listarpaises">
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Código</th>
+                <th scope="col">Tipo de Pago</th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody id="ListaP">
+        </tbody>
+    </table>
+</div>

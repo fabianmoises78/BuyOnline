@@ -683,5 +683,28 @@ namespace BuyOnline.Controllers
                 return Json(response);
             }
         }
+
+        [HttpPost]
+        [Route("BuscvarTipoPago")]
+        public JsonResult BuscvarTipoPago(string data)
+        {
+            List<BuscarTPago_Result> BuscarTipoPago = new List<BuscarTPago_Result>();
+
+            using (conexion)
+            {
+                var buscar = conexion.BuscarTPago(data);
+
+                foreach(var item in buscar)
+                {
+                    var asignar = new BuscarTPago_Result()
+                    {
+                        IdTipoP = item.IdTipoP,
+                        TipoPago = item.TipoPago
+                    };
+                    BuscarTipoPago.Add(asignar);
+                }
+            }
+            return Json(BuscarTipoPago);
+        }
     }
 }
