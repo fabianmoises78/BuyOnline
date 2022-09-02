@@ -559,6 +559,57 @@ namespace BuyOnline.Controllers
             return View();
         }
 
+        [HttpPost]
+        [Route("ListarProductos")]
+        public JsonResult ListarProductos()
+        {
+            List<ShowProducts_Result> ListarProductos = new List<ShowProducts_Result>();
+
+            using (conexion)
+            {
+                var listproducto = conexion.ShowProducts();
+
+                foreach(var item in listproducto)
+                {
+                    var asignar = new ShowProducts_Result()
+                    { 
+                        IdProducto = item.IdProducto,
+                        Nombre = item.Nombre,
+                        Descripcion = item.Descripcion,
+                        Imagen = item.Imagen,
+                        precio = item.precio,
+                        Exis = item.Exis,
+                        Valoracion = item.Valoracion,
+                        Estado = item.Estado,
+                        Cat = item.Cat,
+                        Detalles = item.Detalles
+                    };
+                    ListarProductos.Add(asignar);
+                }
+            }
+            return Json(ListarProductos);
+        }
+
+
+        public JsonResult RegistrarProducto(Producto producto)
+        {
+            GenericDTO response = new GenericDTO();
+
+            try
+            {
+                conexion.RecordProductos(producto.Nombre, producto.Descripcion, producto.Imagen, producto.precio, producto.Exis, producto.Valoracion, producto.IdCat, producto.Detalles);
+                response.Status = 1;
+                response.Message = "Producto registrado con éxito";
+                return Json(response);
+            }
+            catch(Exception ex)
+            {
+                response.Status = 0;
+                response.Message = "Un error ha ocurrido " + ex;
+                return Json(response);
+            }
+        }
+
         public ActionResult CRUDtarjeta()
         {
             return View();

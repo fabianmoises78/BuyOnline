@@ -25,7 +25,15 @@
         <thead>
             <tr>
                 <th scope="col">Código</th>
-                <th scope="col">Tipo de Pago</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Descripcion</th>
+                <th scope="col">Imagen</th>
+                <th scope="col">Precio</th>
+                <th scope="col">Existencia</th>
+                <th scope="col">Valoración</th>
+                <th scope="col">Estado</th>
+                <th scope="col">Categoria </th>
+                <th scope="col">Detalles</th>
                 <th scope="col"></th>
             </tr>
         </thead>
@@ -33,3 +41,47 @@
         </tbody>
     </table>
 </div>
+
+<div class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true" id="modal">
+    <div class="modal-dialog modal-sm">
+        <div id="modalMantenimiento" class="modal-content">
+            <div id="titulo" class="mx-auto my-2">
+                <h4>Insertar nueva Categoría</h4>
+            </div>
+            <div class="mx-auto">
+                <form id="validarregistro">
+                    <input type="text" id="nombre" placeholder="Nombre Producto" class="form-control input-lg my-2" />
+                    <input type="text" id="descripcion" placeholder="Descripcion" class="form-control input-lg my-2"/>
+                    <input type="text" id="link" placeholder="Link Imagen" class="form-control input-lg my-2"/>
+                    <input type="number" id="precio" placeholder="Precio" class="form-control input-lg my-2"/>
+                    <input type="number" id="existencias" placeholder="Existencias" class="form-control input-lg my-2"/>
+                    <input type="number" id="valoracion" placeholder="Valoracion" class="form-control input-lg my-2"/>
+                    <select id="cate" class="form-control input-lg my-2">
+                        <option id="idcat" selected>Categoria</option>
+                    </select>
+                    <input type="text" id="detalles" placeholder="Detalles" class="form-control input-lg my-2"/>
+                </form>
+            </div>
+            <div id="titulo" class=" row my-3 mx-auto">
+                <button class="btn btn-success mx-1" id="registro">Ingresar</button>
+                <button class="btn btn-success mx-1" id="EditarUsuario">Editar</button>
+                <button class="btn btn-success mx-1" id="ActiDesac">Desactivar</button>
+                <button class="btn btn-danger" id="eliminar">Eliminar</button>
+                <button class="btn btn-success mx-1" id="ActiDesac2">Activar</button>
+                <button class="btn btn-danger mx-1" onclick="location.reload()" id="salir">Salir</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    <script src="~/Content/js/Botones.js"></script>
+    <script src="~/Content/js/MantenimientoProductos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.20/dist/sweetalert2.all.min.js"></script>
+    <script>
+        ListarProductos();
+    </script>
+    <script>
+        ListarCategoria();
+    </script>
+}
