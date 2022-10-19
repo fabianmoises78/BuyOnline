@@ -186,6 +186,19 @@ namespace BuyOnline.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("DisablePersonaXCustumer", idcustumeParameter, idestadoParameter);
         }
     
+        public virtual ObjectResult<string> DIsableProducto(Nullable<int> idP, Nullable<int> idestado)
+        {
+            var idPParameter = idP.HasValue ?
+                new ObjectParameter("IdP", idP) :
+                new ObjectParameter("IdP", typeof(int));
+    
+            var idestadoParameter = idestado.HasValue ?
+                new ObjectParameter("idestado", idestado) :
+                new ObjectParameter("idestado", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("DIsableProducto", idPParameter, idestadoParameter);
+        }
+    
         public virtual int EliminarCat(Nullable<int> catI)
         {
             var catIParameter = catI.HasValue ?
@@ -861,7 +874,7 @@ namespace BuyOnline.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("UpdatePersonaXCustumer", idfolkParameter, nameParameter, lastnameParameter, oldParameter, phoneParameter, idpaisParameter, usuarioParameter, addressParameter, passwordParameter);
         }
     
-        public virtual ObjectResult<string> UpdateProducto(Nullable<int> idP, string name, string descript, string img, Nullable<double> price, Nullable<int> existence, Nullable<int> idest, Nullable<int> idcat, string detalles)
+        public virtual ObjectResult<string> UpdateProducto(Nullable<int> idP, string name, string descript, string img, Nullable<double> price, Nullable<int> existence, Nullable<int> idcat, string detalles)
         {
             var idPParameter = idP.HasValue ?
                 new ObjectParameter("IdP", idP) :
@@ -887,10 +900,6 @@ namespace BuyOnline.Models
                 new ObjectParameter("existence", existence) :
                 new ObjectParameter("existence", typeof(int));
     
-            var idestParameter = idest.HasValue ?
-                new ObjectParameter("idest", idest) :
-                new ObjectParameter("idest", typeof(int));
-    
             var idcatParameter = idcat.HasValue ?
                 new ObjectParameter("idcat", idcat) :
                 new ObjectParameter("idcat", typeof(int));
@@ -899,7 +908,7 @@ namespace BuyOnline.Models
                 new ObjectParameter("detalles", detalles) :
                 new ObjectParameter("detalles", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("UpdateProducto", idPParameter, nameParameter, descriptParameter, imgParameter, priceParameter, existenceParameter, idestParameter, idcatParameter, detallesParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("UpdateProducto", idPParameter, nameParameter, descriptParameter, imgParameter, priceParameter, existenceParameter, idcatParameter, detallesParameter);
         }
     
         public virtual ObjectResult<VeerEstados_Result> VeerEstados()

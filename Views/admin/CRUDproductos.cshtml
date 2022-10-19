@@ -46,20 +46,26 @@
     <div class="modal-dialog modal-sm">
         <div id="modalMantenimiento" class="modal-content">
             <div id="titulo" class="mx-auto my-2">
-                <h4>Insertar nueva Categoría</h4>
+                <h4>Insertar nuevo Producto</h4>
             </div>
             <div class="mx-auto">
                 <form id="validarregistro">
                     <input type="text" id="nombre" placeholder="Nombre Producto" class="form-control input-lg my-2" />
-                    <input type="text" id="descripcion" placeholder="Descripcion" class="form-control input-lg my-2"/>
-                    <input type="text" id="link" placeholder="Link Imagen" class="form-control input-lg my-2"/>
-                    <input type="number" id="precio" placeholder="Precio" class="form-control input-lg my-2"/>
-                    <input type="number" id="existencias" placeholder="Existencias" class="form-control input-lg my-2"/>
-                    <input type="number" id="valoracion" placeholder="Valoracion" class="form-control input-lg my-2"/>
+                    <div class="input-group">
+                        <textarea id="descripcion" placeholder="Descripcion" class="form-control input-lg my-2" aria-label="With textarea"></textarea>
+                    </div>
+                    <!--input type="text" id="descripcion" placeholder="Descripcion" class="form-control input-lg my-2" /-->
+                    <input type="text" id="link" placeholder="Link Imagen" class="form-control input-lg my-2" />
+                    <input type="number" id="precio" placeholder="Precio" class="form-control input-lg my-2" />
+                    <input type="number" id="existencias" placeholder="Existencias" class="form-control input-lg my-2" />
+                    <input type="number" id="valoracion" placeholder="Valoracion" class="form-control input-lg my-2" />
                     <select id="cate" class="form-control input-lg my-2">
                         <option id="idcat" selected>Categoria</option>
                     </select>
-                    <input type="text" id="detalles" placeholder="Detalles" class="form-control input-lg my-2"/>
+                    <div class="input-group">
+                        <textarea id="detalles" placeholder="Detalles" class="form-control input-lg my-2" aria-label="With textarea"></textarea>
+                    </div>
+                    <!--input type="text" id="detalles" placeholder="Detalles" class="form-control input-lg my-2" /-->
                 </form>
             </div>
             <div id="titulo" class=" row my-3 mx-auto">

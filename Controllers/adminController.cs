@@ -569,13 +569,13 @@ namespace BuyOnline.Controllers
             {
                 var listproducto = conexion.ShowProducts();
 
-                foreach(var item in listproducto)
+                foreach (var item in listproducto)
                 {
                     var asignar = new ShowProducts_Result()
-                    { 
+                    {
                         IdProducto = item.IdProducto,
                         Nombre = item.Nombre,
-                        Descripcion = item.Descripcion,
+                        Descripcion = item.Descripcion.Length > 50 ? item.Descripcion.Substring(0, 50) : item.Descripcion,
                         Imagen = item.Imagen,
                         precio = item.precio,
                         Exis = item.Exis,
@@ -590,7 +590,8 @@ namespace BuyOnline.Controllers
             return Json(ListarProductos);
         }
 
-
+        [HttpPost]
+        [Route("RegistrarProducto")]
         public JsonResult RegistrarProducto(Producto producto)
         {
             GenericDTO response = new GenericDTO();
@@ -602,11 +603,57 @@ namespace BuyOnline.Controllers
                 response.Message = "Producto registrado con éxito";
                 return Json(response);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 response.Status = 0;
                 response.Message = "Un error ha ocurrido " + ex;
                 return Json(response);
+            }
+        }
+
+        [HttpPost]
+        [Route("ListarProductobyId")]
+        public JsonResult ListarProductobyId(Producto producto)
+        {
+            List<ShowProductsbyID_Result> ListarProductobyId = new List<ShowProductsbyID_Result>();
+
+            using (conexion)
+            {
+                var listarbyid = conexion.ShowProductsbyID(producto.IdProducto).ToList();
+
+                var asignar = new ShowProductsbyID_Result()
+                {
+                    IdProducto = listarbyid[0].IdProducto,
+                    Nombre = listarbyid[0].Nombre,
+                    Descripcion = listarbyid[0].Descripcion,
+                    Imagen = listarbyid[0].Imagen,
+                    precio = listarbyid[0].precio,
+                    Exis = listarbyid[0].Exis,
+                    Valoracion = listarbyid[0].Valoracion,
+                    IdEstado = listarbyid[0].IdEstado,
+                    Estado = listarbyid[0].Estado,
+                    IdCat = listarbyid[0].IdCat,
+                    Cat = listarbyid[0].Cat,
+                    Detalles = listarbyid[0].Detalles
+                };
+                ListarProductobyId.Add(asignar);
+            }
+            return Json(ListarProductobyId);
+        }
+
+        public JsonResult DisableEnableProductos(Producto producto)
+        {
+            GenericDTO response = new GenericDTO();
+
+            try
+            {
+                conexion.DIsableProducto(producto.IdProducto, producto.IdEstado);
+                response.Status = 1;
+
+            }
+            catch(Exception ex)
+            {
+
             }
         }
 
@@ -745,7 +792,7 @@ namespace BuyOnline.Controllers
             {
                 var buscar = conexion.BuscarTPago(data);
 
-                foreach(var item in buscar)
+                foreach (var item in buscar)
                 {
                     var asignar = new BuscarTPago_Result()
                     {

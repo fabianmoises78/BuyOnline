@@ -385,6 +385,10 @@
           <Parameter Name="idcustume" Type="int" Mode="In" />
           <Parameter Name="idestado" Type="int" Mode="In" />
         </Function>
+        <Function Name="DIsableProducto" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IdP" Type="int" Mode="In" />
+          <Parameter Name="idestado" Type="int" Mode="In" />
+        </Function>
         <Function Name="EliminarCat" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="catI" Type="int" Mode="In" />
         </Function>
@@ -591,7 +595,6 @@
           <Parameter Name="img" Type="varchar" Mode="In" />
           <Parameter Name="price" Type="float" Mode="In" />
           <Parameter Name="existence" Type="int" Mode="In" />
-          <Parameter Name="idest" Type="int" Mode="In" />
           <Parameter Name="idcat" Type="int" Mode="In" />
           <Parameter Name="detalles" Type="varchar" Mode="In" />
         </Function>
@@ -1180,6 +1183,10 @@
             <Parameter Name="idcustume" Mode="In" Type="Int32" />
             <Parameter Name="idestado" Mode="In" Type="Int32" />
           </FunctionImport>
+          <FunctionImport Name="DIsableProducto" ReturnType="Collection(String)">
+            <Parameter Name="IdP" Mode="In" Type="Int32" />
+            <Parameter Name="idestado" Mode="In" Type="Int32" />
+          </FunctionImport>
           <FunctionImport Name="EliminarCat">
             <Parameter Name="catI" Mode="In" Type="Int32" />
           </FunctionImport>
@@ -1385,7 +1392,6 @@
             <Parameter Name="img" Mode="In" Type="String" />
             <Parameter Name="price" Mode="In" Type="Double" />
             <Parameter Name="existence" Mode="In" Type="Int32" />
-            <Parameter Name="idest" Mode="In" Type="Int32" />
             <Parameter Name="idcat" Mode="In" Type="Int32" />
             <Parameter Name="detalles" Mode="In" Type="String" />
           </FunctionImport>
@@ -1800,6 +1806,7 @@
           <FunctionImportMapping FunctionImportName="DeleteProducto" FunctionName="BuyOnlineModel.Store.DeleteProducto" />
           <FunctionImportMapping FunctionImportName="DisableAdmin" FunctionName="BuyOnlineModel.Store.DisableAdmin" />
           <FunctionImportMapping FunctionImportName="DisablePersonaXCustumer" FunctionName="BuyOnlineModel.Store.DisablePersonaXCustumer" />
+          <FunctionImportMapping FunctionImportName="DIsableProducto" FunctionName="BuyOnlineModel.Store.DIsableProducto" />
           <FunctionImportMapping FunctionImportName="EliminarCat" FunctionName="BuyOnlineModel.Store.EliminarCat" />
           <FunctionImportMapping FunctionImportName="EliminarEstado" FunctionName="BuyOnlineModel.Store.EliminarEstado" />
           <FunctionImportMapping FunctionImportName="EliminarPais" FunctionName="BuyOnlineModel.Store.EliminarPais" />

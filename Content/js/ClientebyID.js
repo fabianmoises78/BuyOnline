@@ -49,7 +49,7 @@ function VerCliente(Id) {
 
                 $("#salir").show();
             });
-
+            $("#eliminar").hide();
             $("#titulo").append(html);
         }
     });

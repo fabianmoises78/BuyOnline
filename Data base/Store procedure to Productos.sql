@@ -69,7 +69,6 @@ CREATE OR ALTER PROCEDURE UpdateProducto --the store procedure update any regist
     @img VARCHAR(500),
     @price FLOAT,
     @existence int,
-    @idest int,
     @idcat INT,
     @detalles VARCHAR(150)
 )
@@ -85,7 +84,6 @@ BEGIN
         Imagen = @img,
         precio = @price,
         Exis = @existence,
-        IdEstado = @idest,
         IdCat = @idcat,
         Detalles = @detalles
         WHERE IdProducto = @IdP
@@ -108,10 +106,10 @@ IF EXISTS
 (
     SELECT type_desc, type 
     FROM sys.procedures
-    WHERE NAME = 'DeleteProducto'
+    WHERE NAME = 'DIsableProducto'
     AND TYPE = 'p'
 )
-DROP PROCEDURE dbo.DeleteProducto
+DROP PROCEDURE dbo.DIsableProducto
 GO
 
 SET ANSI_NULLS ON
@@ -119,9 +117,10 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 
-CREATE OR ALTER PROCEDURE DeleteProducto --this ´procedure delete target of the table's name Producto NOT READY
+CREATE OR ALTER PROCEDURE DIsableProducto
 (
-    @IdP INT
+    @IdP INT,
+    @idestado INT
 )
 AS
 BEGIN
@@ -129,11 +128,18 @@ BEGIN
     DECLARE @target VARCHAR(50), @msg VARCHAR(100)
     BEGIN TRAN DP 
     BEGIN TRY
-        DELETE FROM dbo.Producto
-        WHERE IdProducto = @IdP
-            SET @target = 1
-            SET @msg = 'The target has been deleted.'
-            COMMIT TRAN DP 
+        IF(@idestado = 2)
+        BEGIN
+            UPDATE Producto
+            set IdEstado = 1
+            WHERE IdProducto = @IdP
+        END
+        ELSE IF(@idestado = 1)
+        BEGIN
+            UPDATE Producto
+            SET IdEstado = 2
+            WHERE IdProducto = @IdP
+        END
     END TRY
     BEGIN CATCH
         SET @target = 2

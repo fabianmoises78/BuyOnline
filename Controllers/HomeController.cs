@@ -13,12 +13,11 @@ namespace BuyOnline.Controllers
 
         public ActionResult Index()
         {
-            if (Session["Message"] != null)
+            /*if (Session["Message"] != null)
             {
                 ViewBag.Message = Session["Message"];
                 Session["Message"] = null;
-            }
-            //Datos dt = new Datos();
+            }*/
             ViewBag.ListarProducto = ListarProducto();
             return View();
         }
@@ -71,7 +70,7 @@ namespace BuyOnline.Controllers
             return View();
         }
 
-        public void _LoginIniciar(string user, string password)
+        /*public void _LoginIniciar(string user, string password)
         {
             Datos dtl = new Datos();
 
@@ -79,7 +78,7 @@ namespace BuyOnline.Controllers
             {
                 var iniciarseion = dtl.LoginU(user, password);
             }
-        }
+        }*/
 
         public ActionResult Login()
         {
@@ -91,13 +90,8 @@ namespace BuyOnline.Controllers
         public JsonResult LoginIniciar(Cliente cliente)
         {
             Datos dtl = new Datos();
-            Management mg = new Management();
             GenericDTO dto = new GenericDTO();
 
-            if (Session["Message"] != null)
-            {
-                Session["Message"] = null;
-            }
             try
             {
                 List<LoginU_Result> result = dtl.LoginU(cliente.Usuario, cliente.Contraseña).ToList();
@@ -111,8 +105,6 @@ namespace BuyOnline.Controllers
                         Session["Status"] = "true";
                         Session["IdCliente"] = result[0].IdCliente;
                         Session["Usuario"] = result[0].Usuario;
-                        mg.status = "true";
-                        //return mg;
                         return Json(dto);
                     }
                     else
@@ -123,8 +115,6 @@ namespace BuyOnline.Controllers
                         Session["Status"] = "false";
                         Session["IdCliente"] = "";
                         Session["Usuario"] = "";
-                        mg.mensaje = "El usuario que intenta ingresar está desactivado.";
-                        //return mg;
                         return Json(dto);
                     }
                 }
@@ -132,9 +122,6 @@ namespace BuyOnline.Controllers
                 {
                     dto.Status = 0;
                     dto.Message = "Error usuario o contraseña no validos.";
-
-                    Session["Message"] = "Ërror usuario o contraseña no validos.";
-                    //return mg;
                     return Json(dto);
                 }
             }
@@ -166,10 +153,6 @@ namespace BuyOnline.Controllers
         public JsonResult WishList(Producto producto, int? idproducto)
         {
             GenericDTO response = new GenericDTO();
-            if (Session["Message"] != null)
-            {
-                Session["Message"] = null;
-            }
 
             var sesion = Convert.ToInt32(Session["IdCliente"]);
 
